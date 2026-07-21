@@ -15,9 +15,35 @@ const bathroomFilter = document.getElementById("bathroomFilter");
 const minPriceInput = document.getElementById("minPrice");
 const maxPriceInput = document.getElementById("maxPrice");
 const sortBySelect = document.getElementById("sortBy");
+const favoritesOnlyFilter = document.getElementById("favoritesOnlyFilter");
 const resultsList = document.getElementById("resultsList");
 const resultsCount = document.getElementById("resultsCount");
 const detailPanel = document.getElementById("detailPanel");
+
+const FAVORITES_KEY = "riviera-maya-map-poc:favorites";
+let favorites = new Set();
+try {
+  favorites = new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"));
+} catch (e) {
+  favorites = new Set();
+}
+
+function saveFavorites() {
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify([...favorites]));
+}
+
+function toggleFavorite(id) {
+  if (favorites.has(id)) {
+    favorites.delete(id);
+  } else {
+    favorites.add(id);
+  }
+  saveFavorites();
+  if (activeId === id) {
+    renderDetailPanel(DEVELOPMENTS.find((d) => d.id === id));
+  }
+  renderResults();
+}
 
 function formatPrice(usd) {
   return "$" + usd.toLocaleString("en-US") + " USD";
@@ -77,7 +103,9 @@ function matchesFilters(dev) {
   const city = cityFilter.value;
   const matchesCity = !city || dev.city === city;
 
-  return matchesSearch && matchesUnitAndPrice && matchesCity;
+  const matchesFavorite = !favoritesOnlyFilter.checked || favorites.has(dev.id);
+
+  return matchesSearch && matchesUnitAndPrice && matchesCity && matchesFavorite;
 }
 
 function renderResults() {
@@ -94,14 +122,22 @@ function renderResults() {
   resultsList.innerHTML = "";
 
   for (const dev of filtered) {
+    const isFav = favorites.has(dev.id);
     const item = document.createElement("div");
     item.className = "result-item" + (dev.id === activeId ? " active" : "");
     item.innerHTML = `
-      <div class="rname">${dev.project}</div>
+      <div class="rname-row">
+        <div class="rname">${dev.project}</div>
+        <button class="fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
+      </div>
       <div class="rmeta">${dev.developer} · ${dev.city}</div>
       <div class="rmeta">${priceRangeLabel(dev)}</div>
     `;
     item.addEventListener("click", () => selectDevelopment(dev.id));
+    item.querySelector(".fav-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleFavorite(dev.id);
+    });
     resultsList.appendChild(item);
   }
 
@@ -121,6 +157,12 @@ function selectDevelopment(id) {
   map.panTo([dev.lat, dev.lng]);
   markers.get(id).openPopup();
 
+  renderDetailPanel(dev);
+  renderResults();
+}
+
+function renderDetailPanel(dev) {
+  const isFav = favorites.has(dev.id);
   const rows = dev.units
     .map(
       (u) => `
@@ -135,7 +177,10 @@ function selectDevelopment(id) {
     .join("");
 
   detailPanel.innerHTML = `
-    <h2>${dev.project}</h2>
+    <h2>
+      ${dev.project}
+      <button class="detail-fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
+    </h2>
     <div class="developer">${dev.developer}</div>
     <div class="city">${dev.city}</div>
     <div class="description">${dev.description}</div>
@@ -147,7 +192,7 @@ function selectDevelopment(id) {
     </table>
   `;
 
-  renderResults();
+  detailPanel.querySelector(".detail-fav-btn").addEventListener("click", () => toggleFavorite(dev.id));
 }
 
 searchInput.addEventListener("input", renderResults);
@@ -157,6 +202,7 @@ bathroomFilter.addEventListener("change", renderResults);
 minPriceInput.addEventListener("input", renderResults);
 maxPriceInput.addEventListener("input", renderResults);
 sortBySelect.addEventListener("change", renderResults);
+favoritesOnlyFilter.addEventListener("change", renderResults);
 
 populateCityFilter();
 createMarkers();
