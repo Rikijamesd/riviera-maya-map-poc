@@ -123,3 +123,25 @@ function amenityIconSVG(name) {
 function amenityPillHTML(name) {
   return `<span class="amenity-pill"><span class="amenity-icon-badge">${amenityIconSVG(name)}</span>${name}</span>`;
 }
+
+// ---------- generic monochrome UI icons (inline, currentColor — no emoji) ----------
+
+const UI_ICON_PATHS = {
+  phone: '<path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/>',
+  home: '<path d="M4 20V10l8-6 8 6v10a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>',
+  pin: '<path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5" fill="var(--panel,#fff)"/>',
+  bed: '<path d="M3 18v-7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h2v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v7M3 18h18M3 15h18"/>',
+  building: '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l2 2M14 9l2 2"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/>',
+  tag: '<path d="M20.5 12.5 12 21l-9-9V4h8l9.5 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  chevronRight: '<path d="M9 6l6 6-6 6"/>',
+  x: '<path d="M6 6l12 12M18 6L6 18"/>',
+};
+
+function uiIconSVG(name, strokeWidth) {
+  const path = UI_ICON_PATHS[name];
+  if (!path) return "";
+  const isFilled = name === "home" || name === "pin" || name === "building" || name === "tag";
+  return `<svg viewBox="0 0 24 24" fill="${isFilled ? "currentColor" : "none"}" stroke="currentColor" stroke-width="${strokeWidth || 1.8}" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+}
