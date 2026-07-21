@@ -8,66 +8,106 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
+  <header class="navbar">
     <div class="brand">
       <span class="brand-mark">YP</span>
-      <div class="brand-text">
-        <div class="brand-name">Yucatán Peninsula Developments</div>
-        <div class="brand-sub">Prototype · sample data, not live listings</div>
-      </div>
+      <span class="brand-name">Yucatán Peninsula Developments</span>
     </div>
-
-    <div class="filter-bar">
-      <div class="filter-pill filter-search">
-        <svg viewBox="0 0 20 20" class="pill-icon"><path fill="currentColor" d="M13.6 12.2a6 6 0 1 0-1.4 1.4l3.9 3.9 1.4-1.4-3.9-3.9ZM8 12A4 4 0 1 1 8 4a4 4 0 0 1 0 8Z"/></svg>
-        <input id="searchInput" type="search" placeholder="Search developer, project, or city…" autocomplete="off">
-      </div>
-      <select id="unitFilter" class="filter-pill filter-select">
-        <option value="">Bedrooms: Any</option>
-        <option value="Studio">Studio</option>
-        <option value="1BR">1 Bedroom</option>
-        <option value="2BR">2 Bedroom</option>
-        <option value="3BR">3 Bedroom</option>
-      </select>
-      <select id="bathroomFilter" class="filter-pill filter-select">
-        <option value="">Bathrooms: Any</option>
-        <option value="1">1 Bathroom</option>
-        <option value="1.5">1.5 Bathrooms</option>
-        <option value="2">2 Bathrooms</option>
-        <option value="2.5">2.5 Bathrooms</option>
-        <option value="3">3 Bathrooms</option>
-      </select>
-      <select id="cityFilter" class="filter-pill filter-select">
-        <option value="">All cities</option>
-      </select>
-      <div class="filter-pill price-range">
-        <input id="minPrice" type="number" placeholder="Min $" min="0" step="1000" inputmode="numeric">
-        <span>–</span>
-        <input id="maxPrice" type="number" placeholder="Max $" min="0" step="1000" inputmode="numeric">
-      </div>
-      <select id="sortBy" class="filter-pill filter-select">
-        <option value="">Sort: default</option>
-        <option value="price-asc">Price: low to high</option>
-        <option value="price-desc">Price: high to low</option>
-      </select>
-      <label class="filter-pill favorites-toggle">
-        <input type="checkbox" id="favoritesOnlyFilter">
-        <span class="star">★</span> Favorites
-      </label>
+    <nav class="navlinks">
+      <a href="#" class="inert" title="Not wired up in this prototype">Properties for sale</a>
+      <a href="#" class="inert" title="Not wired up in this prototype">About</a>
+      <a href="#" class="inert" title="Not wired up in this prototype">Blog</a>
+      <a href="#" class="inert" title="Not wired up in this prototype">Contact</a>
+    </nav>
+    <div class="navbar-right">
+      <span class="inert" title="Not wired up in this prototype">📞 Call us</span>
+      <button class="login-btn inert" title="Not wired up in this prototype">Log In</button>
+      <span class="lang-pill inert" title="Not wired up in this prototype">EN</span>
+      <span class="lang-pill inert" title="Not wired up in this prototype">US$</span>
     </div>
   </header>
 
-  <main class="layout">
-    <div id="map"></div>
+  <div class="search-toolbar">
+    <div class="search-chip">
+      <svg viewBox="0 0 20 20" class="pill-icon"><path fill="currentColor" d="M13.6 12.2a6 6 0 1 0-1.4 1.4l3.9 3.9 1.4-1.4-3.9-3.9ZM8 12A4 4 0 1 1 8 4a4 4 0 0 1 0 8Z"/></svg>
+      <input id="searchInput" type="search" placeholder="Search developer, project, or city…" autocomplete="off">
+    </div>
 
+    <details class="filter-dropdown">
+      <summary class="filter-pill">Price ▾</summary>
+      <div class="dropdown-panel">
+        <label>Min<input id="minPrice" type="number" placeholder="$ Min" min="0" step="1000" inputmode="numeric"></label>
+        <label>Max<input id="maxPrice" type="number" placeholder="$ Max" min="0" step="1000" inputmode="numeric"></label>
+      </div>
+    </details>
+
+    <select id="unitFilter" class="filter-pill filter-select">
+      <option value="">Rooms: Any</option>
+      <option value="Studio">Studio</option>
+      <option value="1BR">1 Bedroom</option>
+      <option value="2BR">2 Bedroom</option>
+      <option value="3BR">3 Bedroom</option>
+    </select>
+
+    <details class="filter-dropdown">
+      <summary class="filter-pill">More ▾</summary>
+      <div class="dropdown-panel">
+        <label>Bathrooms
+          <select id="bathroomFilter">
+            <option value="">Any</option>
+            <option value="1">1</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+            <option value="2.5">2.5</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <label>City
+          <select id="cityFilter">
+            <option value="">All cities</option>
+          </select>
+        </label>
+      </div>
+    </details>
+
+    <button class="save-search-btn inert" title="Not wired up in this prototype">Save search</button>
+    <button id="resetFiltersBtn" class="reset-link">Reset filters</button>
+
+    <div class="toolbar-right">
+      <button id="favoritesToggleBtn" class="fav-link">
+        <span class="star">♡</span> My favorites
+      </button>
+      <div class="view-toggle">
+        <button id="viewListBtn" class="view-toggle-btn">List</button>
+        <button id="viewMapBtn" class="view-toggle-btn active">Map</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="layout">
     <aside class="sidebar">
-      <div class="results-count" id="resultsCount"></div>
+      <div class="results-header">
+        <h1>Real Estate for Sale in the Yucatán Peninsula</h1>
+        <div class="results-subheader">
+          <label class="sort-label">Sort by
+            <select id="sortBy">
+              <option value="">Newest</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </label>
+          <span class="results-count" id="resultsCount"></span>
+        </div>
+      </div>
+
       <div class="results-list" id="resultsList"></div>
 
       <div class="detail-panel" id="detailPanel">
-        <p class="detail-placeholder">Click a pin on the map, or a listing below, to see full development details here.</p>
+        <p class="detail-placeholder">Click a pin on the map, or a listing above, to see full development details here.</p>
       </div>
     </aside>
+
+    <div id="map"></div>
   </main>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
