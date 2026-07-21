@@ -365,8 +365,15 @@ select.filter-pill {
   gap: 10px;
 }
 
+.layout.list-only .results-list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 @media (max-width: 700px) {
-  .results-list { grid-template-columns: 1fr; }
+  .results-list,
+  .layout.list-only .results-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Listing cards ---------- */

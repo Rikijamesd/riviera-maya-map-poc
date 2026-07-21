@@ -83,6 +83,7 @@ function priceRangeLabel(dev) {
 }
 
 function bedRangeLabel(dev) {
+  if (dev.propertyType === "Land") return "Land";
   const beds = dev.units.map((u) => u.bedrooms);
   const min = Math.min(...beds);
   const max = Math.max(...beds);
@@ -135,8 +136,8 @@ function totalAvailable(dev) {
   return dev.units.reduce((sum, u) => sum + u.available, 0);
 }
 
-const UNIT_TYPE_ORDER = ["Studio", "1BR", "2BR", "3BR"];
-const UNIT_TYPE_LABEL = { Studio: "Studio", "1BR": "1 Bed", "2BR": "2 Bed", "3BR": "3 Bed" };
+const UNIT_TYPE_ORDER = ["Studio", "1BR", "2BR", "3BR", "Land"];
+const UNIT_TYPE_LABEL = { Studio: "Studio", "1BR": "1 Bed", "2BR": "2 Bed", "3BR": "3 Bed", Land: "Land" };
 
 // ---------- favorites (shared localStorage-backed set) ----------
 
