@@ -34,6 +34,10 @@ async function init() {
   });
 
   renderGallery();
+  setupCurrencyToggle(() => {
+    renderPriceBlock();
+    renderUnitTable();
+  });
   renderPriceBlock();
   document.getElementById("viewPricesLink").addEventListener("click", () => activateTab("prices"));
   renderFactList();
@@ -98,8 +102,7 @@ function renderGallery() {
 }
 
 function renderPriceBlock() {
-  document.getElementById("priceMXN").textContent = `From: ${formatMXN(devMinPrice(dev))}`;
-  document.getElementById("priceUSD").textContent = formatPrice(devMinPrice(dev));
+  document.getElementById("priceMain").textContent = `From ${formatMoney(devMinPrice(dev))}`;
 }
 
 function renderFactList() {
@@ -195,7 +198,7 @@ function renderUnitTable() {
         <td>${r.bedrooms === 0 ? "Studio" : r.bedrooms}</td>
         <td>${r.bathrooms}</td>
         <td>${r.size} m²</td>
-        <td>${formatPrice(r.price)}</td>
+        <td>${formatMoney(r.price)}</td>
         <td>Available</td>
       </tr>`
     )

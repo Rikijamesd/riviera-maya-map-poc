@@ -19,8 +19,9 @@ showing price/size/availability per unit type — similar in spirit to
   than guessing. **Unit numbers, prices, and sizes are now real** — pulled
   from each project's actual "Prices and Availability" PDF in the Drive,
   filtered to units marked available (not sold/reserved). The stored price
-  per unit is USD; the MXN figure shown alongside it is converted live on
-  each page load via [open.er-api.com](https://www.exchangerate-api.com/)
+  per unit is USD, shown by default; a USD/MXN pill toggle (next to the
+  List/Map toggle, and on each detail page) switches the display to MXN,
+  converted live via [open.er-api.com](https://www.exchangerate-api.com/)
   (free, no API key), falling back to a fixed ~18:1 rate if that fetch
   fails. Since some units' real quote was originally in MXN, the displayed
   MXN can drift slightly from the exact PDF figure as the live rate moves —
