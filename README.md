@@ -16,10 +16,15 @@ showing price/size/availability per unit type — similar in spirit to
   (hotlinked from Drive file IDs via `https://lh3.googleusercontent.com/d/{id}`).
   Developer names are only filled in where a source doc explicitly named one
   (DOMA, GR4, Macondo, Algi); the rest say "Developer not confirmed" rather
-  than guessing. **Unit types, bedroom/bathroom counts, prices, sizes, and
-  amenities are still illustrative estimates** — the real price lists exist
-  as separate PDFs per project in the Drive that haven't been parsed yet.
-  Don't treat the specific prices shown as real quotes for these buildings.
+  than guessing. **Unit numbers, prices, and sizes are now real** — pulled
+  from each project's actual "Prices and Availability" PDF in the Drive,
+  filtered to units marked available (not sold/reserved). MXN prices were
+  converted to USD at a fixed ~18:1 rate, not a live exchange rate.
+  **Bathroom counts and amenities are still estimates** where the source PDF
+  didn't include that detail. TIERRA MADRE's real data is for raw land lots
+  (no bedrooms apply), not a built house. This is a point-in-time snapshot,
+  not a live sync — if a unit sells or a price changes in the Drive, this
+  site won't know until someone re-pulls it.
 - Search bar filters by developer/project/city name. Dropdowns filter by
   unit type (Studio/1BR/2BR/3BR) and city. Clicking a marker, a result card,
   or "View all" navigates to a dedicated detail page for that development
