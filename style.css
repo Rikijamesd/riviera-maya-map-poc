@@ -141,10 +141,10 @@ body {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-.filter-pill .pill-icon {
-  width: 14px;
-  height: 14px;
-  color: var(--muted);
+.pill-icon {
+  width: 11px;
+  height: 11px;
+  color: #b7c0c7;
   flex: 0 0 auto;
 }
 
@@ -354,14 +354,6 @@ select.filter-pill {
   gap: 10px;
 }
 
-.sidebar.detail-open .results-list {
-  flex: 1 1 38%;
-}
-
-.sidebar.detail-open .detail-panel {
-  flex: 1 1 62%;
-}
-
 /* ---------- Listing cards ---------- */
 
 .result-item {
@@ -513,13 +505,30 @@ select.filter-pill {
 .amenity-pill {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 4px 10px;
+  padding: 4px 10px 4px 4px;
   font-size: 11.5px;
   color: var(--text);
+}
+
+.amenity-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #d8ecf5;
+  color: #4fa3c9;
+  flex: 0 0 auto;
+}
+
+.amenity-icon-badge svg {
+  width: 12px;
+  height: 12px;
 }
 
 .amenities-more {
@@ -552,20 +561,7 @@ select.filter-pill {
   color: var(--star);
 }
 
-/* ---------- Detail panel ---------- */
-
-.detail-panel {
-  flex: 0 0 auto;
-  overflow-y: auto;
-  background: var(--panel);
-  border-top: 1px solid var(--border);
-}
-
-.detail-placeholder {
-  color: var(--muted);
-  font-size: 13.5px;
-  padding: 18px 18px;
-}
+/* ---------- Detail page banner/tabs (used on detail.html) ---------- */
 
 .detail-banner {
   position: relative;
@@ -584,8 +580,7 @@ select.filter-pill {
   gap: 8px;
 }
 
-.detail-banner .detail-fav-btn,
-.detail-banner .detail-close-btn {
+.detail-banner .detail-fav-btn {
   border: none;
   background: rgba(20, 37, 48, 0.35);
   border-radius: 999px;
@@ -599,14 +594,6 @@ select.filter-pill {
 .detail-banner .detail-fav-btn.active {
   color: var(--star);
   background: rgba(255, 255, 255, 0.92);
-}
-
-.detail-banner .detail-close-btn {
-  font-size: 15px;
-}
-
-.detail-banner .detail-close-btn:hover {
-  background: rgba(20, 37, 48, 0.55);
 }
 
 .detail-banner h2 {
@@ -682,7 +669,313 @@ select.filter-pill {
 
 .leaflet-popup-content b { display: block; margin-bottom: 2px; }
 
+/* ---------- Detail page (detail.html) ---------- */
+
+.detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 24px 60px;
+}
+
+.detail-breadcrumb {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.detail-breadcrumb a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.detail-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.detail-title-row h1 {
+  font-size: 24px;
+  margin: 0 0 4px;
+}
+
+.detail-title-meta {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2fa563;
+  display: inline-block;
+}
+
+.detail-fav-inline {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+.detail-fav-inline.active {
+  border-color: var(--star);
+  color: var(--star);
+}
+
+.detail-gallery {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.gallery-main {
+  position: relative;
+  flex: 1 1 68%;
+  height: 340px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery-main .gallery-initials {
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.gallery-main .gallery-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(20, 37, 48, 0.45);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.gallery-thumbs {
+  flex: 1 1 32%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery-thumb {
+  position: relative;
+  flex: 1 1 0;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+.gallery-thumb-caption {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+}
+
+.detail-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.detail-tab {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.detail-tab.active {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+
+.detail-body-grid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.detail-main-col {
+  flex: 1 1 68%;
+  min-width: 0;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.price-block {
+  margin-bottom: 14px;
+}
+
+.rprice-mxn-lg {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.detail-fact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0 20px;
+}
+
+.fact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+}
+
+.detail-section {
+  border-top: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.detail-section summary {
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.detail-section-body {
+  margin-top: 12px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.phase-row {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.amenities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail-map {
+  height: 260px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 20px;
+  border: 1px solid var(--border);
+}
+
+.prices-header {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.contact-card {
+  flex: 1 1 32%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--panel);
+  position: sticky;
+  top: 18px;
+}
+
+.contact-card h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.contact-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.contact-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.contact-card input,
+.contact-card textarea {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+}
+
+.contact-card button[type="submit"] {
+  border: none;
+  background: var(--accent-dark);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.contact-result {
+  font-size: 12.5px;
+  color: var(--accent-dark);
+  margin-top: 10px;
+}
+
 @media (max-width: 900px) {
+  .detail-body-grid { flex-direction: column; }
+  .contact-card { position: static; }
   .navlinks { display: none; }
   .layout { flex-direction: column; height: auto; }
   #map { height: 45vh; }
