@@ -8,6 +8,24 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 const markers = new Map(); // id -> L.Marker
 let activeId = null;
 let detailUnitFilter = null; // null = "All" tab in the detail panel
+const expandedAmenities = new Set(); // dev ids showing all amenities instead of the first 4
+
+const AMENITY_ICONS = {
+  Pool: "🏊",
+  Gym: "🏋️",
+  "Rooftop Terrace": "🌇",
+  "Security 24/7": "🛡️",
+  Elevator: "🛗",
+  Parking: "🅿️",
+  Coworking: "💼",
+  "Kids Club": "🧒",
+  "BBQ Area": "🔥",
+  Concierge: "🛎️",
+  "Pet Friendly": "🐾",
+  "Beach Club": "🏖️",
+  Spa: "💆",
+  "EV Charging": "🔌",
+};
 
 const searchInput = document.getElementById("searchInput");
 const unitFilter = document.getElementById("unitFilter");
@@ -20,6 +38,7 @@ const favoritesOnlyFilter = document.getElementById("favoritesOnlyFilter");
 const resultsList = document.getElementById("resultsList");
 const resultsCount = document.getElementById("resultsCount");
 const detailPanel = document.getElementById("detailPanel");
+const sidebar = document.querySelector(".sidebar");
 
 const FAVORITES_KEY = "riviera-maya-map-poc:favorites";
 let favorites = new Set();
@@ -84,6 +103,12 @@ function sizeRangeLabel(dev) {
   const min = Math.min(...sizes);
   const max = Math.max(...sizes);
   return min === max ? `${min} m²` : `${min}–${max} m²`;
+}
+
+function unitsSummaryLabel(dev) {
+  const total = dev.units.reduce((sum, u) => sum + u.available, 0);
+  const types = [...new Set(dev.units.map((u) => (u.type === "Studio" ? "Studio" : u.type)))];
+  return `${total} unit${total === 1 ? "" : "s"} available · ${types.join(", ")}`;
 }
 
 function initials(project) {
@@ -186,22 +211,37 @@ function renderResults() {
 
   for (const dev of filtered) {
     const isFav = favorites.has(dev.id);
+    const isExpanded = expandedAmenities.has(dev.id);
+    const shownAmenities = isExpanded ? dev.amenities : dev.amenities.slice(0, 4);
+    const remaining = dev.amenities.length - shownAmenities.length;
+
+    const pillsHTML = shownAmenities
+      .map((a) => `<span class="amenity-pill">${AMENITY_ICONS[a] || "•"} ${a}</span>`)
+      .join("");
+    const moreBtnHTML =
+      remaining > 0
+        ? `<button class="amenities-more" data-id="${dev.id}">+${remaining} more amenities</button>`
+        : isExpanded && dev.amenities.length > 4
+          ? `<button class="amenities-more" data-id="${dev.id}">Show less</button>`
+          : "";
+
     const item = document.createElement("div");
     item.className = "result-item" + (dev.id === activeId ? " active" : "");
     item.innerHTML = `
       <div class="card-banner" style="${bannerStyle(dev)}">
-        ${initials(dev.project)}
+        <div class="banner-initials">${initials(dev.project)}</div>
         <button class="fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
+        <div class="banner-address">${dev.city}</div>
       </div>
       <div class="card-body">
-        <div class="rname">${dev.project}</div>
-        <div class="rmeta">${dev.developer} · ${dev.city}</div>
-        <div class="rprice">${priceRangeLabel(dev)}</div>
-        <div class="card-stats">
-          <span>${bedRangeLabel(dev)}</span>
-          <span>${bathRangeLabel(dev)}</span>
-          <span>${sizeRangeLabel(dev)}</span>
+        <div class="card-title-row">
+          <div class="rname">${dev.project}</div>
         </div>
+        <div class="rmeta">${dev.developer}</div>
+        <div class="rprice">Prices start from: <strong>${formatPrice(devMinPrice(dev))}</strong></div>
+        <div class="runits">${unitsSummaryLabel(dev)}</div>
+        <div class="amenity-pills">${pillsHTML}${moreBtnHTML}</div>
+        <button class="card-view-btn">View ${dev.project} details</button>
       </div>
     `;
     item.addEventListener("click", () => selectDevelopment(dev.id));
@@ -209,6 +249,18 @@ function renderResults() {
       e.stopPropagation();
       toggleFavorite(dev.id);
     });
+    const moreBtn = item.querySelector(".amenities-more");
+    if (moreBtn) {
+      moreBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (expandedAmenities.has(dev.id)) {
+          expandedAmenities.delete(dev.id);
+        } else {
+          expandedAmenities.add(dev.id);
+        }
+        renderResults();
+      });
+    }
     resultsList.appendChild(item);
   }
 
@@ -229,7 +281,17 @@ function selectDevelopment(id) {
   map.panTo([dev.lat, dev.lng]);
   markers.get(id).openPopup();
 
+  sidebar.classList.add("detail-open");
   renderDetailPanel(dev);
+  renderResults();
+}
+
+function closeDetail() {
+  activeId = null;
+  detailUnitFilter = null;
+  sidebar.classList.remove("detail-open");
+  map.closePopup();
+  detailPanel.innerHTML = `<p class="detail-placeholder">Click a pin on the map, or a listing below, to see full development details here.</p>`;
   renderResults();
 }
 
@@ -266,7 +328,10 @@ function renderDetailPanel(dev) {
 
   detailPanel.innerHTML = `
     <div class="detail-banner" style="${bannerStyle(dev)}">
-      <button class="detail-fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
+      <div class="detail-actions">
+        <button class="detail-fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
+        <button class="detail-close-btn" title="Close" aria-label="Close details">✕</button>
+      </div>
       <h2>${dev.project}</h2>
     </div>
     <div class="detail-body">
@@ -284,6 +349,7 @@ function renderDetailPanel(dev) {
   `;
 
   detailPanel.querySelector(".detail-fav-btn").addEventListener("click", () => toggleFavorite(dev.id));
+  detailPanel.querySelector(".detail-close-btn").addEventListener("click", closeDetail);
   detailPanel.querySelectorAll(".unit-tab").forEach((btn) => {
     btn.addEventListener("click", () => {
       detailUnitFilter = btn.dataset.type || null;
