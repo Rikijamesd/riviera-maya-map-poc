@@ -1,9 +1,16 @@
 const map = L.map("map").setView([20.9, -87.6], 8);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+const streetLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   maxZoom: 18,
 }).addTo(map);
+
+const satelliteLayer = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  { attribution: "Tiles &copy; Esri", maxZoom: 18 }
+);
+
+L.control.layers({ Street: streetLayer, Satellite: satelliteLayer }).addTo(map);
 
 const markers = new Map(); // id -> L.Marker
 let favoritesOnly = false;
@@ -11,6 +18,7 @@ const expandedAmenities = new Set(); // dev ids showing all amenities instead of
 let favorites = loadFavorites();
 
 const searchInput = document.getElementById("searchInput");
+const propertyTypeFilter = document.getElementById("propertyTypeFilter");
 const unitFilter = document.getElementById("unitFilter");
 const cityFilter = document.getElementById("cityFilter");
 const bathroomFilter = document.getElementById("bathroomFilter");
@@ -55,9 +63,25 @@ function populateCityFilter() {
   }
 }
 
+function shortDeliveryLabel(dev) {
+  if (/ready/i.test(dev.deliveryDate)) return "Now";
+  const m = dev.deliveryDate.match(/([A-Za-z]+)\.?\s+(\d{4})/);
+  if (!m) return dev.deliveryDate;
+  return `${m[1].slice(0, 3)} ${m[2].slice(2)}`;
+}
+
+function dateBubbleIcon(dev) {
+  return L.divIcon({
+    className: "date-marker",
+    html: `<div class="date-bubble">${shortDeliveryLabel(dev)}</div>`,
+    iconSize: [56, 24],
+    iconAnchor: [28, 30],
+  });
+}
+
 function createMarkers() {
   for (const dev of DEVELOPMENTS) {
-    const marker = L.marker([dev.lat, dev.lng]).addTo(map);
+    const marker = L.marker([dev.lat, dev.lng], { icon: dateBubbleIcon(dev) }).addTo(map);
     marker.bindPopup(
       `<b>${dev.project}</b>${dev.developer}<br>${priceRangeLabel(dev)}<br><a href="${detailUrl(dev.id)}">View details →</a>`
     );
@@ -89,13 +113,17 @@ function matchesFilters(dev) {
   const city = cityFilter.value;
   const matchesCity = !city || dev.city === city;
 
+  const propertyType = propertyTypeFilter.value;
+  const matchesPropertyType = !propertyType || dev.propertyType === propertyType;
+
   const matchesFavorite = !favoritesOnly || favorites.has(dev.id);
 
-  return matchesSearch && matchesUnitAndPrice && matchesCity && matchesFavorite;
+  return matchesSearch && matchesUnitAndPrice && matchesCity && matchesPropertyType && matchesFavorite;
 }
 
 function resetFilters() {
   searchInput.value = "";
+  propertyTypeFilter.value = "";
   unitFilter.value = "";
   bathroomFilter.value = "";
   cityFilter.value = "";
@@ -148,7 +176,7 @@ function renderResults() {
       <div class="card-banner" style="${bannerStyle(dev)}">
         <div class="banner-initials">${initials(dev.project)}</div>
         ${dev.photos && dev.photos[0] ? `<img src="${driveImageUrl(dev.photos[0], 500)}" alt="${dev.project}" loading="lazy" onerror="this.style.display='none'">` : ""}
-        <span class="type-badge">Condo</span>
+        <span class="type-badge">${dev.propertyType}</span>
         <button class="fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "♡"}</button>
         <div class="banner-address">${dev.deliveryDate}</div>
       </div>
@@ -197,6 +225,7 @@ function renderResults() {
 }
 
 searchInput.addEventListener("input", renderResults);
+propertyTypeFilter.addEventListener("change", renderResults);
 unitFilter.addEventListener("change", renderResults);
 cityFilter.addEventListener("change", renderResults);
 bathroomFilter.addEventListener("change", renderResults);
