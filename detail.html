@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Development — Yucatán Peninsula Developments</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <span class="brand-mark">YP</span>
+      <span class="brand-name">Yucatán Peninsula Developments</span>
+    </div>
+    <nav class="navlinks">
+      <a href="#" class="inert" title="Not wired up in this prototype">Properties for sale</a>
+      <a href="#" class="inert" title="Not wired up in this prototype">About</a>
+      <a href="#" class="inert" title="Not wired up in this prototype">Blog</a>
+      <a href="#" class="inert" title="Not wired up in this prototype">Contact</a>
+    </nav>
+    <div class="navbar-right">
+      <span class="inert" title="Not wired up in this prototype">📞 Call us</span>
+      <button class="login-btn inert" title="Not wired up in this prototype">Log In</button>
+      <span class="lang-pill inert" title="Not wired up in this prototype">EN</span>
+      <span class="lang-pill inert" title="Not wired up in this prototype">US$</span>
+    </div>
+  </header>
+
+  <main class="detail-page">
+    <div class="detail-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span id="breadcrumbState"></span>
+      <span>›</span>
+      <span id="breadcrumbCity"></span>
+    </div>
+
+    <div class="detail-title-row">
+      <div>
+        <h1 id="devTitle"></h1>
+        <div class="detail-title-meta">
+          <span class="status-dot"></span>
+          <span id="devStatusLine"></span>
+        </div>
+      </div>
+      <button id="favBtn" class="detail-fav-inline"></button>
+    </div>
+
+    <div class="detail-gallery">
+      <div class="gallery-main" id="galleryMain"></div>
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
+
+    <div class="detail-tabs">
+      <button class="detail-tab active" data-tab="details">🏠 Property details</button>
+      <button class="detail-tab" data-tab="prices">🏠 Prices and Availability</button>
+    </div>
+
+    <div class="detail-body-grid">
+      <div class="detail-main-col">
+        <section id="tabDetails" class="tab-panel active">
+          <div class="price-block">
+            <div class="rprice-mxn-lg" id="priceMXN"></div>
+            <div class="rprice-usd-row">
+              From <span class="price-box" id="priceUSD"></span>
+              <button class="link-btn" id="viewPricesLink">View Prices Details</button>
+            </div>
+          </div>
+
+          <div class="detail-fact-list" id="factList"></div>
+
+          <details class="detail-section" open>
+            <summary>🔑 Phases &amp; Delivery</summary>
+            <div class="detail-section-body" id="phasesBody"></div>
+          </details>
+
+          <details class="detail-section" open>
+            <summary>🏊 Amenities</summary>
+            <div class="detail-section-body" id="amenitiesBody"></div>
+          </details>
+
+          <details class="detail-section">
+            <summary>🏗️ About the Developer</summary>
+            <div class="detail-section-body" id="developerBody"></div>
+          </details>
+
+          <div class="detail-map" id="detailMap"></div>
+        </section>
+
+        <section id="tabPrices" class="tab-panel">
+          <div class="prices-header" id="unitsAvailableLine"></div>
+          <div class="unit-tabs" id="unitTabs"></div>
+          <table class="unit-table" id="unitTable">
+            <thead>
+              <tr><th>Unit</th><th>Bed</th><th>Bath</th><th>Size</th><th>Price</th><th>Status</th></tr>
+            </thead>
+            <tbody id="unitTableBody"></tbody>
+          </table>
+        </section>
+      </div>
+
+      <aside class="contact-card">
+        <h3 id="contactHeading"></h3>
+        <p class="contact-note">Prototype only — this form doesn't send anything anywhere.</p>
+        <form id="contactForm">
+          <label>Full Name<input type="text" placeholder="Full Name"></label>
+          <label>Email<input type="email" placeholder="Email"></label>
+          <label>Phone<input type="tel" placeholder="Phone"></label>
+          <label>Message<textarea placeholder="Message" rows="3"></textarea></label>
+          <button type="submit">Contact an Agent!</button>
+        </form>
+        <p class="contact-result" id="contactResult"></p>
+      </aside>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="data.js"></script>
+  <script src="shared.js"></script>
+  <script src="detail.js"></script>
+</body>
+</html>
