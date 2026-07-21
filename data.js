@@ -14,6 +14,7 @@ const DEVELOPMENTS = [
     city: "Mérida, Yucatán",
     lat: 21.0500, lng: -89.6200,
     description: "Large mixed-use master-planned development along the Vía Montejo corridor. Winner of \"Best Mixed-Use Development in Mexico\" (Americas Property Awards).",
+    amenities: ["Pool", "Gym", "Coworking", "Kids Club", "Security 24/7", "Parking"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 118000, size: 40, available: 4 },
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 168000, size: 58, available: 6 },
@@ -27,6 +28,7 @@ const DEVELOPMENTS = [
     city: "Progreso, Yucatán",
     lat: 21.2833, lng: -89.6667,
     description: "Yucatán's first oceanfront residential community — three towers on the marina, 20+ years of the developer active in the region.",
+    amenities: ["Pool", "Beach Club", "Spa", "Security 24/7", "Concierge"],
     units: [
       { type: "1BR", bedrooms: 1, bathrooms: 1.5, price: 195000, size: 60, available: 2 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 289000, size: 95, available: 5 },
@@ -40,6 +42,7 @@ const DEVELOPMENTS = [
     city: "Mérida, Yucatán",
     lat: 20.9500, lng: -89.5500,
     description: "National developer active since 1975. Las Américas has 14,000+ homes built with 5,300 under construction.",
+    amenities: ["Pool", "Gym", "Kids Club", "Parking", "Security 24/7"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 95000, size: 38, available: 8 },
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 132000, size: 52, available: 10 },
@@ -53,6 +56,7 @@ const DEVELOPMENTS = [
     city: "Mérida, Yucatán",
     lat: 21.0100, lng: -89.5800,
     description: "100% Yucatecan developer, 15+ years active with 20+ developments delivered.",
+    amenities: ["Pool", "Gym", "BBQ Area", "Parking"],
     units: [
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 145000, size: 55, available: 3 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 210000, size: 84, available: 4 },
@@ -65,6 +69,7 @@ const DEVELOPMENTS = [
     city: "Telchac Puerto, Yucatán",
     lat: 21.3417, lng: -89.2667,
     description: "Coastal development from a 100% Yucatecan developer founded 2016; 11 developments delivered to date.",
+    amenities: ["Pool", "Beach Club", "BBQ Area", "Security 24/7"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 105000, size: 36, available: 5 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 265000, size: 92, available: 2 },
@@ -77,6 +82,7 @@ const DEVELOPMENTS = [
     city: "Cancún, Quintana Roo",
     lat: 21.1619, lng: -86.8515,
     description: "Founded 2016 by pioneer Cancún families. High-rise residential towers in the Cumbres corridor.",
+    amenities: ["Pool", "Gym", "Rooftop Terrace", "Coworking", "Elevator", "Security 24/7"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 155000, size: 42, available: 6 },
       { type: "1BR", bedrooms: 1, bathrooms: 1.5, price: 225000, size: 64, available: 7 },
@@ -90,6 +96,7 @@ const DEVELOPMENTS = [
     city: "Puerto Morelos, Quintana Roo",
     lat: 20.8460, lng: -86.8756,
     description: "Low-density residential project close to the Puerto Morelos reef and marina.",
+    amenities: ["Pool", "BBQ Area", "Parking", "Pet Friendly"],
     units: [
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 210000, size: 60, available: 4 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 315000, size: 90, available: 2 },
@@ -102,6 +109,7 @@ const DEVELOPMENTS = [
     city: "Cancún, Quintana Roo",
     lat: 21.1300, lng: -86.8100,
     description: "High-design architecture focus; 13+ years of the developer active in Cancún and Playa del Carmen.",
+    amenities: ["Pool", "Gym", "Rooftop Terrace", "Concierge", "EV Charging"],
     units: [
       { type: "2BR", bedrooms: 2, bathrooms: 2.5, price: 385000, size: 110, available: 2 },
       { type: "3BR", bedrooms: 3, bathrooms: 3, price: 560000, size: 155, available: 1 },
@@ -114,6 +122,7 @@ const DEVELOPMENTS = [
     city: "Tulum, Quintana Roo",
     lat: 20.2114, lng: -87.4654,
     description: "15+ years building luxury Tulum residences, alongside Itzá I & II and Casa Veleta.",
+    amenities: ["Pool", "Spa", "Beach Club", "Security 24/7", "Concierge", "Parking"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 175000, size: 45, available: 3 },
       { type: "1BR", bedrooms: 1, bathrooms: 1.5, price: 260000, size: 68, available: 5 },
@@ -127,6 +136,7 @@ const DEVELOPMENTS = [
     city: "Playa del Carmen, Quintana Roo",
     lat: 20.6296, lng: -87.0739,
     description: "One of five active Grupo Emérita projects in the region (alongside Tierra Madre, Constelada, Trébola).",
+    amenities: ["Pool", "Gym", "Kids Club", "BBQ Area", "Parking"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 148000, size: 41, available: 5 },
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 205000, size: 59, available: 6 },
@@ -140,6 +150,7 @@ const DEVELOPMENTS = [
     city: "Valladolid, Yucatán",
     lat: 20.6896, lng: -88.2019,
     description: "Grupo Emérita's inland project, closer to Chichén Itzá and the colonial center of Valladolid.",
+    amenities: ["Pool", "BBQ Area", "Parking"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 78000, size: 36, available: 7 },
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 110000, size: 50, available: 8 },
@@ -152,6 +163,7 @@ const DEVELOPMENTS = [
     city: "Playa del Carmen, Quintana Roo",
     lat: 20.6400, lng: -87.0800,
     description: "Hotel-condo investment model with shared rental income; developer has 25,000+ homes delivered nationwide.",
+    amenities: ["Pool", "Spa", "Gym", "Concierge", "Beach Club", "Rooftop Terrace"],
     units: [
       { type: "1BR", bedrooms: 1, bathrooms: 1.5, price: 240000, size: 62, available: 4 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 365000, size: 96, available: 3 },
@@ -164,6 +176,7 @@ const DEVELOPMENTS = [
     city: "Cozumel, Quintana Roo",
     lat: 20.4230, lng: -86.9223,
     description: "ESR-certified 13 years running; mid-market housing with financing options for qualified buyers.",
+    amenities: ["Pool", "Kids Club", "Parking", "Security 24/7"],
     units: [
       { type: "Studio", bedrooms: 0, bathrooms: 1, price: 98000, size: 38, available: 6 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 220000, size: 82, available: 3 },
@@ -176,6 +189,7 @@ const DEVELOPMENTS = [
     city: "Cancún, Quintana Roo",
     lat: 21.1200, lng: -86.8000,
     description: "Publicly traded on the BMV; 24+ completed projects and 2,500+ units sold region-wide.",
+    amenities: ["Pool", "Gym", "Rooftop Terrace", "Kids Club", "Parking", "Security 24/7"],
     units: [
       { type: "1BR", bedrooms: 1, bathrooms: 1, price: 230000, size: 63, available: 5 },
       { type: "2BR", bedrooms: 2, bathrooms: 2, price: 355000, size: 97, available: 4 },
