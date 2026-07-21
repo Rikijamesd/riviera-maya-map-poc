@@ -683,6 +683,29 @@ select.filter-pill {
 
 .leaflet-popup-content b { display: block; margin-bottom: 2px; }
 
+.date-bubble {
+  background: #16232c;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.date-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #16232c;
+}
+
 /* ---------- Detail page (detail.html) ---------- */
 
 .detail-page {
