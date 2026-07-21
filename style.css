@@ -77,6 +77,56 @@ html, body {
   width: 110px;
 }
 
+.favorites-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.rname-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.fav-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+  color: var(--muted);
+}
+
+.fav-btn.active {
+  color: var(--accent);
+}
+
+.detail-panel h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.detail-fav-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.detail-fav-btn.active {
+  color: var(--accent);
+}
+
 .layout {
   display: flex;
   height: calc(100vh - 61px);
