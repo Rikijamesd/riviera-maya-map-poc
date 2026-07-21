@@ -18,9 +18,14 @@ showing price/size/availability per unit type — similar in spirit to
   (DOMA, GR4, Macondo, Algi); the rest say "Developer not confirmed" rather
   than guessing. **Unit numbers, prices, and sizes are now real** — pulled
   from each project's actual "Prices and Availability" PDF in the Drive,
-  filtered to units marked available (not sold/reserved). MXN prices were
-  converted to USD at a fixed ~18:1 rate, not a live exchange rate.
-  **Bathroom counts and amenities are still estimates** where the source PDF
+  filtered to units marked available (not sold/reserved). The stored price
+  per unit is USD; the MXN figure shown alongside it is converted live on
+  each page load via [open.er-api.com](https://www.exchangerate-api.com/)
+  (free, no API key), falling back to a fixed ~18:1 rate if that fetch
+  fails. Since some units' real quote was originally in MXN, the displayed
+  MXN can drift slightly from the exact PDF figure as the live rate moves —
+  this is an inherent tradeoff of live-converting a single stored currency,
+  not a bug. **Bathroom counts and amenities are still estimates** where the source PDF
   didn't include that detail. TIERRA MADRE's real data is for raw land lots
   (no bedrooms apply), not a built house. This is a point-in-time snapshot,
   not a live sync — if a unit sells or a price changes in the Drive, this

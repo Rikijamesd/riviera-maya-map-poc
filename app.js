@@ -256,6 +256,14 @@ viewMapBtn.addEventListener("click", () => {
   map.invalidateSize();
 });
 
-populateCityFilter();
-createMarkers();
-renderResults();
+async function init() {
+  populateCityFilter();
+  createMarkers();
+  renderResults();
+
+  await fetchLiveExchangeRate();
+  document.getElementById("exchangeRateLabel").textContent = exchangeRateLabel();
+  renderResults(); // re-render with the live rate now that it's resolved
+}
+
+init();
