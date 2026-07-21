@@ -62,11 +62,14 @@
       <div class="detail-main-col">
         <section id="tabDetails" class="tab-panel active">
           <div class="price-block">
-            <div class="rprice-mxn-lg" id="priceMXN"></div>
-            <div class="rprice-usd-row">
-              From <span class="price-box" id="priceUSD"></span>
-              <button class="link-btn" id="viewPricesLink">View Prices Details</button>
+            <div class="price-block-row">
+              <div class="price-main" id="priceMain"></div>
+              <div class="currency-toggle">
+                <button id="currencyUsdBtn" class="currency-toggle-btn active">USD</button>
+                <button id="currencyMxnBtn" class="currency-toggle-btn">MXN</button>
+              </div>
             </div>
+            <button class="link-btn" id="viewPricesLink">View Prices Details</button>
             <div class="exchange-rate-label" id="exchangeRateLabel"></div>
           </div>
 

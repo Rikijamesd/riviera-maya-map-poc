@@ -182,13 +182,12 @@ function renderResults() {
       </div>
       <div class="card-body">
         <div class="rname">${dev.project}</div>
-        <div class="rprice-mxn">From ${formatMXN(devMinPrice(dev))}*</div>
+        <div class="price-row">From ${formatMoney(devMinPrice(dev))}</div>
         <div class="card-stats">
           <span>${bedRangeLabel(dev)}</span>
           <span>${sizeFromLabel(dev)}</span>
         </div>
         <div class="rlocation">${dev.city}, Mexico</div>
-        <div class="rprice-usd-row">From <span class="price-box">${formatPrice(devMinPrice(dev))}</span></div>
         <div class="amenity-pills">${pillsHTML}${moreBtnHTML}</div>
       </div>
     `;
@@ -221,6 +220,9 @@ function renderResults() {
     const visible = filtered.includes(dev);
     const el = marker.getElement();
     if (el) el.style.display = visible ? "" : "none";
+    marker.setPopupContent(
+      `<b>${dev.project}</b>${dev.developer}<br>${priceRangeLabel(dev)}<br><a href="${detailUrl(dev.id)}">View details →</a>`
+    );
   }
 }
 
@@ -259,6 +261,7 @@ viewMapBtn.addEventListener("click", () => {
 async function init() {
   populateCityFilter();
   createMarkers();
+  setupCurrencyToggle(renderResults);
   renderResults();
 
   await fetchLiveExchangeRate();

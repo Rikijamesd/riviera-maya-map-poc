@@ -36,6 +36,41 @@ function exchangeRateLabel() {
   return exchangeRateInfo.isLive ? `${rateText} (live)` : `${rateText} (offline estimate)`;
 }
 
+// ---------- currency toggle (shared USD/MXN display preference) ----------
+
+const CURRENCY_KEY = "riviera-maya-map-poc:currency";
+let currentCurrency = localStorage.getItem(CURRENCY_KEY) === "MXN" ? "MXN" : "USD";
+
+function formatMoney(usd) {
+  return currentCurrency === "MXN" ? formatMXN(usd) : formatPrice(usd);
+}
+
+// Wires up the #currencyUsdBtn / #currencyMxnBtn pill (present on both index.html
+// and detail.html) and calls onChange() whenever the selected currency changes,
+// so the caller can re-render whatever prices it's showing.
+function setupCurrencyToggle(onChange) {
+  const usdBtn = document.getElementById("currencyUsdBtn");
+  const mxnBtn = document.getElementById("currencyMxnBtn");
+  if (!usdBtn || !mxnBtn) return;
+
+  function refreshButtons() {
+    usdBtn.classList.toggle("active", currentCurrency === "USD");
+    mxnBtn.classList.toggle("active", currentCurrency === "MXN");
+  }
+  refreshButtons();
+
+  function select(currency) {
+    if (currentCurrency === currency) return;
+    currentCurrency = currency;
+    localStorage.setItem(CURRENCY_KEY, currency);
+    refreshButtons();
+    onChange();
+  }
+
+  usdBtn.addEventListener("click", () => select("USD"));
+  mxnBtn.addEventListener("click", () => select("MXN"));
+}
+
 function devMinPrice(dev) {
   return Math.min(...dev.units.map((u) => u.price));
 }
@@ -44,7 +79,7 @@ function priceRangeLabel(dev) {
   const prices = dev.units.map((u) => u.price);
   const min = Math.min(...prices);
   const max = Math.max(...prices);
-  return min === max ? formatPrice(min) : `${formatPrice(min)} – ${formatPrice(max)}`;
+  return min === max ? formatMoney(min) : `${formatMoney(min)} – ${formatMoney(max)}`;
 }
 
 function bedRangeLabel(dev) {
