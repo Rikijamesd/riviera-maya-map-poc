@@ -1,8 +1,27 @@
 // Shared formatting/data helpers used by both index.html (map + list) and detail.html (single development page).
 
-// Cosmetic only: not a real exchange rate feed, just for dual-currency display like the reference sites.
-const USD_TO_MXN = 18;
+// Fallback only, used if the live rate fetch (below) fails or hasn't resolved yet.
+let USD_TO_MXN = 18;
+let exchangeRateInfo = { rate: USD_TO_MXN, updatedUtc: null, isLive: false };
 const SQM_TO_SQFT = 10.7639;
+
+// Fetches a live USD->MXN rate from a free, keyless API (open.er-api.com, backed by
+// exchangerate-api.com's open dataset). Falls back to the fixed rate above on any
+// failure (offline, API down, blocked) so the page still renders usable prices.
+async function fetchLiveExchangeRate() {
+  try {
+    const res = await fetch("https://open.er-api.com/v6/latest/USD");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.result === "success" && data.rates && data.rates.MXN) {
+      USD_TO_MXN = data.rates.MXN;
+      exchangeRateInfo = { rate: data.rates.MXN, updatedUtc: data.time_last_update_utc, isLive: true };
+    }
+  } catch (e) {
+    // Keep the fallback rate; exchangeRateInfo.isLive stays false.
+  }
+  return exchangeRateInfo;
+}
 
 function formatPrice(usd) {
   return "US $" + usd.toLocaleString("en-US");
@@ -10,6 +29,11 @@ function formatPrice(usd) {
 
 function formatMXN(usd) {
   return "MX $" + Math.round(usd * USD_TO_MXN).toLocaleString("en-US");
+}
+
+function exchangeRateLabel() {
+  const rateText = `1 USD = ${exchangeRateInfo.rate.toFixed(2)} MXN`;
+  return exchangeRateInfo.isLive ? `${rateText} (live)` : `${rateText} (offline estimate)`;
 }
 
 function devMinPrice(dev) {

@@ -12,7 +12,7 @@ if (!dev) {
   init();
 }
 
-function init() {
+async function init() {
   document.title = `${dev.project} — Yucatán Peninsula Developments`;
 
   const [city, state] = dev.city.split(",").map((s) => s.trim());
@@ -35,6 +35,7 @@ function init() {
 
   renderGallery();
   renderPriceBlock();
+  document.getElementById("viewPricesLink").addEventListener("click", () => activateTab("prices"));
   renderFactList();
   renderPhases();
   renderAmenities();
@@ -46,6 +47,10 @@ function init() {
 
   setupTabs();
   setupContactForm();
+
+  await fetchLiveExchangeRate();
+  document.getElementById("exchangeRateLabel").textContent = exchangeRateLabel();
+  renderPriceBlock(); // re-render with the live rate now that it's resolved
 }
 
 function renderFavButton() {
@@ -95,7 +100,6 @@ function renderGallery() {
 function renderPriceBlock() {
   document.getElementById("priceMXN").textContent = `From: ${formatMXN(devMinPrice(dev))}`;
   document.getElementById("priceUSD").textContent = formatPrice(devMinPrice(dev));
-  document.getElementById("viewPricesLink").addEventListener("click", () => activateTab("prices"));
 }
 
 function renderFactList() {
