@@ -100,10 +100,10 @@ function renderFactList() {
   const bedSummary = presentTypes.map((t) => UNIT_TYPE_LABEL[t]).join(", ").replace(/,([^,]*)$/, " &$1");
 
   document.getElementById("factList").innerHTML = `
-    <div class="fact-row">📍 <span>${dev.city}, Mexico</span></div>
-    <div class="fact-row">🏠 <span>${avail} units available / ${totalUnits} total units</span></div>
-    <div class="fact-row">🏢 <span>Property type: ${dev.propertyType}</span></div>
-    <div class="fact-row">🛏️ <span>${bedSummary} units available</span></div>
+    <div class="fact-row">${uiIconSVG("pin")} <span>${dev.city}, Mexico</span></div>
+    <div class="fact-row">${uiIconSVG("home")} <span>${avail} units available / ${totalUnits} total units</span></div>
+    <div class="fact-row">${uiIconSVG("building")} <span>Property type: ${dev.propertyType}</span></div>
+    <div class="fact-row">${uiIconSVG("bed")} <span>${bedSummary} units available</span></div>
     <div class="fact-row"><strong>Earliest Delivery:</strong> <span>${dev.deliveryDate}</span></div>
   `;
 }

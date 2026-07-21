@@ -916,6 +916,45 @@ select.filter-pill {
   font-size: 13.5px;
 }
 
+.fact-row svg {
+  width: 15px;
+  height: 15px;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.nav-icon-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ui-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--muted);
+}
+
+.detail-tab .tab-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 6px;
+  vertical-align: -3px;
+}
+
+.detail-section summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-section .section-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-dark);
+  flex: 0 0 auto;
+}
+
 .detail-section {
   border-top: 1px solid var(--border);
   padding: 12px 0;
