@@ -51,20 +51,26 @@ function init() {
 function renderFavButton() {
   const isFav = favorites.has(dev.id);
   const btn = document.getElementById("favBtn");
-  btn.className = "detail-fav-inline" + (isFav ? " active" : "");
-  btn.textContent = isFav ? "★ Saved" : "♡ Save";
+  btn.className = "gallery-fav-btn" + (isFav ? " active" : "");
+  btn.innerHTML = isFav
+    ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.2 2 4.5 5.6 4.5c2 0 3.6 1.2 4.4 2.8.8-1.6 2.4-2.8 4.4-2.8 3.6 0 5.2 3.7 3.6 7.2C19.5 16.4 12 21 12 21z"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.2 2 4.5 5.6 4.5c2 0 3.6 1.2 4.4 2.8.8-1.6 2.4-2.8 4.4-2.8 3.6 0 5.2 3.7 3.6 7.2C19.5 16.4 12 21 12 21z"/></svg>';
+  btn.title = isFav ? "Remove from favorites" : "Save to favorites";
 }
 
 function renderGallery() {
-  const main = document.getElementById("galleryMain");
+  const main = document.getElementById("galleryMainContent");
+  const wrap = document.getElementById("galleryMain");
   const photos = dev.photos || [];
 
   if (photos[0]) {
-    main.style.cssText = "";
+    wrap.style.cssText = "";
     main.innerHTML = `<img src="${driveImageUrl(photos[0], 1200)}" alt="${dev.project}" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'gallery-initials', textContent: '${initials(dev.project)}'})); this.parentElement.style.cssText = '${bannerStyle(dev)}';">`;
+    document.getElementById("galleryCounter").textContent = `1 / ${photos.length}`;
   } else {
-    main.style.cssText = bannerStyle(dev);
+    wrap.style.cssText = bannerStyle(dev);
     main.innerHTML = `<div class="gallery-initials">${initials(dev.project)}</div><div class="gallery-caption">No photos available</div>`;
+    document.getElementById("galleryCounter").textContent = "";
   }
 
   const thumbs = document.getElementById("galleryThumbs");
