@@ -178,11 +178,19 @@ select.filter-select {
 
 .results-list {
   overflow-y: auto;
-  flex: 1 1 42%;
+  flex: 1 1 auto;
   padding: 4px 14px 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.sidebar.detail-open .results-list {
+  flex: 1 1 38%;
+}
+
+.sidebar.detail-open .detail-panel {
+  flex: 1 1 62%;
 }
 
 /* ---------- Listing cards ---------- */
@@ -193,6 +201,7 @@ select.filter-select {
   border-radius: var(--radius);
   overflow: hidden;
   cursor: pointer;
+  flex-shrink: 0;
   transition: box-shadow 0.15s, border-color 0.15s;
 }
 
@@ -207,36 +216,74 @@ select.filter-select {
 
 .card-banner {
   position: relative;
-  height: 56px;
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 12px;
+  overflow: hidden;
+}
+
+.card-banner .banner-initials {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
-  padding: 0 14px;
-  color: rgba(255, 255, 255, 0.92);
+  justify-content: center;
   font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.02em;
+  font-size: 34px;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.04em;
+}
+
+.card-banner .banner-address {
+  position: relative;
+  z-index: 1;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.card-banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
 }
 
 .card-body {
   padding: 10px 14px 12px;
 }
 
-.card-body .rname {
-  font-weight: 600;
-  font-size: 14px;
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-.card-body .rmeta {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 2px;
+.card-body .rname {
+  font-weight: 700;
+  font-size: 14.5px;
 }
 
 .card-body .rprice {
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+  margin-top: 3px;
+}
+
+.card-body .rprice strong {
   color: var(--accent-dark);
-  margin-top: 6px;
+}
+
+.card-body .runits {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
 }
 
 .card-stats {
@@ -247,10 +294,60 @@ select.filter-select {
   color: var(--muted);
 }
 
+.amenity-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.amenity-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  color: var(--text);
+}
+
+.amenities-more {
+  border: 1px solid var(--accent);
+  color: var(--accent-dark);
+  background: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  cursor: pointer;
+}
+
+.card-view-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card-view-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
 .fav-btn {
   position: absolute;
   top: 8px;
   right: 8px;
+  z-index: 2;
   border: none;
   background: rgba(20, 37, 48, 0.35);
   border-radius: 999px;
@@ -270,7 +367,7 @@ select.filter-select {
 /* ---------- Detail panel ---------- */
 
 .detail-panel {
-  flex: 1 1 58%;
+  flex: 0 0 auto;
   overflow-y: auto;
   background: var(--panel);
   border-top: 1px solid var(--border);
@@ -291,10 +388,16 @@ select.filter-select {
   color: #fff;
 }
 
-.detail-banner .detail-fav-btn {
+.detail-banner .detail-actions {
   position: absolute;
   top: 10px;
   right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.detail-banner .detail-fav-btn,
+.detail-banner .detail-close-btn {
   border: none;
   background: rgba(20, 37, 48, 0.35);
   border-radius: 999px;
@@ -308,6 +411,14 @@ select.filter-select {
 .detail-banner .detail-fav-btn.active {
   color: var(--star);
   background: rgba(255, 255, 255, 0.92);
+}
+
+.detail-banner .detail-close-btn {
+  font-size: 15px;
+}
+
+.detail-banner .detail-close-btn:hover {
+  background: rgba(20, 37, 48, 0.55);
 }
 
 .detail-banner h2 {
