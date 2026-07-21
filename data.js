@@ -47,8 +47,8 @@ const DEVELOPMENTS = [
     amenities: ["Security 24/7", "Beach Club", "BBQ Area"],
     photos: ["1zR7RP1CmSeXbHofYixYxy1lf7fikOkEa", "1hy02ChvolB7xKrYdB7fU0Z29dTXlC8t5", "1KklwjOVPzwH0Pybgup6DoIgIzf5Pho3Z", "1yR8X3JezjQEqC3X_eYgXVpn2BFMjdKBi"],
     units: [
-      { unitLabel: "Lote 2", type: "Studio", bedrooms: 0, bathrooms: 0, price: 134919, size: 300, available: 1 },
-      { unitLabel: "Lote 25", type: "Studio", bedrooms: 0, bathrooms: 0, price: 80951, size: 180, available: 1 },
+      { unitLabel: "Lote 2", type: "Land", bedrooms: 0, bathrooms: 0, price: 134919, size: 300, available: 1 },
+      { unitLabel: "Lote 25", type: "Land", bedrooms: 0, bathrooms: 0, price: 80951, size: 180, available: 1 },
     ],
   },
   {

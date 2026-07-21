@@ -195,8 +195,8 @@ function renderUnitTable() {
       (r) => `
       <tr>
         <td>${r.label}</td>
-        <td>${r.bedrooms === 0 ? "Studio" : r.bedrooms}</td>
-        <td>${r.bathrooms}</td>
+        <td>${r.type === "Land" ? "—" : r.bedrooms === 0 ? "Studio" : r.bedrooms}</td>
+        <td>${r.type === "Land" ? "—" : r.bathrooms}</td>
         <td>${r.size} m²</td>
         <td>${formatMoney(r.price)}</td>
         <td>Available</td>

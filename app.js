@@ -104,7 +104,7 @@ function matchesFilters(dev) {
 
   const matchesUnitAndPrice = dev.units.some((u) => {
     if (unitType && u.type !== unitType) return false;
-    if (bathrooms !== null && u.bathrooms !== bathrooms) return false;
+    if (bathrooms !== null && u.bathrooms < bathrooms) return false;
     if (minPrice !== null && u.price < minPrice) return false;
     if (maxPrice !== null && u.price > maxPrice) return false;
     return true;
@@ -236,6 +236,14 @@ maxPriceInput.addEventListener("input", renderResults);
 sortBySelect.addEventListener("change", renderResults);
 
 resetFiltersBtn.addEventListener("click", resetFilters);
+
+// Close an open Price/More dropdown when clicking anywhere outside it — <details>
+// has no built-in "close on outside click" behavior.
+document.addEventListener("click", (e) => {
+  document.querySelectorAll(".filter-dropdown[open]").forEach((dropdown) => {
+    if (!dropdown.contains(e.target)) dropdown.removeAttribute("open");
+  });
+});
 
 favoritesToggleBtn.addEventListener("click", () => {
   favoritesOnly = !favoritesOnly;
