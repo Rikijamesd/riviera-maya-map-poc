@@ -11,6 +11,8 @@ let activeId = null;
 const searchInput = document.getElementById("searchInput");
 const unitFilter = document.getElementById("unitFilter");
 const cityFilter = document.getElementById("cityFilter");
+const minPriceInput = document.getElementById("minPrice");
+const maxPriceInput = document.getElementById("maxPrice");
 const resultsList = document.getElementById("resultsList");
 const resultsCount = document.getElementById("resultsCount");
 const detailPanel = document.getElementById("detailPanel");
@@ -54,12 +56,20 @@ function matchesFilters(dev) {
     dev.city.toLowerCase().includes(q);
 
   const unitType = unitFilter.value;
-  const matchesUnit = !unitType || dev.units.some((u) => u.type === unitType);
+  const minPrice = minPriceInput.value === "" ? null : Number(minPriceInput.value);
+  const maxPrice = maxPriceInput.value === "" ? null : Number(maxPriceInput.value);
+
+  const matchesUnitAndPrice = dev.units.some((u) => {
+    if (unitType && u.type !== unitType) return false;
+    if (minPrice !== null && u.price < minPrice) return false;
+    if (maxPrice !== null && u.price > maxPrice) return false;
+    return true;
+  });
 
   const city = cityFilter.value;
   const matchesCity = !city || dev.city === city;
 
-  return matchesSearch && matchesUnit && matchesCity;
+  return matchesSearch && matchesUnitAndPrice && matchesCity;
 }
 
 function renderResults() {
@@ -127,6 +137,8 @@ function selectDevelopment(id) {
 searchInput.addEventListener("input", renderResults);
 unitFilter.addEventListener("change", renderResults);
 cityFilter.addEventListener("change", renderResults);
+minPriceInput.addEventListener("input", renderResults);
+maxPriceInput.addEventListener("input", renderResults);
 
 populateCityFilter();
 createMarkers();

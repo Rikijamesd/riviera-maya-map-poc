@@ -65,6 +65,18 @@ html, body {
 
 #searchInput { width: 260px; }
 
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.price-range input {
+  width: 110px;
+}
+
 .layout {
   display: flex;
   height: calc(100vh - 61px);
