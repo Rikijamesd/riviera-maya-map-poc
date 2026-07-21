@@ -160,22 +160,16 @@ function renderUnitTabs() {
 }
 
 function expandUnits() {
-  // Synthesizes individual unit rows from each aggregate unit-type entry
-  // (the sample data only tracks type-level counts, not real unit numbers).
-  const rows = [];
-  for (const u of dev.units) {
-    for (let i = 1; i <= u.available; i++) {
-      rows.push({
-        label: `${u.type}-${String(i).padStart(2, "0")}`,
-        type: u.type,
-        bedrooms: u.bedrooms,
-        bathrooms: u.bathrooms,
-        size: u.size,
-        price: u.price,
-      });
-    }
-  }
-  return rows;
+  // Each entry in dev.units is already one specific real unit (unitLabel is the
+  // real unit/lot number from the project's price list PDF).
+  return dev.units.map((u) => ({
+    label: u.unitLabel || u.type,
+    type: u.type,
+    bedrooms: u.bedrooms,
+    bathrooms: u.bathrooms,
+    size: u.size,
+    price: u.price,
+  }));
 }
 
 function renderUnitTable() {
