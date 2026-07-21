@@ -9,14 +9,21 @@ showing price/size/availability per unit type — similar in spirit to
 
 - Plain HTML/CSS/JS, no build step. [Leaflet](https://leafletjs.com/) (via CDN)
   renders the map over OpenStreetMap tiles.
-- `data.js` holds 14 sample developments. Developer names, project names, and
-  cities are pulled from the real developer directories in
-  `../1. Quintana Roo` and `../2. Yucatan`. **Unit types, prices, sizes, and
-  availability counts are fabricated placeholder data** — there's no live
-  data source wired up yet.
+- `data.js` holds 12 **real** projects (ALTRA, TIERRA MADRE, THE LANDMARK,
+  MACONDO PLAYACAR, BAGÁ RIVIERA, SAMSARA, XUNIK, PARAMAR BLACK, SEREMONIA
+  HÁBITAT, HAMA, ALBA, ALUX 33), pulled from the "BROKERS - iMexico 2026"
+  Google Drive folder — real names, real delivery dates, real photos
+  (hotlinked from Drive file IDs via `https://lh3.googleusercontent.com/d/{id}`).
+  Developer names are only filled in where a source doc explicitly named one
+  (DOMA, GR4, Macondo, Algi); the rest say "Developer not confirmed" rather
+  than guessing. **Unit types, bedroom/bathroom counts, prices, sizes, and
+  amenities are still illustrative estimates** — the real price lists exist
+  as separate PDFs per project in the Drive that haven't been parsed yet.
+  Don't treat the specific prices shown as real quotes for these buildings.
 - Search bar filters by developer/project/city name. Dropdowns filter by
-  unit type (Studio/1BR/2BR/3BR) and city. Clicking a marker or a result
-  card opens full details in the right-hand panel.
+  unit type (Studio/1BR/2BR/3BR) and city. Clicking a marker, a result card,
+  or "View all" navigates to a dedicated detail page for that development
+  (`detail.html?id=N`).
 
 ## Running it locally
 
