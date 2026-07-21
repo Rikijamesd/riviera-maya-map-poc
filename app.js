@@ -11,6 +11,7 @@ let activeId = null;
 const searchInput = document.getElementById("searchInput");
 const unitFilter = document.getElementById("unitFilter");
 const cityFilter = document.getElementById("cityFilter");
+const bathroomFilter = document.getElementById("bathroomFilter");
 const minPriceInput = document.getElementById("minPrice");
 const maxPriceInput = document.getElementById("maxPrice");
 const resultsList = document.getElementById("resultsList");
@@ -56,11 +57,13 @@ function matchesFilters(dev) {
     dev.city.toLowerCase().includes(q);
 
   const unitType = unitFilter.value;
+  const bathrooms = bathroomFilter.value === "" ? null : Number(bathroomFilter.value);
   const minPrice = minPriceInput.value === "" ? null : Number(minPriceInput.value);
   const maxPrice = maxPriceInput.value === "" ? null : Number(maxPriceInput.value);
 
   const matchesUnitAndPrice = dev.units.some((u) => {
     if (unitType && u.type !== unitType) return false;
+    if (bathrooms !== null && u.bathrooms !== bathrooms) return false;
     if (minPrice !== null && u.price < minPrice) return false;
     if (maxPrice !== null && u.price > maxPrice) return false;
     return true;
@@ -111,6 +114,7 @@ function selectDevelopment(id) {
       (u) => `
       <tr>
         <td>${u.type}</td>
+        <td>${u.bathrooms}</td>
         <td>${formatPrice(u.price)}</td>
         <td>${u.size} m²</td>
         <td>${u.available}</td>
@@ -125,7 +129,7 @@ function selectDevelopment(id) {
     <div class="description">${dev.description}</div>
     <table class="unit-table">
       <thead>
-        <tr><th>Unit</th><th>Price</th><th>Size</th><th>Available</th></tr>
+        <tr><th>Unit</th><th>Baths</th><th>Price</th><th>Size</th><th>Available</th></tr>
       </thead>
       <tbody>${rows}</tbody>
     </table>
@@ -137,6 +141,7 @@ function selectDevelopment(id) {
 searchInput.addEventListener("input", renderResults);
 unitFilter.addEventListener("change", renderResults);
 cityFilter.addEventListener("change", renderResults);
+bathroomFilter.addEventListener("change", renderResults);
 minPriceInput.addEventListener("input", renderResults);
 maxPriceInput.addEventListener("input", renderResults);
 
