@@ -14,12 +14,17 @@ const cityFilter = document.getElementById("cityFilter");
 const bathroomFilter = document.getElementById("bathroomFilter");
 const minPriceInput = document.getElementById("minPrice");
 const maxPriceInput = document.getElementById("maxPrice");
+const sortBySelect = document.getElementById("sortBy");
 const resultsList = document.getElementById("resultsList");
 const resultsCount = document.getElementById("resultsCount");
 const detailPanel = document.getElementById("detailPanel");
 
 function formatPrice(usd) {
   return "$" + usd.toLocaleString("en-US") + " USD";
+}
+
+function devMinPrice(dev) {
+  return Math.min(...dev.units.map((u) => u.price));
 }
 
 function priceRangeLabel(dev) {
@@ -77,6 +82,13 @@ function matchesFilters(dev) {
 
 function renderResults() {
   const filtered = DEVELOPMENTS.filter(matchesFilters);
+
+  const sortBy = sortBySelect.value;
+  if (sortBy === "price-asc") {
+    filtered.sort((a, b) => devMinPrice(a) - devMinPrice(b));
+  } else if (sortBy === "price-desc") {
+    filtered.sort((a, b) => devMinPrice(b) - devMinPrice(a));
+  }
 
   resultsCount.textContent = `${filtered.length} development${filtered.length === 1 ? "" : "s"} match your filters`;
   resultsList.innerHTML = "";
@@ -144,6 +156,7 @@ cityFilter.addEventListener("change", renderResults);
 bathroomFilter.addEventListener("change", renderResults);
 minPriceInput.addEventListener("input", renderResults);
 maxPriceInput.addEventListener("input", renderResults);
+sortBySelect.addEventListener("change", renderResults);
 
 populateCityFilter();
 createMarkers();
