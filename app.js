@@ -8,6 +8,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 const markers = new Map(); // id -> L.Marker
 let activeId = null;
 let detailUnitFilter = null; // null = "All" tab in the detail panel
+let favoritesOnly = false;
+let listOnly = false;
 const expandedAmenities = new Set(); // dev ids showing all amenities instead of the first 4
 
 const AMENITY_ICONS = {
@@ -27,6 +29,10 @@ const AMENITY_ICONS = {
   "EV Charging": "🔌",
 };
 
+// Cosmetic only: not a real exchange rate feed, just for dual-currency display like the reference site.
+const USD_TO_MXN = 18;
+const SQM_TO_SQFT = 10.7639;
+
 const searchInput = document.getElementById("searchInput");
 const unitFilter = document.getElementById("unitFilter");
 const cityFilter = document.getElementById("cityFilter");
@@ -34,7 +40,11 @@ const bathroomFilter = document.getElementById("bathroomFilter");
 const minPriceInput = document.getElementById("minPrice");
 const maxPriceInput = document.getElementById("maxPrice");
 const sortBySelect = document.getElementById("sortBy");
-const favoritesOnlyFilter = document.getElementById("favoritesOnlyFilter");
+const favoritesToggleBtn = document.getElementById("favoritesToggleBtn");
+const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+const viewListBtn = document.getElementById("viewListBtn");
+const viewMapBtn = document.getElementById("viewMapBtn");
+const layoutEl = document.querySelector(".layout");
 const resultsList = document.getElementById("resultsList");
 const resultsCount = document.getElementById("resultsCount");
 const detailPanel = document.getElementById("detailPanel");
@@ -68,7 +78,11 @@ function toggleFavorite(id) {
 // ---------- formatting helpers ----------
 
 function formatPrice(usd) {
-  return "$" + usd.toLocaleString("en-US") + " USD";
+  return "US $" + usd.toLocaleString("en-US");
+}
+
+function formatMXN(usd) {
+  return "MX $" + Math.round(usd * USD_TO_MXN).toLocaleString("en-US");
 }
 
 function devMinPrice(dev) {
@@ -87,28 +101,14 @@ function bedRangeLabel(dev) {
   const min = Math.min(...beds);
   const max = Math.max(...beds);
   if (min === 0 && max === 0) return "Studio";
-  if (min === max) return `${min} bed`;
-  return `${min}–${max} bed`;
+  const minLabel = min === 0 ? "Studio" : `${min} Bed`;
+  return min === max ? `${max} Bed` : `${minLabel} - ${max} Bed`;
 }
 
-function bathRangeLabel(dev) {
-  const baths = dev.units.map((u) => u.bathrooms);
-  const min = Math.min(...baths);
-  const max = Math.max(...baths);
-  return min === max ? `${min} bath` : `${min}–${max} bath`;
-}
-
-function sizeRangeLabel(dev) {
-  const sizes = dev.units.map((u) => u.size);
-  const min = Math.min(...sizes);
-  const max = Math.max(...sizes);
-  return min === max ? `${min} m²` : `${min}–${max} m²`;
-}
-
-function unitsSummaryLabel(dev) {
-  const total = dev.units.reduce((sum, u) => sum + u.available, 0);
-  const types = [...new Set(dev.units.map((u) => (u.type === "Studio" ? "Studio" : u.type)))];
-  return `${total} unit${total === 1 ? "" : "s"} available · ${types.join(", ")}`;
+function sizeFromLabel(dev) {
+  const min = Math.min(...dev.units.map((u) => u.size));
+  const ft2 = Math.round(min * SQM_TO_SQFT * 100) / 100;
+  return `From ${min}m² / ${ft2}ft²`;
 }
 
 function initials(project) {
@@ -139,6 +139,10 @@ function unitTypeCounts(dev) {
   const counts = {};
   for (const u of dev.units) counts[u.type] = (counts[u.type] || 0) + u.available;
   return counts;
+}
+
+function totalAvailable(dev) {
+  return dev.units.reduce((sum, u) => sum + u.available, 0);
 }
 
 const UNIT_TYPE_ORDER = ["Studio", "1BR", "2BR", "3BR"];
@@ -189,9 +193,23 @@ function matchesFilters(dev) {
   const city = cityFilter.value;
   const matchesCity = !city || dev.city === city;
 
-  const matchesFavorite = !favoritesOnlyFilter.checked || favorites.has(dev.id);
+  const matchesFavorite = !favoritesOnly || favorites.has(dev.id);
 
   return matchesSearch && matchesUnitAndPrice && matchesCity && matchesFavorite;
+}
+
+function resetFilters() {
+  searchInput.value = "";
+  unitFilter.value = "";
+  bathroomFilter.value = "";
+  cityFilter.value = "";
+  minPriceInput.value = "";
+  maxPriceInput.value = "";
+  sortBySelect.value = "";
+  favoritesOnly = false;
+  favoritesToggleBtn.classList.remove("active");
+  favoritesToggleBtn.querySelector(".star").textContent = "♡";
+  renderResults();
 }
 
 // ---------- rendering ----------
@@ -206,7 +224,8 @@ function renderResults() {
     filtered.sort((a, b) => devMinPrice(b) - devMinPrice(a));
   }
 
-  resultsCount.textContent = `${filtered.length} development${filtered.length === 1 ? "" : "s"} match your filters`;
+  const unitsSum = filtered.reduce((sum, d) => sum + totalAvailable(d), 0);
+  resultsCount.textContent = `${filtered.length} Listing${filtered.length === 1 ? "" : "s"} / ${unitsSum} Units matching your search`;
   resultsList.innerHTML = "";
 
   for (const dev of filtered) {
@@ -228,26 +247,36 @@ function renderResults() {
     const item = document.createElement("div");
     item.className = "result-item" + (dev.id === activeId ? " active" : "");
     item.innerHTML = `
+      <div class="card-header-row">
+        <span>${totalAvailable(dev)} units available</span>
+        <button class="view-all-link">View all →</button>
+      </div>
       <div class="card-banner" style="${bannerStyle(dev)}">
         <div class="banner-initials">${initials(dev.project)}</div>
-        <button class="fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
-        <div class="banner-address">${dev.city}</div>
+        <span class="type-badge">Condo</span>
+        <button class="fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "♡"}</button>
+        <div class="banner-address">${dev.deliveryDate}</div>
       </div>
       <div class="card-body">
-        <div class="card-title-row">
-          <div class="rname">${dev.project}</div>
+        <div class="rname">${dev.project}</div>
+        <div class="rprice-mxn">From ${formatMXN(devMinPrice(dev))}*</div>
+        <div class="card-stats">
+          <span>${bedRangeLabel(dev)}</span>
+          <span>${sizeFromLabel(dev)}</span>
         </div>
-        <div class="rmeta">${dev.developer}</div>
-        <div class="rprice">Prices start from: <strong>${formatPrice(devMinPrice(dev))}</strong></div>
-        <div class="runits">${unitsSummaryLabel(dev)}</div>
+        <div class="rlocation">${dev.city}, Mexico</div>
+        <div class="rprice-usd-row">From <span class="price-box">${formatPrice(devMinPrice(dev))}</span></div>
         <div class="amenity-pills">${pillsHTML}${moreBtnHTML}</div>
-        <button class="card-view-btn">View ${dev.project} details</button>
       </div>
     `;
     item.addEventListener("click", () => selectDevelopment(dev.id));
     item.querySelector(".fav-btn").addEventListener("click", (e) => {
       e.stopPropagation();
       toggleFavorite(dev.id);
+    });
+    item.querySelector(".view-all-link").addEventListener("click", (e) => {
+      e.stopPropagation();
+      selectDevelopment(dev.id);
     });
     const moreBtn = item.querySelector(".amenities-more");
     if (moreBtn) {
@@ -291,7 +320,7 @@ function closeDetail() {
   detailUnitFilter = null;
   sidebar.classList.remove("detail-open");
   map.closePopup();
-  detailPanel.innerHTML = `<p class="detail-placeholder">Click a pin on the map, or a listing below, to see full development details here.</p>`;
+  detailPanel.innerHTML = `<p class="detail-placeholder">Click a pin on the map, or a listing above, to see full development details here.</p>`;
   renderResults();
 }
 
@@ -299,10 +328,9 @@ function renderDetailPanel(dev) {
   const isFav = favorites.has(dev.id);
   const counts = unitTypeCounts(dev);
   const presentTypes = UNIT_TYPE_ORDER.filter((t) => counts[t] !== undefined);
-  const totalAvailable = dev.units.reduce((sum, u) => sum + u.available, 0);
 
   const tabsHTML = `
-    <button class="unit-tab${detailUnitFilter === null ? " active" : ""}" data-type="">All · ${totalAvailable}</button>
+    <button class="unit-tab${detailUnitFilter === null ? " active" : ""}" data-type="">All · ${totalAvailable(dev)}</button>
     ${presentTypes
       .map(
         (t) =>
@@ -329,14 +357,14 @@ function renderDetailPanel(dev) {
   detailPanel.innerHTML = `
     <div class="detail-banner" style="${bannerStyle(dev)}">
       <div class="detail-actions">
-        <button class="detail-fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "☆"}</button>
+        <button class="detail-fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "♡"}</button>
         <button class="detail-close-btn" title="Close" aria-label="Close details">✕</button>
       </div>
       <h2>${dev.project}</h2>
     </div>
     <div class="detail-body">
       <div class="developer">${dev.developer}</div>
-      <div class="city">${dev.city}</div>
+      <div class="city">${dev.city} · Delivery: ${dev.deliveryDate}</div>
       <div class="description">${dev.description}</div>
       <div class="unit-tabs">${tabsHTML}</div>
       <table class="unit-table">
@@ -365,7 +393,31 @@ bathroomFilter.addEventListener("change", renderResults);
 minPriceInput.addEventListener("input", renderResults);
 maxPriceInput.addEventListener("input", renderResults);
 sortBySelect.addEventListener("change", renderResults);
-favoritesOnlyFilter.addEventListener("change", renderResults);
+
+resetFiltersBtn.addEventListener("click", resetFilters);
+
+favoritesToggleBtn.addEventListener("click", () => {
+  favoritesOnly = !favoritesOnly;
+  favoritesToggleBtn.classList.toggle("active", favoritesOnly);
+  favoritesToggleBtn.querySelector(".star").textContent = favoritesOnly ? "★" : "♡";
+  renderResults();
+});
+
+viewListBtn.addEventListener("click", () => {
+  listOnly = true;
+  viewListBtn.classList.add("active");
+  viewMapBtn.classList.remove("active");
+  layoutEl.classList.add("list-only");
+  map.invalidateSize();
+});
+
+viewMapBtn.addEventListener("click", () => {
+  listOnly = false;
+  viewMapBtn.classList.add("active");
+  viewListBtn.classList.remove("active");
+  layoutEl.classList.remove("list-only");
+  map.invalidateSize();
+});
 
 populateCityFilter();
 createMarkers();
