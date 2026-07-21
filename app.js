@@ -147,6 +147,7 @@ function renderResults() {
       </div>
       <div class="card-banner" style="${bannerStyle(dev)}">
         <div class="banner-initials">${initials(dev.project)}</div>
+        ${dev.photos && dev.photos[0] ? `<img src="${driveImageUrl(dev.photos[0], 500)}" alt="${dev.project}" loading="lazy" onerror="this.style.display='none'">` : ""}
         <span class="type-badge">Condo</span>
         <button class="fav-btn${isFav ? " active" : ""}" title="${isFav ? "Remove from favorites" : "Save to favorites"}" aria-label="Toggle favorite">${isFav ? "★" : "♡"}</button>
         <div class="banner-address">${dev.deliveryDate}</div>

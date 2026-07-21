@@ -38,6 +38,10 @@ function sizeFromLabel(dev) {
   return `From ${min}m² / ${ft2}ft²`;
 }
 
+function driveImageUrl(fileId, width) {
+  return `https://lh3.googleusercontent.com/d/${fileId}=w${width || 800}`;
+}
+
 function initials(project) {
   return project
     .split(/\s+/)

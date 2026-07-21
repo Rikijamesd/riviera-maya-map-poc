@@ -57,19 +57,33 @@ function renderFavButton() {
 
 function renderGallery() {
   const main = document.getElementById("galleryMain");
-  main.style.cssText = bannerStyle(dev);
-  main.innerHTML = `<div class="gallery-initials">${initials(dev.project)}</div><div class="gallery-caption">No photos yet — placeholder render</div>`;
+  const photos = dev.photos || [];
+
+  if (photos[0]) {
+    main.style.cssText = "";
+    main.innerHTML = `<img src="${driveImageUrl(photos[0], 1200)}" alt="${dev.project}" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'gallery-initials', textContent: '${initials(dev.project)}'})); this.parentElement.style.cssText = '${bannerStyle(dev)}';">`;
+  } else {
+    main.style.cssText = bannerStyle(dev);
+    main.innerHTML = `<div class="gallery-initials">${initials(dev.project)}</div><div class="gallery-caption">No photos available</div>`;
+  }
 
   const thumbs = document.getElementById("galleryThumbs");
-  const captions = ["Exterior", "Interior", "Amenities"];
-  thumbs.innerHTML = captions
-    .map(
-      (cap, i) => `
-      <div class="gallery-thumb" style="${bannerStyle({ id: dev.id + i + 1 })}">
-        <div class="gallery-thumb-caption">${cap}</div>
-      </div>`
-    )
-    .join("");
+  const thumbPhotos = photos.slice(1, 4);
+  if (thumbPhotos.length) {
+    thumbs.innerHTML = thumbPhotos
+      .map((id) => `<div class="gallery-thumb"><img src="${driveImageUrl(id, 500)}" alt="${dev.project}" onerror="this.parentElement.style.display='none'"></div>`)
+      .join("");
+  } else {
+    const captions = ["Exterior", "Interior", "Amenities"];
+    thumbs.innerHTML = captions
+      .map(
+        (cap, i) => `
+        <div class="gallery-thumb" style="${bannerStyle({ id: dev.id + i + 1 })}">
+          <div class="gallery-thumb-caption">${cap}</div>
+        </div>`
+      )
+      .join("");
+  }
 }
 
 function renderPriceBlock() {
