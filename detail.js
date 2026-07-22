@@ -154,7 +154,13 @@ function renderDevelopmentInfo() {
 }
 
 function renderMap() {
-  const detailMap = L.map("detailMap", { zoomControl: true, scrollWheelZoom: false }).setView([dev.lat, dev.lng], 13);
+  const detailMap = L.map("detailMap", {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    touchZoom: false,
+    boxZoom: false,
+  }).setView([dev.lat, dev.lng], 13);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18,
