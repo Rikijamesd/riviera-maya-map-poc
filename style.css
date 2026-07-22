@@ -991,7 +991,8 @@ select.filter-pill {
   vertical-align: -3px;
 }
 
-.detail-section summary {
+.detail-section summary,
+.detail-section-heading {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1009,9 +1010,13 @@ select.filter-pill {
   padding: 12px 0;
 }
 
-.detail-section summary {
+.detail-section summary,
+.detail-section-heading {
   font-weight: 700;
   font-size: 14px;
+}
+
+.detail-section summary {
   cursor: pointer;
 }
 
