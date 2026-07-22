@@ -26,11 +26,22 @@ showing price/size/availability per unit type — similar in spirit to
   fails. Since some units' real quote was originally in MXN, the displayed
   MXN can drift slightly from the exact PDF figure as the live rate moves —
   this is an inherent tradeoff of live-converting a single stored currency,
-  not a bug. **Bathroom counts and amenities are still estimates** where the source PDF
+  not a bug. **Bathroom counts are still estimates** where the source PDF
   didn't include that detail. TIERRA MADRE's real data is for raw land lots
   (no bedrooms apply), not a built house. This is a point-in-time snapshot,
   not a live sync — if a unit sells or a price changes in the Drive, this
   site won't know until someone re-pulls it.
+- **Descriptions, amenities, and the "Points of Interest" section on each
+  detail page are researched per-project** (developer sites, mayaocean.com,
+  and third-party listing pages), not invented. A couple of details only
+  appear in the source price-list PDFs and aren't published anywhere
+  externally (e.g. ALUX 33's "Agua"/"Fuego" tower names, taken from its real
+  unit labels) — those are trusted since the PDF is the primary source for
+  this whole dataset. Points-of-interest distances are straight-line
+  (great-circle) km from each project's coordinates to a real landmark
+  (nearest airport, Tren Maya station, ADO bus terminal, hospital, and a
+  named public beach), not driving distances or figures pulled from one
+  single authoritative page per project.
 - Search bar filters by developer/project/city name. Dropdowns filter by
   unit type (Studio/1BR/2BR/3BR) and city. Clicking a marker, a result card,
   or "View all" navigates to a dedicated detail page for that development

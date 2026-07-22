@@ -172,6 +172,12 @@ const AMENITY_ICON_PATHS = {
   "Beach Club": '<path d="M12 3c5 2 9 6 9 9H3c0-3 4-7 9-9z"/><path d="M12 3v18M4.5 20l15-3"/>',
   Spa: '<path d="M12 21c-3.3 0-6-2.5-6-5.8C6 11 12 3 12 3s6 8 6 12.2c0 3.3-2.7 5.8-6 5.8z"/>',
   "EV Charging": '<path d="M13 3 5 13h5l-1 8 8-10h-5l1-8z"/>',
+  Restaurant: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
+  Golf: '<path d="M6 21V3"/><path d="M6 4c1.6 0 1.6 2 3.2 2s1.6-2 3.2-2 1.6 2 3.2 2v6c-1.6 0-1.6-2-3.2-2s-1.6 2-3.2 2-1.6-2-3.2-2"/>',
+  Jacuzzi: '<path d="M3 20a2 2 0 0 1-2-2v-3h22v3a2 2 0 0 1-2 2z"/><path d="M3 15V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><circle cx="8" cy="9" r="1.1"/><circle cx="12" cy="6.5" r="1.1"/><circle cx="16" cy="9" r="1.1"/>',
+  Yoga: '<circle cx="12" cy="5" r="2"/><path d="M12 7v4M6 20c0-3 2-5 3-6l3-3 3 3c1 1 3 3 3 6M9 14l-3 3M15 14l3 3"/>',
+  "Tennis Court": '<circle cx="9" cy="9" r="6"/><path d="M4.5 6h9M4.5 12h9M9 3a6 6 0 0 1 0 12M9 3a6 6 0 0 0 0 12"/><path d="m13.2 13.2 7.8 7.8"/>',
+  Marina: '<circle cx="12" cy="5" r="2"/><path d="M12 7v13M7 12H2a10 10 0 0 0 10 9 10 10 0 0 0 10-9h-5M8 9h8"/>',
 };
 
 function amenityIconSVG(name) {

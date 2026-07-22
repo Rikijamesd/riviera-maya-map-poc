@@ -42,6 +42,7 @@ async function init() {
   document.getElementById("viewPricesLink").addEventListener("click", () => activateTab("prices"));
   renderFactList();
   renderPhases();
+  renderPOI();
   renderAmenities();
   renderDeveloperInfo();
   renderMap();
@@ -125,6 +126,19 @@ function renderPhases() {
   document.getElementById("phasesBody").innerHTML = `
     <div class="phase-row">✓ Phase 1: Delivery ${dev.deliveryDate}</div>
   `;
+}
+
+function renderPOI() {
+  const points = dev.pointsOfInterest || [];
+  document.getElementById("poiBody").innerHTML = points
+    .map(
+      (p) => `
+      <div class="poi-row">
+        <span class="poi-label">${p.label}</span>
+        <span class="poi-info"><span class="poi-name">${p.name}</span><span class="poi-distance">${p.distanceKm} km</span></span>
+      </div>`
+    )
+    .join("");
 }
 
 function renderAmenities() {
