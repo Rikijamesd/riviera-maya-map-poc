@@ -44,7 +44,7 @@ async function init() {
   renderPhases();
   renderPOI();
   renderAmenities();
-  renderDeveloperInfo();
+  renderDevelopmentInfo();
   renderMap();
 
   renderUnitTabs();
@@ -147,15 +147,14 @@ function renderAmenities() {
   `;
 }
 
-function renderDeveloperInfo() {
-  document.getElementById("developerBody").innerHTML = `
-    <p><strong>${dev.developer}</strong></p>
+function renderDevelopmentInfo() {
+  document.getElementById("developmentBody").innerHTML = `
     <p>${dev.description}</p>
   `;
 }
 
 function renderMap() {
-  const detailMap = L.map("detailMap", { zoomControl: true }).setView([dev.lat, dev.lng], 13);
+  const detailMap = L.map("detailMap", { zoomControl: true, scrollWheelZoom: false }).setView([dev.lat, dev.lng], 13);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18,

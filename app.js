@@ -83,7 +83,7 @@ function createMarkers() {
   for (const dev of DEVELOPMENTS) {
     const marker = L.marker([dev.lat, dev.lng], { icon: dateBubbleIcon(dev) }).addTo(map);
     marker.bindPopup(
-      `<b>${dev.project}</b>${dev.developer}<br>${priceRangeLabel(dev)}<br><a href="${detailUrl(dev.id)}">View details →</a>`
+      `<b>${dev.project}</b><br>${priceRangeLabel(dev)}<br><a href="${detailUrl(dev.id)}">View details →</a>`
     );
     markers.set(dev.id, marker);
   }
@@ -94,7 +94,6 @@ function matchesFilters(dev) {
   const matchesSearch =
     !q ||
     dev.project.toLowerCase().includes(q) ||
-    dev.developer.toLowerCase().includes(q) ||
     dev.city.toLowerCase().includes(q);
 
   const unitType = unitFilter.value;
@@ -221,7 +220,7 @@ function renderResults() {
     const el = marker.getElement();
     if (el) el.style.display = visible ? "" : "none";
     marker.setPopupContent(
-      `<b>${dev.project}</b>${dev.developer}<br>${priceRangeLabel(dev)}<br><a href="${detailUrl(dev.id)}">View details →</a>`
+      `<b>${dev.project}</b><br>${priceRangeLabel(dev)}<br><a href="${detailUrl(dev.id)}">View details →</a>`
     );
   }
 }

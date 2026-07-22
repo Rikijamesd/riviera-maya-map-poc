@@ -58,7 +58,7 @@ const DEVELOPMENTS = [
     lat: 20.6450, lng: -87.0850,
     deliveryDate: "Dec 2026",
     propertyType: "Land",
-    description: "A 15+ hectare raw-land community south of Playa del Carmen by Grupo Emerita, offering 403 custom-build lots (238 still available) inside a jungle sanctuary with shared wellness and recreation grounds. About 12 minutes from Playa Esmeralda and Xcalacoco beaches. Prices below reflect lot cost only, from the project's lot price list.",
+    description: "A 15+ hectare raw-land community south of Playa del Carmen, offering 403 custom-build lots (238 still available) inside a jungle sanctuary with shared wellness and recreation grounds. About 12 minutes from Playa Esmeralda and Xcalacoco beaches. Prices below reflect lot cost only, from the project's lot price list.",
     amenities: ["Pool", "Spa", "Gym", "Kids Club", "Tennis Court", "Beach Club", "BBQ Area", "Security 24/7"],
     pointsOfInterest: [
       { label: "Airport", name: "Cancún International Airport (CUN)", distanceKm: 48.6 },
@@ -81,7 +81,7 @@ const DEVELOPMENTS = [
     lat: 20.6244, lng: -87.0750,
     deliveryDate: "Dec 2028",
     propertyType: "Condo",
-    description: "Pre-sale condo tower in Playa del Carmen Centro, steps from Fifth Avenue and the beach, by developer GR4. Its standout feature is the \"Sky Club,\" a half-acre rooftop amenity deck.",
+    description: "Pre-sale condo tower in Playa del Carmen Centro, steps from Fifth Avenue and the beach. Its standout feature is the \"Sky Club,\" a half-acre rooftop amenity deck.",
     amenities: ["Pool", "Rooftop Terrace", "Restaurant", "Yoga", "Spa", "Gym", "Coworking", "Concierge", "Security 24/7"],
     pointsOfInterest: [
       { label: "Airport", name: "Cancún International Airport (CUN)", distanceKm: 50.2 },
@@ -106,7 +106,7 @@ const DEVELOPMENTS = [
     lat: 20.6080, lng: -87.0913,
     deliveryDate: "Dec 2027",
     propertyType: "Villa",
-    description: "Luxury villa-style residences within the gated, golf-course community of Playacar by developer Macondo, positioned as a private, resort-style enclave near Fifth Avenue. Includes a golf practice range, beach club, and full-service spa. Macondo also has projects in Tulum and elsewhere in Playa del Carmen (Corazón, Mayakoba, PDC Fase 2/3, Punta Esmeralda).",
+    description: "Luxury villa-style residences within the gated, golf-course community of Playacar, positioned as a private, resort-style enclave near Fifth Avenue. Includes a golf practice range, beach club, and full-service spa.",
     amenities: ["Pool", "Golf", "Beach Club", "Spa", "Gym", "Kids Club", "Tennis Court", "Concierge", "Security 24/7", "Parking"],
     pointsOfInterest: [
       { label: "Airport", name: "Cancún International Airport (CUN)", distanceKm: 52.6 },
@@ -130,7 +130,7 @@ const DEVELOPMENTS = [
     lat: 20.6350, lng: -87.0780,
     deliveryDate: "Ready to move in",
     propertyType: "Condo",
-    description: "Boutique 5-floor condo tower in central Playa del Carmen by DOMA (Desarrollos Doma), a few blocks from the main shopping and dining district. Design-forward with natural materials and a wellness focus, including a full spa and rooftop lounge. Delivered and ready to move in. Nearly sold out — only 2 units remain listed as available.",
+    description: "Boutique 5-floor condo tower in central Playa del Carmen, a few blocks from the main shopping and dining district. Design-forward with natural materials and a wellness focus, including a full spa and rooftop lounge. Delivered and ready to move in. Nearly sold out — only 2 units remain listed as available.",
     amenities: ["Pool", "Spa", "Beach Club", "Rooftop Terrace", "Coworking", "Concierge", "Parking"],
     pointsOfInterest: [
       { label: "Airport", name: "Cancún International Airport (CUN)", distanceKm: 49.3 },
@@ -153,7 +153,7 @@ const DEVELOPMENTS = [
     lat: 20.2114, lng: -87.4654,
     deliveryDate: "Ready to move in",
     propertyType: "Condo",
-    description: "Boutique, jungle-immersed condo community in Tulum by Grupo R4 (also behind The Landmark in Playa del Carmen), marketed as a secluded private enclave fronting a protected national park. Includes a rooftop infinity pool, two ground-level stone pools, a yoga/meditation deck, and a private shuttle plus VIP membership to Ikal Beach Club. Delivered and ready to move in.",
+    description: "Boutique, jungle-immersed condo community in Tulum, marketed as a secluded private enclave fronting a protected national park. Includes a rooftop infinity pool, two ground-level stone pools, a yoga/meditation deck, and a private shuttle plus VIP membership to Ikal Beach Club. Delivered and ready to move in.",
     amenities: ["Pool", "Beach Club", "Yoga", "Gym", "Spa", "Coworking", "BBQ Area", "Security 24/7"],
     pointsOfInterest: [
       { label: "Airport", name: "Aeropuerto Internacional de Tulum Felipe Carrillo Puerto (TQO)", distanceKm: 20.8 },
@@ -177,7 +177,7 @@ const DEVELOPMENTS = [
     lat: 20.2200, lng: -87.4700,
     deliveryDate: "Ready to move in",
     propertyType: "Condo",
-    description: "Feng-shui-influenced condo community in downtown Tulum by Desarrolladora Inmobiliaria Algi, built by Constructora Impala and designed by SER Arquitectura, spanning five 3-level towers (76 units total). Just two blocks from Avenida Kukulcán with direct beach access. Delivered and ready to move in.",
+    description: "Feng-shui-influenced condo community in downtown Tulum, spanning five 3-level towers (76 units total). Just two blocks from Avenida Kukulcán with direct beach access. Delivered and ready to move in.",
     amenities: ["Pool", "Beach Club", "Gym", "Yoga", "BBQ Area", "Parking", "Security 24/7", "Concierge"],
     pointsOfInterest: [
       { label: "Airport", name: "Aeropuerto Internacional de Tulum Felipe Carrillo Puerto (TQO)", distanceKm: 20.6 },
@@ -248,7 +248,7 @@ const DEVELOPMENTS = [
     lat: 18.7216, lng: -87.7042,
     deliveryDate: "Ready to move in",
     propertyType: "Condo",
-    description: "Boutique 5-floor condo on Mahahual's pedestrian boardwalk by developer Madanik, blending Japanese-inspired zen design with Mexican natural materials. Most units include a private rooftop-terrace pool, with a shared sky bar, spa, and beach club membership. Delivered and ready to move in. Nearly sold out — only 2 units remain listed as available.",
+    description: "Boutique 5-floor condo on Mahahual's pedestrian boardwalk, blending Japanese-inspired zen design with Mexican natural materials. Most units include a private rooftop-terrace pool, with a shared sky bar, spa, and beach club membership. Delivered and ready to move in. Nearly sold out — only 2 units remain listed as available.",
     amenities: ["Pool", "Beach Club", "Restaurant", "Spa", "Gym", "Yoga", "Security 24/7", "Parking"],
     pointsOfInterest: [
       { label: "Airport", name: "Chetumal International Airport (CTM)", distanceKm: 69.9 },
