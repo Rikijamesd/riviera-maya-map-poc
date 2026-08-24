@@ -1,0 +1,38 @@
+[venta]
+  venta: totalHits=1430
+    page 2: +100 (total 200/1430)
+    page 3: +100 (total 300/1430)
+    page 4: +100 (total 400/1430)
+    page 5: +100 (total 500/1430)
+    page 6: +100 (total 600/1430)
+    page 7: +100 (total 700/1430)
+    page 8: +100 (total 800/1430)
+    page 9: +100 (total 900/1430)
+    page 10: +100 (total 1000/1430)
+    page 11: +100 (total 1100/1430)
+    page 12: +100 (total 1200/1430)
+    page 13: +100 (total 1300/1430)
+    page 14: +92 (total 1392/1430)
+    page 15: +5 (total 1397/1430)
+    page 16 empty, stopping
+
+Fetching descriptions for 1397 listings (8 parallel workers)...
+    descriptions: 250/1397
+    descriptions: 500/1397
+    descriptions: 750/1397
+    descriptions: 1000/1397
+    descriptions: 1250/1397
+    descriptions: 1397/1397
+[renta]
+  renta: totalHits=420
+    page 2: +100 (total 200/420)
+    page 3: +100 (total 300/420)
+    page 4: +100 (total 400/420)
+    page 5: +20 (total 420/420)
+
+Fetching descriptions for 420 listings (8 parallel workers)...
+    descriptions: 250/420
+    descriptions: 420/420
+
+Total rows collected: 1817
+Wrote listings_century21_cdmx_v2.csv

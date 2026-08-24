@@ -1,0 +1,98 @@
+Loaded 30 broker sites
+
+[1/30] Mayra Castañeda Coronado -> https://abc.coldwellbanker.com.mx
+  no listing links found
+
+[2/30] Xiomara Henriquez Diez -> https://abita.coldwellbanker.com.mx
+  no listing links found
+
+[3/30] MIGUEL ANGEL PEREZ FERNANDEZ -> https://abminmobiliaria.com
+  no listing links found
+
+[4/30] Sergio Andres Vizcaino Lopez -> http://andresvizcaino.kwmexico.mx/
+  homepage fetch failed
+
+[5/30] Rodrigo Alessio Robles Segui -> https://ars.coldwellbanker.com.mx
+  no listing links found
+
+[6/30] Oscar Basurto Morelos -> https://breal.coldwellbanker.com.mx
+  no listing links found
+
+[7/30] Alejandro Ramírez Laguna -> https://capital.coldwellbanker.com.mx
+  no listing links found
+
+[8/30] Leonel Dominguez -> https://www.confiance.coldwellbanker.com.mx
+  homepage fetch failed
+
+[9/30] Martha Lucio Valero -> https://corregidora.coldwellbanker.com.mx
+  no listing links found
+
+[10/30] Cesar Valentín González Jauregui -> https://cumple.coldwellbanker.com.mx
+  no listing links found
+
+[11/30] Amador Barrios -> https://dic-arquitectos.alterestate.com
+  no listing links found
+
+[12/30] Martinez Torres Emilio -> https://emiliomartinez.kw.com/es-es/
+  homepage fetch failed
+
+[13/30] Miguel Palos -> https://floresta.coldwellbanker.com.mx
+  no listing links found
+
+[14/30] Foreign Buyers Watch -> https://foreignbuyerswatch.com/buy/
+  homepage fetch failed
+
+[15/30] Ana Hernandez Castillo -> https://ibanza.coldwellbanker.com.mx
+  no listing links found
+
+[16/30] Laura Moreno Yáñez -> https://lagus.coldwellbanker.com.mx
+  no listing links found
+
+[17/30] Francisco Lopez -> https://losan.coldwellbanker.com.mx
+  no listing links found
+
+[18/30] Jorge Madrigal -> https://madrigal.coldwellbanker.com.mx
+  no listing links found
+
+[19/30] Kora Conchas -> https://novac.coldwellbanker.com.mx
+  no listing links found
+
+[20/30] OK INMO DIGITAL -> https://okinmo.com
+  no listing links found
+
+[21/30] Ourkisa Mx -> https://www.ourkisa.com/
+  found 1 candidate listing pages
+  extracted 1 listings
+
+[22/30] Alejandro Nuñez Medina -> https://reforma.coldwellbanker.com.mx
+  no listing links found
+
+[23/30] José Antonio Castañeda -> https://rvyasociados.coldwellbanker.com.mx
+  no listing links found
+
+[24/30] Daniella Santos Coy Fernandez De Lara -> https://santoscoy.kw.com/
+  found 10 candidate listing pages
+  extracted 6 listings
+
+[25/30] Pedro Reyes -> https://select.coldwellbanker.com.mx
+  no listing links found
+
+[26/30] Gunther Lopez -> https://star.coldwellbanker.com.mx
+  no listing links found
+
+[27/30] Titania Mendez Feregrino -> https://titaniamendez.kw.com/es-419/
+  found 10 candidate listing pages
+  extracted 4 listings
+
+[28/30] VALERIA BELLORIN -> https://www.valeriabellorin.com
+  no listing links found
+
+[29/30] Leticia Villaseñor -> https://villasenorlv.coldwellbanker.com.mx
+  no listing links found
+
+[30/30] Julio Sánchez - CDMX -> https://viwise.alterestate.com
+  no listing links found
+
+Done. 11 listings from 3 sites (skipped 27).
+Workbook: listings_mexico_city_raw.xlsx
+Skipped-site log: C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\skipped_sites.csv

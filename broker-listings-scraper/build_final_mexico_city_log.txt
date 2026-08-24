@@ -1,0 +1,87 @@
+C:\Users\rikij\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\PIL\Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Loaded 6274 rows from existing all-regions deduped dataset
+Loaded 11 raw rows from newly-scraped Mexico City sites
+Combined raw total: 6285
+Hashing first photo for 6285 listings (24 concurrent downloads, best-effort, skips on failure)...
+  hashed 100/6285
+  hashed 200/6285
+  hashed 300/6285
+  hashed 400/6285
+  hashed 500/6285
+  hashed 600/6285
+  hashed 700/6285
+  hashed 800/6285
+  hashed 900/6285
+  hashed 1000/6285
+  hashed 1100/6285
+  hashed 1200/6285
+  hashed 1300/6285
+  hashed 1400/6285
+  hashed 1500/6285
+  hashed 1600/6285
+  hashed 1700/6285
+  hashed 1800/6285
+  hashed 1900/6285
+  hashed 2000/6285
+  hashed 2100/6285
+  hashed 2200/6285
+  hashed 2300/6285
+  hashed 2400/6285
+  hashed 2500/6285
+  hashed 2600/6285
+  hashed 2700/6285
+  hashed 2800/6285
+  hashed 2900/6285
+  hashed 3000/6285
+  hashed 3100/6285
+  hashed 3200/6285
+  hashed 3300/6285
+  hashed 3400/6285
+  hashed 3500/6285
+  hashed 3600/6285
+  hashed 3700/6285
+  hashed 3800/6285
+  hashed 3900/6285
+  hashed 4000/6285
+  hashed 4100/6285
+  hashed 4200/6285
+  hashed 4300/6285
+  hashed 4400/6285
+  hashed 4500/6285
+  hashed 4600/6285
+  hashed 4700/6285
+  hashed 4800/6285
+  hashed 4900/6285
+  hashed 5000/6285
+  hashed 5100/6285
+  hashed 5200/6285
+  hashed 5300/6285
+  hashed 5400/6285
+  hashed 5500/6285
+  hashed 5600/6285
+  hashed 5700/6285
+  hashed 5800/6285
+  hashed 5900/6285
+  hashed 6000/6285
+  hashed 6100/6285
+  hashed 6200/6285
+Deduped to 6285 unique listings (0 duplicates merged)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_all_regions_deduped_v2.xlsx
+Dropped 832 rows referencing a clearly unrelated region
+Kept 5453 rows
+
+Region counts (rows can match >1 region):
+  Cancun: 938
+  Playa del Carmen: 1003
+  Puerto Morelos: 180
+  Tulum: 2078
+  Puerto Vallarta: 101
+  Baja California Sur: 102
+  Mexico City: 440
+  Other Riviera Maya: 3356
+  Puerto Escondido: 33
+  No Location Signal: 1531
+
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\all_regions_listings_filtered_v2.csv (5453 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_mexico_city.csv (440 rows)

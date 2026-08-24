@@ -1,0 +1,44 @@
+Loaded 13 broker sites
+
+[1/13] Mayra Castañeda Coronado -> https://abc.coldwellbanker.com.mx
+  no listing links found
+
+[2/13] Xiomara Henriquez Diez -> https://abita.coldwellbanker.com.mx
+  no listing links found
+
+[3/13] Rodrigo Alessio Robles Segui -> https://ars.coldwellbanker.com.mx
+  no listing links found
+
+[4/13] Alejandro Ramírez Laguna -> https://capital.coldwellbanker.com.mx
+  no listing links found
+
+[5/13] Leonel Dominguez -> https://www.confiance.coldwellbanker.com.mx
+  homepage fetch failed
+
+[6/13] Martha Lucio Valero -> https://corregidora.coldwellbanker.com.mx
+  no listing links found
+
+[7/13] Miguel Palos -> https://floresta.coldwellbanker.com.mx
+  no listing links found
+
+[8/13] Laura Moreno Yáñez -> https://lagus.coldwellbanker.com.mx
+  no listing links found
+
+[9/13] Francisco Lopez -> https://losan.coldwellbanker.com.mx
+  no listing links found
+
+[10/13] Jorge Madrigal -> https://madrigal.coldwellbanker.com.mx
+  no listing links found
+
+[11/13] Alejandro Nuñez Medina -> https://reforma.coldwellbanker.com.mx
+  no listing links found
+
+[12/13] Pedro Reyes -> https://select.coldwellbanker.com.mx
+  no listing links found
+
+[13/13] Leticia Villaseñor -> https://villasenorlv.coldwellbanker.com.mx
+  no listing links found
+
+Done. 0 listings from 0 sites (skipped 13).
+Workbook: listings_mexico_city.xlsx
+Skipped-site log: C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\skipped_sites.csv

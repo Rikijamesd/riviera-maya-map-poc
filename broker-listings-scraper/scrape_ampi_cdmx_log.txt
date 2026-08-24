@@ -1,0 +1,478 @@
+Loaded 135 broker sites
+
+[1/135] 365 INMOBILIARIA -> https://www.365inmobiliaria.com.mx/
+  found 85 candidate listing pages
+  extracted 85 listings
+
+[2/135] ABBA REAL ESTATE -> https://abba-realestate.com/
+  no listing links found
+
+[3/135] ABL SOLUCIONES INMOBILIARIAS -> https://www.ablinmuebles.com/
+  found 40 candidate listing pages
+  extracted 40 listings
+
+[4/135] A-C BIENES RAICES -> https://acbienesraices.com.mx/
+  found 41 candidate listing pages
+  extracted 41 listings
+
+[5/135] AMSTERDAM PROMOCIÓN Y ADMINSITRACIÓN DE BIENES RAÍCES -> https://www.administracionamsterdam.com.mx/
+  found 11 candidate listing pages
+  extracted 11 listings
+
+[6/135] FURCHTGOTT GRUPO INMOBILIARIO -> https://afgrupoinmobiliario.mx/
+  no listing links found
+
+[7/135] AGI BIENES RAICES SA DE CV -> http://www.agibraices.com/
+  homepage fetch failed
+
+[8/135] ADMINISTRACIONES JOSÉ LUIS ORDOÑEZ -> https://ajlo.com.mx/
+  found 3 candidate listing pages
+  extracted 3 listings
+
+[9/135] A.K.A. ADMINISTRACIONES, S.C. -> https://aka.easybroker.com/
+  homepage fetch failed
+
+[10/135] AM BIENES RAICES -> https://www.ambienesraices.com.mx/
+  homepage fetch failed
+
+[11/135] AUUN INMOBILIARIA -> https://www.auun-inmobiliaria.com/
+  homepage fetch failed
+
+[12/135] AZUCENA FERNANDEZ PROPIEDADES -> https://www.azucenafernandezpropiedades.com/
+  found 11 candidate listing pages
+  extracted 11 listings
+
+[13/135] AZUMAR S.A. DE C.V. -> https://www.azumar.com.mx/
+  no listing links found
+
+[14/135] BINMARQ (BUFETE INMOBILIARIO Y ARQUITECTURA) -> https://www.binmarq.com/
+  no listing links found
+
+[15/135] BOY & BIENES RAICES -> https://www.boy.mx/
+  homepage fetch failed
+
+[16/135] CASA REAL SERVICIOS INMOBILIARIOS -> https://www.casarealsi.com/
+  found 45 candidate listing pages
+  extracted 45 listings
+
+[17/135] CATAÑO BIENES RAICES, S.A. DE C.V. -> https://www.catano.com.mx/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[18/135] CGC BIENES RAICES -> https://www.cgcbienesraices.com/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[19/135] CHAPALA REALTORS -> https://www.chapalarealtors.com/
+  no listing links found
+
+[20/135] CIMAC -> https://www.cimaccarterainmobiliaria.com/
+  no listing links found
+
+[21/135] CIRCULO 10 INMOBILIARIO -> https://circulo10.com.mx/
+  no listing links found
+
+[22/135] CIUDAD MADERAS -> https://ciudadmaderas.com/
+  no listing links found
+
+[23/135] COLLIERS INTERNATIONAL -> https://www.colliers.com/es-mx/mexico
+  found 2 candidate listing pages
+  extracted 2 listings
+
+[24/135] CONFÍA BIENES RAÍCES -> https://www.confiabienesraices.mx/
+  found 1 candidate listing pages
+  extracted 1 listings
+
+[25/135] CONSTRUCTORA CHUMACERO 2030 -> https://constructorachumacero2030.mx/
+  no listing links found
+
+[26/135] COOL LIVING -> https://cool-living.com.mx/
+  no listing links found
+
+[27/135] CUNNA -> https://www.cunna.mx/
+  found 34 candidate listing pages
+  extracted 34 listings
+
+[28/135] CUSHMAN & WAKEFIELD, S. DE R.L. DE C.V. -> https://www.cushmanwakefield.com/es-mx/mexico
+  found 35 candidate listing pages
+  extracted 35 listings
+
+[29/135] DELEGO, S.A. DE C.V. -> https://www.delego.mx/
+  found 163 candidate listing pages
+  extracted 163 listings
+
+[30/135] DESARROLLOS ECO -> https://www.desarrolloseco.mx/
+  found 6 candidate listing pages
+  extracted 6 listings
+
+[31/135] DICA BIENES RAÍCES -> https://www.dicabr.com.mx/
+  no listing links found
+
+[32/135] DOMUN SERV. Y ADMON DE INMUEBLES -> https://domuninmuebles.com.mx/
+  homepage fetch failed
+
+[33/135] DREAMS BIENES RAICES BY ARMONIQUE -> https://www.dreamsbienesraices.com.mx/
+  found 6 candidate listing pages
+  extracted 6 listings
+
+[34/135] DUO LOGAM -> https://www.duologam.com/
+  found 60 candidate listing pages
+  extracted 60 listings
+
+[35/135] EMASN DESARROLLOS -> https://emasndesarrollos.com/
+  found 10 candidate listing pages
+  extracted 10 listings
+
+[36/135] ENLACE HIPOTECARIO -> https://enlacehipotecario.com/
+  no listing links found
+
+[37/135] EXPRESSO BIENES RAICES -> https://www.expressobienesraices.com/
+  no listing links found
+
+[38/135] FAMPI VISIÓN INMOBILIARIA -> https://www.fampi.com.mx/
+  found 53 candidate listing pages
+  extracted 53 listings
+
+[39/135] ASESORES INMOBILIARIOS Y JURÍDICOS FENIX S.C. -> https://fenixbienesraices.com/
+  found 43 candidate listing pages
+  extracted 43 listings
+
+[40/135] FLAT MX -> https://flat.mx/
+  no listing links found
+
+[41/135] FLORHABIT -> https://florhabit.com.mx/
+  no listing links found
+
+[42/135] INMOBILIARIA FUGAR, S.A. DE C.V. -> https://fugar.com.mx/
+  found 9 candidate listing pages
+  extracted 9 listings
+
+[43/135] GAP BIENES RAICES -> https://www.gapbienesraices.com/
+  homepage fetch failed
+
+[44/135] GLOBAL BUSINESSES -> https://gbinc.mx/
+  no listing links found
+
+[45/135] MI GESTIÓN -> https://gestioninmobiliaria.com.mx/
+  found 21 candidate listing pages
+  extracted 21 listings
+
+[46/135] GO HOME INMOBILIARIA -> https://gohomeinmobiliaria.com/
+  homepage fetch failed
+
+[47/135] GREEN HOUSE INMOBILIARY SERVICES S.A DE C.V. -> https://www.greenhouse.com.mx/
+  found 3 candidate listing pages
+  extracted 3 listings
+
+[48/135] CEBMAR -> https://www.grupocebmar.com/
+  no listing links found
+
+[49/135] GRUPO GIL AGENCIA DE MARKETING -> https://grupogil.com.mx/
+  no listing links found
+
+[50/135] GRUPO INMOBI -> https://grupoinmobi.com/
+  found 2 candidate listing pages
+  extracted 2 listings
+
+[51/135] GRUPO MAKO CONSTRUCCIONES -> https://www.grupomako.com/
+  no listing links found
+
+[52/135] GRUPO RIAL BIENES RAICES -> http://www.gruporial.com.mx/
+  homepage fetch failed
+
+[53/135] GUIA ROJI BIENES RAICES -> https://guia-roji-bienes-raices.easybroker.com/
+  found 16 candidate listing pages
+  extracted 16 listings
+
+[54/135] CUALLI INOVA REAL ESTATE SAPI DE CV ( HIPOO.MX ). -> https://www.hipoo.mx/
+  homepage fetch failed
+
+[55/135] HOME INMOBILIARIA -> https://www.homeinmobiliaria.mx/
+  found 10 candidate listing pages
+  extracted 10 listings
+
+[56/135] HOMIE -> https://homie.mx/
+  found 53 candidate listing pages
+  extracted 53 listings
+
+[57/135] HSBC MÉXICO -> https://www.hsbc.com.mx/
+  no listing links found
+
+[58/135] BAL INTERNATIONAL -> http://ibalinter.com/
+  no listing links found
+
+[59/135] I HOME MÉXICO -> https://www.ihomemexico.com/
+  homepage fetch failed
+
+[60/135] INGETECSA -> https://ingetecsa.com.mx/
+  no listing links found
+
+[61/135] IN HOME RG -> https://www.inhomerg.com/
+  found 24 candidate listing pages
+  extracted 24 listings
+
+[62/135] CBI INMOBILIARIA -> https://inmobiliaria.grupobest.mx/
+  found 2 candidate listing pages
+  extracted 2 listings
+
+[63/135] CATTORI INMOBILIARIA -> https://inmobiliariacattori.com/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[64/135] GRUPO INMOBILIARIO FS -> https://inmobiliariafs.mx/
+  found 8 candidate listing pages
+  extracted 8 listings
+
+[65/135] JM CONSULTORES INMOBILIARIOS -> http://www.inmobiliariajm.com.mx/
+  no listing links found
+
+[66/135] PUNTO MEDIO BIENES RAICES -> http://inmobiliariapuntomedio.com/
+  found 12 candidate listing pages
+  extracted 12 listings
+
+[67/135] INMOBILIARIA RIVERA AZUL -> https://www.inmobiliariariveraazul.com.mx/
+  found 7 candidate listing pages
+  extracted 7 listings
+
+[68/135] INMOBILIARIA INMOPLUS -> https://www.inmoplusbl.com.mx/
+  homepage fetch failed
+
+[69/135] INNMO-CER -> https://innmocer.com/
+  no listing links found
+
+[70/135] JAPKO INMOBILIARIA -> https://www.japkoinmobiliaria.com/
+  found 30 candidate listing pages
+  extracted 30 listings
+
+[71/135] JJ ARQUITECTURA ESPECIAL -> https://www.jjarq.mx/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[72/135] GRUPO INMOBILIARIO JYSA -> https://jysa.mx/
+  found 4 candidate listing pages
+  extracted 4 listings
+
+[73/135] KAPITAL SOLUCIONES INMOBILIARIAS -> https://www.kapitalsoluciones.com/
+  no listing links found
+
+[74/135] KENKEL BIENES RAICES -> https://www.kenkel.com.mx/
+  no listing links found
+
+[75/135] KUNZ Y ASOCIADOS -> https://kunz.com.mx/
+  found 4 candidate listing pages
+  extracted 4 listings
+
+[76/135] PRESTIGE BY KW PEDREGAL -> https://www.kwpedregal.com/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[77/135] LA AGENZIA SOLUCIONES INMOBILIARIAS -> https://www.la-agenzia.com/
+  found 37 candidate listing pages
+  extracted 37 listings
+
+[78/135] LA PAZ CORPORACIÓN DE SERVICIOS, S.A. DE C.V. -> https://www.lapazcorporacion.com/
+  found 7 candidate listing pages
+  extracted 7 listings
+
+[79/135] L.C. CONSULTORÍA INMOBILIARIA -> https://www.lcinmobiliaria.com.mx/
+  homepage fetch failed
+
+[80/135] LEGAL GLOBAL CONSULTING -> https://legalglobalconsulting.com.mx/
+  no listing links found
+
+[81/135] LoNik Bienes Raices -> https://leonik.mx/
+  found 18 candidate listing pages
+  extracted 18 listings
+
+[82/135] LIBRA ADMINISTRACIONES Y PROMOCIONES, S.A. DE C.V. -> http://www.librabienesraices.com/
+  homepage fetch failed
+
+[83/135] LOCALTY -> https://www.localty.mx/
+  found 5 candidate listing pages
+  extracted 5 listings
+
+[84/135] LUCANIA PROPERTY MANGEMENT -> https://www.lucania.com.mx/
+  found 1 candidate listing pages
+  extracted 1 listings
+
+[85/135] MORALES ARIAS BIENES RAICES -> https://www.mabienesraices.com.mx/
+  found 5 candidate listing pages
+  extracted 5 listings
+
+[86/135] MARCA INMOBILIARIA -> https://marcainmobiliaria.com.mx/
+  found 123 candidate listing pages
+  extracted 123 listings
+
+[87/135] CMI MARCUXCI -> https://www.marcuxci.com/
+  found 16 candidate listing pages
+  extracted 16 listings
+
+[88/135] A MÁS PATRIMONIO -> https://www.maspatrimonio.com.mx/
+  homepage fetch failed
+
+[89/135] MD SOLUCIONES INTEGRALES -> https://www.mdsolucionesintegrales.com/
+  found 18 candidate listing pages
+  extracted 18 listings
+
+[90/135] MEANA ABOGADOS-MANUEL VAZQUEZ RUIZ -> https://www.meanaabogados.mx/
+  homepage fetch failed
+
+[91/135] MetroHomes -> https://www.metrohomes.mx/
+  found 2 candidate listing pages
+  extracted 2 listings
+
+[92/135] MÉXICO PROPERTY SPECIALIST -> https://mexicopropertyspecialist.com/
+  no listing links found
+
+[93/135] MEXICO SMART REAL ESTATE GROUP -> https://mexicosmart.wiggot.com/
+  no listing links found
+
+[94/135] MI ESPACIO IN -> https://www.miespacioin.mx/
+  found 57 candidate listing pages
+  extracted 57 listings
+
+[95/135] MK24 BIENES RAICES -> https://www.mk24bienesraices.com/
+  found 50 candidate listing pages
+  extracted 50 listings
+
+[96/135] MO INMUEBLES -> https://www.moinmuebles.com/
+  no listing links found
+
+[97/135] INMOBILIARIA MONTEPRINCIPE -> https://www.monteprincipe.com.mx/
+  homepage fetch failed
+
+[98/135] MORADA UNO -> https://www.moradauno.com.mx/
+  no listing links found
+
+[99/135] MEDIACIÓN PRIVADA 640 -> https://mp640cdmx.com/
+  no listing links found
+
+[100/135] MUDAFY -> https://mudafy.com.mx/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[101/135] MUNDICASA CDMX -> https://www.mundicasa.mx/
+  found 47 candidate listing pages
+  extracted 47 listings
+
+[102/135] NEXIMO -> https://www.neximo.mx/
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[103/135] NOVA HOGAR BIENES RAICES -> https://www.novahogar.mx/
+  found 36 candidate listing pages
+  extracted 36 listings
+
+[104/135] On Duty Properties -> https://ondutymanagement.mx/
+  no listing links found
+
+[105/135] OSCAR DEL VALLE CORPORACIÓN INMOBILIARIA, S.C. -> https://www.oscardelvalle.com.mx/
+  found 72 candidate listing pages
+  extracted 72 listings
+
+[106/135] PCC BIENES RAÍCES -> http://www.pccbienesraices.com/
+  no listing links found
+
+[107/135] POLIZA JURIDICA CHAPULTEPEC -> https://www.polizajuridica.com.mx/
+  no listing links found
+
+[108/135] POSTURA INMOBILIARIA -> https://www.posturainmobiliaria.com/
+  no listing links found
+
+[109/135] PROTECCIÓN JURÍDICA INMOBILIARIA -> https://proteccionjuridica.com.mx/
+  no listing links found
+
+[110/135] PROYECTA BIENES RAÍCES -> https://proyectabienesraices.com.mx/
+  homepage fetch failed
+
+[111/135] QUALITY INMOBILIARIA -> https://www.quality.com.mx/
+  no listing links found
+
+[112/135] MARTHA RAYO Y ASOCIADOS, S.A. DE C.V. -> https://rayovende.com/
+  no listing links found
+
+[113/135] RED BIENES RAICES -> https://www.redbienesraices.mx/
+  no listing links found
+
+[114/135] RG ASESORES -> https://rgasesores.com.mx/
+  found 1 candidate listing pages
+  extracted 1 listings
+
+[115/135] RIVEROLL BIENES RAICES -> https://www.riverollbienesraices.com/
+  found 6 candidate listing pages
+  extracted 6 listings
+
+[116/135] ROHEN INMOBILIARIA -> https://www.roheninmobiliaria.com.mx/
+  no listing links found
+
+[117/135] SATELITE REAL ESTATE -> https://www.satelitereal.com/
+  no listing links found
+
+[118/135] SENDERO INMOBILIARIO -> https://www.senderoinmobiliario.com/
+  no listing links found
+
+[119/135] ORGANIZACIÓN SERRANO -> https://www.serranovende.com.mx/
+  no listing links found
+
+[120/135] CLAUDIO MARTIN LOREDO -> https://www.sierramarinmobiliaria.com/
+  no listing links found
+
+[121/135] STILO INMOBILIARIA -> https://stilo.lat/
+  found 13 candidate listing pages
+  extracted 13 listings
+
+[122/135] TECNOCASA S.A. DE C.V. -> https://tecnocasa.mx/
+  found 11 candidate listing pages
+  extracted 11 listings
+
+[123/135] CONSTRUCTORA E INMOBILIARIA TENOCHTITLAN -> https://tenochtitlaninmobiliaria.com.mx/
+  found 10 candidate listing pages
+  extracted 10 listings
+
+[124/135] TOLUMES BIENES RAICES -> https://www.tolumesbienesraices.com/
+  found 21 candidate listing pages
+  extracted 21 listings
+
+[125/135] TREVEX ESTRATEGIA INMOBILAIRIA -> https://trevex.com.mx/
+  homepage fetch failed
+
+[126/135] TRIA SOLUCION INMOBILIARIA -> https://triainmobiliaria.com/
+  found 14 candidate listing pages
+  extracted 14 listings
+
+[127/135] TRUE HOME -> https://www.truehome.com.mx/
+  no listing links found
+
+[128/135] TU ESPACIO TU CASA -> https://tuespaciotucasa.com/
+  found 11 candidate listing pages
+  extracted 11 listings
+
+[129/135] TU HABI -> https://tuhabi.mx/
+  found 15 candidate listing pages
+  extracted 15 listings
+
+[130/135] VAN DOOREN BIENES RAÍCES -> https://www.vandoorenbienesraices.com.mx/
+  found 36 candidate listing pages
+  extracted 36 listings
+
+[131/135] VIMH SOLUCIONES INMOBILIARIAS -> https://viminmobiliaria.com/
+  found 42 candidate listing pages
+  extracted 42 listings
+
+[132/135] WAY HOME-Bienes Raíces -> https://www.wayhome.com.mx/
+  found 33 candidate listing pages
+  extracted 33 listings
+
+[133/135] YAV PROPIEDADES -> https://yavproperties.com/
+  no listing links found
+
+[134/135] INMOBILIARIA ZAM -> https://zaminmobiliaria.com.mx/
+  no listing links found
+
+[135/135] ZUHA BIENES RAICES -> https://zuha.com.mx/
+  found 6 candidate listing pages
+  extracted 6 listings
+
+Done. 2967 listings from 68 sites (skipped 67).
+Workbook: listings_ampi_cdmx.xlsx
+Skipped-site log: C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\skipped_sites.csv

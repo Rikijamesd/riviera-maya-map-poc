@@ -1,0 +1,12 @@
+Loaded 2 broker sites
+
+[1/2] Acheter-Louer.fr -> https://www.acheter-louer.fr/
+  no listing links found
+
+[2/2] CoteLittoral.fr -> https://www.cotelittoral.fr/
+  found 4 candidate listing pages
+  extracted 4 listings
+
+Done. 4 listings from 1 sites (skipped 1).
+Workbook: listings_france_test.xlsx
+Skipped-site log: C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\skipped_sites.csv

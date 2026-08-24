@@ -1,0 +1,104 @@
+C:\Users\rikij\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\PIL\Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Loaded 6976 raw rows from existing Tulum-pipeline dataset
+Loaded 746 raw rows from newly-scraped 5-region sites
+Combined raw total: 7722
+Hashing first photo for 7722 listings (best-effort, skips on failure)...
+  hashed 100/7722
+  hashed 200/7722
+  hashed 300/7722
+  hashed 400/7722
+  hashed 500/7722
+  hashed 600/7722
+  hashed 700/7722
+  hashed 800/7722
+  hashed 900/7722
+  hashed 1000/7722
+  hashed 1100/7722
+  hashed 1200/7722
+  hashed 1300/7722
+  hashed 1400/7722
+  hashed 1500/7722
+  hashed 1600/7722
+  hashed 1700/7722
+  hashed 1800/7722
+  hashed 1900/7722
+  hashed 2000/7722
+  hashed 2100/7722
+  hashed 2200/7722
+  hashed 2300/7722
+  hashed 2400/7722
+  hashed 2500/7722
+  hashed 2600/7722
+  hashed 2700/7722
+  hashed 2800/7722
+  hashed 2900/7722
+  hashed 3000/7722
+  hashed 3100/7722
+  hashed 3200/7722
+  hashed 3300/7722
+  hashed 3400/7722
+  hashed 3500/7722
+  hashed 3600/7722
+  hashed 3700/7722
+  hashed 3800/7722
+  hashed 3900/7722
+  hashed 4000/7722
+  hashed 4100/7722
+  hashed 4200/7722
+  hashed 4300/7722
+  hashed 4400/7722
+  hashed 4500/7722
+  hashed 4600/7722
+  hashed 4700/7722
+  hashed 4800/7722
+  hashed 4900/7722
+  hashed 5000/7722
+  hashed 5100/7722
+  hashed 5200/7722
+  hashed 5300/7722
+  hashed 5400/7722
+  hashed 5500/7722
+  hashed 5600/7722
+  hashed 5700/7722
+  hashed 5800/7722
+  hashed 5900/7722
+  hashed 6000/7722
+  hashed 6100/7722
+  hashed 6200/7722
+  hashed 6300/7722
+  hashed 6400/7722
+  hashed 6500/7722
+  hashed 6600/7722
+  hashed 6700/7722
+  hashed 6800/7722
+  hashed 6900/7722
+  hashed 7000/7722
+  hashed 7100/7722
+  hashed 7200/7722
+  hashed 7300/7722
+  hashed 7400/7722
+  hashed 7500/7722
+  hashed 7600/7722
+  hashed 7700/7722
+Deduped to 6274 unique listings (1448 duplicates merged)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_all_regions_deduped.xlsx
+Dropped 935 rows referencing a clearly unrelated region
+Kept 5339 rows
+
+Region counts (rows can match >1 region):
+  Cancun: 938
+  Playa del Carmen: 1003
+  Puerto Morelos: 180
+  Tulum: 2078
+  Puerto Vallarta: 101
+  Baja California Sur: 102
+  Other Riviera Maya: 3356
+  No Location Signal: 1694
+
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\all_regions_listings_filtered.csv (5339 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_cancun.csv (938 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_playa_del_carmen.csv (1003 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_puerto_morelos.csv (180 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_puerto_vallarta.csv (101 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_baja_california_sur.csv (102 rows)

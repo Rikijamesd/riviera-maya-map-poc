@@ -1,0 +1,142 @@
+{
+  "city": "playa-del-carmen",
+  "country": "mexico",
+  "transaction": "buy",
+  "generated": "2026-08-23T14:06:47+00:00",
+  "city_total": 12099,
+  "retrievable": 2000,
+  "type_totals": {
+    "apartment": 9791,
+    "house": 2308
+  },
+  "types_planned": [
+    "apartment",
+    "house"
+  ],
+  "target_per_band": 950,
+  "projected_calls": 14,
+  "slices": [
+    {
+      "label": "apa <95k",
+      "params": {
+        "property_type": "apartment",
+        "max_price": 95301
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 95k-121k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 95301,
+        "max_price": 121333
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 121k-139k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 121333,
+        "max_price": 139780
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 139k-155k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 139780,
+        "max_price": 155783
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 155k-175k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 155783,
+        "max_price": 175940
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 175k-205k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 175940,
+        "max_price": 205662
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 205k-245k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 205662,
+        "max_price": 245033
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 245k-294k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 245033,
+        "max_price": 294665
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 294k-372k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 294665,
+        "max_price": 372058
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa 372k-637k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 372058,
+        "max_price": 637050
+      },
+      "expected": 890
+    },
+    {
+      "label": "apa >637k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 637050
+      },
+      "expected": 890
+    },
+    {
+      "label": "hou <101k",
+      "params": {
+        "property_type": "house",
+        "max_price": 101833
+      },
+      "expected": 769
+    },
+    {
+      "label": "hou 101k-297k",
+      "params": {
+        "property_type": "house",
+        "min_price": 101833,
+        "max_price": 297700
+      },
+      "expected": 769
+    },
+    {
+      "label": "hou >297k",
+      "params": {
+        "property_type": "house",
+        "min_price": 297700
+      },
+      "expected": 769
+    }
+  ]
+}

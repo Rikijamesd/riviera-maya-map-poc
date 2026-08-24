@@ -1,0 +1,138 @@
+C:\Users\rikij\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\PIL\Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Loaded 6274 rows from existing all-regions deduped dataset
+Loaded 3253 rows from RE/MAX Mexico API
+Loaded 1821 rows from Century 21 Mexico API
+Combined raw total: 11348
+Hashing first photo for 11348 listings (24 concurrent downloads, best-effort, skips on failure)...
+  hashed 100/11348
+  hashed 200/11348
+  hashed 300/11348
+  hashed 400/11348
+  hashed 500/11348
+  hashed 600/11348
+  hashed 700/11348
+  hashed 800/11348
+  hashed 900/11348
+  hashed 1000/11348
+  hashed 1100/11348
+  hashed 1200/11348
+  hashed 1300/11348
+  hashed 1400/11348
+  hashed 1500/11348
+  hashed 1600/11348
+  hashed 1700/11348
+  hashed 1800/11348
+  hashed 1900/11348
+  hashed 2000/11348
+  hashed 2100/11348
+  hashed 2200/11348
+  hashed 2300/11348
+  hashed 2400/11348
+  hashed 2500/11348
+  hashed 2600/11348
+  hashed 2700/11348
+  hashed 2800/11348
+  hashed 2900/11348
+  hashed 3000/11348
+  hashed 3100/11348
+  hashed 3200/11348
+  hashed 3300/11348
+  hashed 3400/11348
+  hashed 3500/11348
+  hashed 3600/11348
+  hashed 3700/11348
+  hashed 3800/11348
+  hashed 3900/11348
+  hashed 4000/11348
+  hashed 4100/11348
+  hashed 4200/11348
+  hashed 4300/11348
+  hashed 4400/11348
+  hashed 4500/11348
+  hashed 4600/11348
+  hashed 4700/11348
+  hashed 4800/11348
+  hashed 4900/11348
+  hashed 5000/11348
+  hashed 5100/11348
+  hashed 5200/11348
+  hashed 5300/11348
+  hashed 5400/11348
+  hashed 5500/11348
+  hashed 5600/11348
+  hashed 5700/11348
+  hashed 5800/11348
+  hashed 5900/11348
+  hashed 6000/11348
+  hashed 6100/11348
+  hashed 6200/11348
+  hashed 6300/11348
+  hashed 6400/11348
+  hashed 6500/11348
+  hashed 6600/11348
+  hashed 6700/11348
+  hashed 6800/11348
+  hashed 6900/11348
+  hashed 7000/11348
+  hashed 7100/11348
+  hashed 7200/11348
+  hashed 7300/11348
+  hashed 7400/11348
+  hashed 7500/11348
+  hashed 7600/11348
+  hashed 7700/11348
+  hashed 7800/11348
+  hashed 7900/11348
+  hashed 8000/11348
+  hashed 8100/11348
+  hashed 8200/11348
+  hashed 8300/11348
+  hashed 8400/11348
+  hashed 8500/11348
+  hashed 8600/11348
+  hashed 8700/11348
+  hashed 8800/11348
+  hashed 8900/11348
+  hashed 9000/11348
+  hashed 9100/11348
+  hashed 9200/11348
+  hashed 9300/11348
+  hashed 9400/11348
+  hashed 9500/11348
+  hashed 9600/11348
+  hashed 9700/11348
+  hashed 9800/11348
+  hashed 9900/11348
+  hashed 10000/11348
+  hashed 10100/11348
+  hashed 10200/11348
+  hashed 10300/11348
+  hashed 10400/11348
+  hashed 10500/11348
+  hashed 10600/11348
+  hashed 10700/11348
+  hashed 10800/11348
+  hashed 10900/11348
+  hashed 11000/11348
+  hashed 11100/11348
+  hashed 11200/11348
+  hashed 11300/11348
+Deduped to 10211 unique listings (1137 duplicates merged)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_all_regions_deduped_v3.xlsx
+Dropped 831 unrelated-region rows; kept 9380
+
+Region counts (rows can match >1 region):
+  Cancun: 938
+  Playa del Carmen: 1002
+  Puerto Morelos: 180
+  Tulum: 2077
+  Puerto Vallarta: 101
+  Baja California Sur: 103
+  Mexico City: 4372
+  Other Riviera Maya: 3355
+  Puerto Escondido: 33
+  No Location Signal: 1527
+
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\all_regions_listings_filtered_v3.csv (9380 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_mexico_city.csv (4372 rows)

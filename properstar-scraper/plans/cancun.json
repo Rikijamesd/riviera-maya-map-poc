@@ -1,0 +1,100 @@
+{
+  "city": "cancun",
+  "country": "mexico",
+  "generated": "2026-08-22T19:24:35+00:00",
+  "city_total": 9207,
+  "type_totals": {
+    "apartment": 5638,
+    "house": 3569
+  },
+  "target_per_band": 950,
+  "projected_calls": 10,
+  "slices": [
+    {
+      "label": "apa <147k",
+      "params": {
+        "property_type": "apartment",
+        "max_price": 147323
+      },
+      "expected": 940
+    },
+    {
+      "label": "apa 147-228k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 147323,
+        "max_price": 228289
+      },
+      "expected": 940
+    },
+    {
+      "label": "apa 228-364k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 228289,
+        "max_price": 364403
+      },
+      "expected": 940
+    },
+    {
+      "label": "apa 364-606k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 364403,
+        "max_price": 606664
+      },
+      "expected": 940
+    },
+    {
+      "label": "apa 606-1017k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 606664,
+        "max_price": 1017374
+      },
+      "expected": 940
+    },
+    {
+      "label": "apa >1017k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 1017374
+      },
+      "expected": 940
+    },
+    {
+      "label": "hou <169k",
+      "params": {
+        "property_type": "house",
+        "max_price": 169451
+      },
+      "expected": 892
+    },
+    {
+      "label": "hou 169-337k",
+      "params": {
+        "property_type": "house",
+        "min_price": 169451,
+        "max_price": 337998
+      },
+      "expected": 892
+    },
+    {
+      "label": "hou 337-831k",
+      "params": {
+        "property_type": "house",
+        "min_price": 337998,
+        "max_price": 831996
+      },
+      "expected": 892
+    },
+    {
+      "label": "hou >831k",
+      "params": {
+        "property_type": "house",
+        "min_price": 831996
+      },
+      "expected": 892
+    }
+  ]
+}

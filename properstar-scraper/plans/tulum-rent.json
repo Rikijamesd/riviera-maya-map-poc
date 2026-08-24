@@ -1,0 +1,38 @@
+{
+  "city": "tulum",
+  "country": "mexico",
+  "transaction": "rent",
+  "generated": "2026-08-22T19:52:21+00:00",
+  "city_total": 1473,
+  "type_totals": {
+    "apartment": 1226,
+    "house": 247
+  },
+  "target_per_band": 950,
+  "projected_calls": 3,
+  "slices": [
+    {
+      "label": "apa <0k",
+      "params": {
+        "property_type": "apartment",
+        "max_price": 780
+      },
+      "expected": 613
+    },
+    {
+      "label": "apa >0k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 780
+      },
+      "expected": 613
+    },
+    {
+      "label": "hou all",
+      "params": {
+        "property_type": "house"
+      },
+      "expected": 247
+    }
+  ]
+}

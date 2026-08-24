@@ -1,0 +1,139 @@
+Loaded 38 broker sites
+
+[1/38] Gloria Gracida -> https://www.aakinmuebles.com
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[2/38] Ana Rivera -> https://aztoria.coldwellbanker.com.mx
+  no listing links found
+
+[3/38] Victor Galdámez -> https://buserfin.com/
+  found 36 candidate listing pages
+  extracted 36 listings
+
+[4/38] Dawn Pier -> https://cabodawnpier.com/
+  found 10 candidate listing pages
+  extracted 10 listings
+
+[5/38] Gina Chequer -> https://cancun-negocios-inmobiliarios.com
+  homepage fetch failed
+
+[6/38] Norma Cruz -> https://www.cancunbrokerinmobiliario.com
+  no listing links found
+
+[7/38] Gregorio Ramírez García -> https://www.century21legendaryrealty.com/
+  found 6 candidate listing pages
+  extracted 6 listings
+
+[8/38] Luly Meza Conde -> https://www.cozumelvista.com
+  found 8 candidate listing pages
+  extracted 8 listings
+
+[9/38] Guadalupe Delgado Tabares -> https://ekodesar.com
+  no listing links found
+
+[10/38] GAP REAL ESTATE RIVIERA MAYA -> https://www.gaprealestate.com.mx
+  no listing links found
+
+[11/38] Gerard Allard -> https://www.gerardallardpv.com
+  found 200 candidate listing pages
+  extracted 200 listings
+
+[12/38] Victor Yañez -> https://goldenrealtors.mx
+  homepage fetch failed
+
+[13/38] Jaime Ruben Kirnos Ramirez -> https://www.grupomiluska.com
+  no listing links found
+
+[14/38] Adrián Real -> https://ibasuteamrealestate.com/agentes-ibasu/adrian-real/
+  found 31 candidate listing pages
+  extracted 31 listings
+
+[15/38] Adrian Mariscal Alvarado -> https://www.ihomerealty.mx/
+  found 52 candidate listing pages
+  extracted 52 listings
+
+[16/38] Julian Perez -> https://inmueblesloscabos.com.mx/
+  found 30 candidate listing pages
+  extracted 30 listings
+
+[17/38] JOSE MARIA JIMENEZ FERNANDEZ -> https://jimenezplaza.com/
+  found 35 candidate listing pages
+  extracted 24 listings
+
+[18/38] Johana Hernandez -> https://johanahernandez.evrealestate.com/en
+  no listing links found
+
+[19/38] Valeria Leal Rivera -> https://www.lealsi.com
+  found 9 candidate listing pages
+  extracted 9 listings
+
+[20/38] Maria de Lourdes Martínez Diaz -> https://lgirealtygroup.com
+  homepage fetch failed
+
+[21/38] Shannon Marin -> http://www.luxxlifeglobal.com
+  found 13 candidate listing pages
+  extracted 13 listings
+
+[22/38] Ly Cotes -> https://ly-cotes-real-estate-15847.alterestate.com
+  no listing links found
+
+[23/38] Mexpat Realtors Agencia Inmobiliaria -> https://mexpatrealtors.com/
+  found 2 candidate listing pages
+  extracted 2 listings
+
+[24/38] Ursula Garcia -> https://mobiapremium.coldwellbanker.com.mx
+  no listing links found
+
+[25/38] Tracy Lynn Collingridge -> https://momentum.coldwellbanker.com.mx
+  no listing links found
+
+[26/38] MONICA Diaz -> https://netbrokers.com.mx
+  no listing links found
+
+[27/38] Sergio Wong -> https://www.nowproperties.mx
+  found 3 candidate listing pages
+  extracted 3 listings
+
+[28/38] Paty Cardona -> https://patycardonacancun.com/
+  found 16 candidate listing pages
+  extracted 16 listings
+
+[29/38] ALEJANDRINA GALLUR ALCALA -> https://primegroup.coldwellbanker.com.mx
+  no listing links found
+
+[30/38] Alfonso Reynoso -> https://puntasur.coldwellbanker.com.mx
+  no listing links found
+
+[31/38] Leticia Diaz Rivera -> https://riveras.coldwellbanker.com.mx
+  no listing links found
+
+[32/38] Ines Gehrcken -> https://www.riviera-maya-real-estate.com
+  found 7 candidate listing pages
+  extracted 7 listings
+
+[33/38] Mariana Buendia -> http://soulmaterealtors.com/
+  found 32 candidate listing pages
+  extracted 32 listings
+
+[34/38] Stan Sanchez -> https://www.stansellsrealestate.com
+  found 7 candidate listing pages
+  extracted 7 listings
+
+[35/38] Bruno Paul Bourlon -> https://theagencybaja.com/agent/bruno-paul-bourlon
+  found 33 candidate listing pages
+  extracted 33 listings
+
+[36/38] Gregory Noel -> https://theagencyloscabos.com/team/gregory-noel/
+  no listing links found
+
+[37/38] Petra Lamadrid -> https://tropicarealty.com
+  found 27 candidate listing pages
+  extracted 27 listings
+
+[38/38] Brock Squire -> https://villasenorsv.coldwellbanker.com.mx
+  no listing links found
+
+Done. 746 listings from 20 sites (skipped 18).
+Workbook: listings_5regions.xlsx
+Skipped-site log: C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\skipped_sites.csv

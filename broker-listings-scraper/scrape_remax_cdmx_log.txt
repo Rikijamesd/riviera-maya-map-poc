@@ -1,0 +1,60 @@
+Resolved 'Ciudad de Mexico' -> ciudad_id=10243 (Ciudad de México)
+25 property types to sweep
+[1/25] Bodega - Comercial
+    running unique total: 75
+[2/25] Bodega - Industrial
+    running unique total: 117
+[3/25] Casa
+    [Casa] band 0-200000000 hit cap (250), splitting at 100000000
+    [Casa] band 0-100000000 hit cap (250), splitting at 50000000
+    [Casa] band 0-50000000 hit cap (250), splitting at 25000000
+    [Casa] band 0-25000000 hit cap (250), splitting at 12500000
+    [Casa] band 0-12500000 hit cap (250), splitting at 6250000
+    running unique total: 587
+[4/25] Casa - Comercial
+    running unique total: 633
+[5/25] Casa en Condominio
+    running unique total: 757
+[6/25] Centro - Comercial
+    running unique total: 758
+[7/25] Condomino - Comercial
+    running unique total: 758
+[8/25] Consultorio - Comercial
+    running unique total: 783
+[9/25] Departamento
+    running unique total: 783
+[10/25] Desarrollo
+    running unique total: 783
+[11/25] Edificio
+    running unique total: 783
+[12/25] Edificio - Comercial
+    running unique total: 783
+[13/25] Fábrica - Industrial
+    running unique total: 783
+[14/25] Finca/Rancho
+    running unique total: 783
+[15/25] Finca/Rancho - Comercial
+    running unique total: 783
+[16/25] Hospital - Comercial
+    running unique total: 783
+[17/25] Hotel - Comercial
+    running unique total: 783
+[18/25] Local - Comercial
+    running unique total: 783
+[19/25] Nave - Industrial
+    running unique total: 783
+[20/25] Oficina - Comercial
+    running unique total: 783
+[21/25] Parque - Industrial
+    running unique total: 783
+[22/25] Plaza - Comercial
+    running unique total: 783
+[23/25] Terreno
+    running unique total: 783
+[24/25] Terreno - Comercial
+    running unique total: 783
+[25/25] Terreno - Industrial
+    running unique total: 783
+
+Total unique listings collected: 783
+Wrote listings_remax_cdmx.csv (783 rows)

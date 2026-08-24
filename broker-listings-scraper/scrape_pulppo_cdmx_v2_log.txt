@@ -1,0 +1,108 @@
+[sale]
+  sale: totalCount=2896
+    offset 50: +50 (total 100/2896)
+    offset 100: +50 (total 150/2896)
+    offset 150: +50 (total 200/2896)
+    offset 200: +50 (total 250/2896)
+    offset 250: +23 (total 273/2896)
+    offset 300: +50 (total 323/2896)
+    offset 350: +50 (total 373/2896)
+    offset 400: +50 (total 423/2896)
+    offset 450: +41 (total 464/2896)
+    offset 500: +34 (total 498/2896)
+    offset 550: +50 (total 548/2896)
+    offset 600: +50 (total 598/2896)
+    offset 650: +44 (total 642/2896)
+    offset 700: +43 (total 685/2896)
+    offset 750: +29 (total 714/2896)
+    offset 800: +17 (total 731/2896)
+    offset 850: +29 (total 760/2896)
+    offset 900: +26 (total 786/2896)
+    offset 950: +50 (total 836/2896)
+    offset 1000: +49 (total 885/2896)
+    offset 1050: +44 (total 929/2896)
+    offset 1100: +41 (total 970/2896)
+    offset 1150: +23 (total 993/2896)
+    offset 1200: +43 (total 1036/2896)
+    offset 1250: +50 (total 1086/2896)
+    offset 1300: +35 (total 1121/2896)
+    offset 1350: +42 (total 1163/2896)
+    offset 1400: +37 (total 1200/2896)
+    offset 1450: +29 (total 1229/2896)
+    offset 1500: +7 (total 1236/2896)
+    offset 1550: +25 (total 1261/2896)
+    offset 1600: +33 (total 1294/2896)
+    offset 1650: +49 (total 1343/2896)
+    offset 1700: +50 (total 1393/2896)
+    offset 1750: +50 (total 1443/2896)
+    offset 1800: +50 (total 1493/2896)
+    offset 1850: +50 (total 1543/2896)
+    offset 1900: +50 (total 1593/2896)
+    offset 1950: +50 (total 1643/2896)
+    offset 2000: +50 (total 1693/2896)
+    offset 2050: +50 (total 1743/2896)
+    offset 2100: +45 (total 1788/2896)
+    offset 2150: +43 (total 1831/2896)
+    offset 2200: +35 (total 1866/2896)
+    offset 2250: +41 (total 1907/2896)
+    offset 2300: +47 (total 1954/2896)
+    offset 2350: +30 (total 1984/2896)
+    offset 2400: +39 (total 2023/2896)
+    offset 2450: +33 (total 2056/2896)
+    offset 2500: +23 (total 2079/2896)
+    offset 2550: +43 (total 2122/2896)
+    offset 2600: +43 (total 2165/2896)
+    offset 2650: +41 (total 2206/2896)
+    offset 2700: +37 (total 2243/2896)
+    offset 2750: +32 (total 2275/2896)
+    offset 2800: +19 (total 2294/2896)
+    offset 2850: +45 (total 2339/2896)
+    offset 2900 empty, stopping
+
+33/2339 already have editorial text; fetching detail-page fallback description for the other 2306 (8 parallel workers)...
+    detail-page descriptions: 250/2306
+    detail-page descriptions: 500/2306
+    detail-page descriptions: 750/2306
+    detail-page descriptions: 1000/2306
+    detail-page descriptions: 1250/2306
+    detail-page descriptions: 1500/2306
+    detail-page descriptions: 1750/2306
+    detail-page descriptions: 2000/2306
+    detail-page descriptions: 2250/2306
+    detail-page descriptions: 2306/2306
+[rent]
+  rent: totalCount=1196
+    offset 50: +50 (total 100/1196)
+    offset 100: +39 (total 139/1196)
+    offset 150: +50 (total 189/1196)
+    offset 200: +50 (total 239/1196)
+    offset 250: +50 (total 289/1196)
+    offset 300: +46 (total 335/1196)
+    offset 350: +50 (total 385/1196)
+    offset 400: +22 (total 407/1196)
+    offset 450: +44 (total 451/1196)
+    offset 500: +18 (total 469/1196)
+    offset 550: +46 (total 515/1196)
+    offset 600: +50 (total 565/1196)
+    offset 650: +36 (total 601/1196)
+    offset 700: +37 (total 638/1196)
+    offset 750: +50 (total 688/1196)
+    offset 800: +28 (total 716/1196)
+    offset 850: +50 (total 766/1196)
+    offset 900: +44 (total 810/1196)
+    offset 950: +44 (total 854/1196)
+    offset 1000: +44 (total 898/1196)
+    offset 1050: +14 (total 912/1196)
+    offset 1100: +49 (total 961/1196)
+    offset 1150: +46 (total 1007/1196)
+    offset 1200 empty, stopping
+
+0/1007 already have editorial text; fetching detail-page fallback description for the other 1007 (8 parallel workers)...
+    detail-page descriptions: 250/1007
+    detail-page descriptions: 500/1007
+    detail-page descriptions: 750/1007
+    detail-page descriptions: 1000/1007
+    detail-page descriptions: 1007/1007
+
+Total rows collected: 3346
+Wrote listings_pulppo_cdmx_v2.csv

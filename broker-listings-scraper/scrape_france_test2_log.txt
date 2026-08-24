@@ -1,0 +1,12 @@
+Loaded 2 broker sites
+
+[1/2] Acheter-Louer.fr -> https://www.acheter-louer.fr/
+  found 21 candidate listing pages
+  extracted 21 listings
+
+[2/2] CoteLittoral.fr -> https://www.cotelittoral.fr/
+  found 60 candidate listing pages
+  extracted 60 listings
+
+Done. 81 listings from 2 sites (skipped 0).
+Workbook: listings_france_test2.xlsx

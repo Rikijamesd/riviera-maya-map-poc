@@ -1,0 +1,145 @@
+Resolved 'Ciudad de Mexico' -> ciudad_id=10243 (Ciudad de México)
+25 property types to sweep
+[1/25] Bodega - Comercial
+    running unique total: 75
+[2/25] Bodega - Industrial
+    running unique total: 117
+[3/25] Casa
+    [Casa] band 0-200000000 hit cap (250), splitting at 100000000
+    [Casa] band 0-100000000 hit cap (250), splitting at 50000000
+    [Casa] band 0-50000000 hit cap (250), splitting at 25000000
+    [Casa] band 0-25000000 hit cap (250), splitting at 12500000
+    [Casa] band 0-12500000 hit cap (250), splitting at 6250000
+    running unique total: 587
+[4/25] Casa - Comercial
+    running unique total: 633
+[5/25] Casa en Condominio
+    running unique total: 757
+[6/25] Centro - Comercial
+    running unique total: 758
+[7/25] Condomino - Comercial
+    running unique total: 758
+[8/25] Consultorio - Comercial
+    running unique total: 783
+[9/25] Departamento
+    ! error on attempt 1 (tipo=3, 0-200000000): Extra data: line 1 column 1054793 (char 1054792)
+    ! error on attempt 2 (tipo=3, 0-200000000): Extra data: line 1 column 1054793 (char 1054792)
+    ! error on attempt 3 (tipo=3, 0-200000000): Extra data: line 1 column 1054793 (char 1054792)
+    ! error on attempt 4 (tipo=3, 0-200000000): Extra data: line 1 column 1054793 (char 1054792)
+    !! GAVE UP on tipo=3 band 0-200000000 after 4 attempts
+    running unique total: 783
+[10/25] Desarrollo
+    ! error on attempt 1 (tipo=6, 0-200000000): Extra data: line 1 column 157917 (char 157916)
+    ! error on attempt 2 (tipo=6, 0-200000000): Extra data: line 1 column 157917 (char 157916)
+    ! error on attempt 3 (tipo=6, 0-200000000): Extra data: line 1 column 157917 (char 157916)
+    ! error on attempt 4 (tipo=6, 0-200000000): Extra data: line 1 column 157917 (char 157916)
+    !! GAVE UP on tipo=6 band 0-200000000 after 4 attempts
+    running unique total: 783
+[11/25] Edificio
+    ! error on attempt 1 (tipo=26, 0-200000000): Extra data: line 1 column 182621 (char 182620)
+    ! error on attempt 2 (tipo=26, 0-200000000): Extra data: line 1 column 182621 (char 182620)
+    ! error on attempt 3 (tipo=26, 0-200000000): Extra data: line 1 column 182621 (char 182620)
+    ! error on attempt 4 (tipo=26, 0-200000000): Extra data: line 1 column 182621 (char 182620)
+    !! GAVE UP on tipo=26 band 0-200000000 after 4 attempts
+    running unique total: 783
+[12/25] Edificio - Comercial
+    ! error on attempt 1 (tipo=13, 0-200000000): Extra data: line 1 column 403090 (char 403089)
+    ! error on attempt 2 (tipo=13, 0-200000000): Extra data: line 1 column 403090 (char 403089)
+    ! error on attempt 3 (tipo=13, 0-200000000): Extra data: line 1 column 403090 (char 403089)
+    ! error on attempt 4 (tipo=13, 0-200000000): Extra data: line 1 column 403090 (char 403089)
+    !! GAVE UP on tipo=13 band 0-200000000 after 4 attempts
+    running unique total: 783
+[13/25] Fábrica - Industrial
+    ! error on attempt 1 (tipo=20, 0-200000000): Extra data: line 1 column 5340 (char 5339)
+    ! error on attempt 2 (tipo=20, 0-200000000): Extra data: line 1 column 5340 (char 5339)
+    ! error on attempt 3 (tipo=20, 0-200000000): Extra data: line 1 column 5340 (char 5339)
+    ! error on attempt 4 (tipo=20, 0-200000000): Extra data: line 1 column 5340 (char 5339)
+    !! GAVE UP on tipo=20 band 0-200000000 after 4 attempts
+    running unique total: 783
+[14/25] Finca/Rancho
+    ! HTTP 500 on attempt 1 (tipo=5, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=5, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=5, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=5, 0-200000000)
+    !! GAVE UP on tipo=5 band 0-200000000 after 4 attempts
+    running unique total: 783
+[15/25] Finca/Rancho - Comercial
+    ! HTTP 500 on attempt 1 (tipo=14, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=14, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=14, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=14, 0-200000000)
+    !! GAVE UP on tipo=14 band 0-200000000 after 4 attempts
+    running unique total: 783
+[16/25] Hospital - Comercial
+    ! error on attempt 1 (tipo=18, 0-200000000): Extra data: line 1 column 20003 (char 20002)
+    ! error on attempt 2 (tipo=18, 0-200000000): Extra data: line 1 column 20003 (char 20002)
+    ! error on attempt 3 (tipo=18, 0-200000000): Extra data: line 1 column 20003 (char 20002)
+    ! error on attempt 4 (tipo=18, 0-200000000): Extra data: line 1 column 20003 (char 20002)
+    !! GAVE UP on tipo=18 band 0-200000000 after 4 attempts
+    running unique total: 783
+[17/25] Hotel - Comercial
+    ! error on attempt 1 (tipo=15, 0-200000000): Extra data: line 1 column 21233 (char 21232)
+    ! error on attempt 2 (tipo=15, 0-200000000): Extra data: line 1 column 21233 (char 21232)
+    ! error on attempt 3 (tipo=15, 0-200000000): Extra data: line 1 column 21233 (char 21232)
+    ! error on attempt 4 (tipo=15, 0-200000000): Extra data: line 1 column 21233 (char 21232)
+    !! GAVE UP on tipo=15 band 0-200000000 after 4 attempts
+    running unique total: 783
+[18/25] Local - Comercial
+    ! error on attempt 1 (tipo=9, 0-200000000): Extra data: line 1 column 635492 (char 635491)
+    ! error on attempt 2 (tipo=9, 0-200000000): Extra data: line 1 column 635492 (char 635491)
+    ! error on attempt 3 (tipo=9, 0-200000000): Extra data: line 1 column 635492 (char 635491)
+    ! error on attempt 4 (tipo=9, 0-200000000): Extra data: line 1 column 635492 (char 635491)
+    !! GAVE UP on tipo=9 band 0-200000000 after 4 attempts
+    running unique total: 783
+[19/25] Nave - Industrial
+    ! error on attempt 1 (tipo=21, 0-200000000): Extra data: line 1 column 9200 (char 9199)
+    ! error on attempt 2 (tipo=21, 0-200000000): Extra data: line 1 column 9200 (char 9199)
+    ! error on attempt 3 (tipo=21, 0-200000000): Extra data: line 1 column 9200 (char 9199)
+    ! error on attempt 4 (tipo=21, 0-200000000): Extra data: line 1 column 9200 (char 9199)
+    !! GAVE UP on tipo=21 band 0-200000000 after 4 attempts
+    running unique total: 783
+[20/25] Oficina - Comercial
+    ! error on attempt 1 (tipo=8, 0-200000000): Extra data: line 1 column 803198 (char 803197)
+    ! error on attempt 2 (tipo=8, 0-200000000): Extra data: line 1 column 803198 (char 803197)
+    ! error on attempt 3 (tipo=8, 0-200000000): Extra data: line 1 column 803198 (char 803197)
+    ! error on attempt 4 (tipo=8, 0-200000000): Extra data: line 1 column 803198 (char 803197)
+    !! GAVE UP on tipo=8 band 0-200000000 after 4 attempts
+    running unique total: 783
+[21/25] Parque - Industrial
+    ! HTTP 500 on attempt 1 (tipo=22, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=22, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=22, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=22, 0-200000000)
+    !! GAVE UP on tipo=22 band 0-200000000 after 4 attempts
+    running unique total: 783
+[22/25] Plaza - Comercial
+    ! HTTP 500 on attempt 1 (tipo=11, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=11, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=11, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=11, 0-200000000)
+    !! GAVE UP on tipo=11 band 0-200000000 after 4 attempts
+    running unique total: 783
+[23/25] Terreno
+    ! error on attempt 1 (tipo=4, 0-200000000): Extra data: line 1 column 302235 (char 302234)
+    ! error on attempt 2 (tipo=4, 0-200000000): Extra data: line 1 column 302235 (char 302234)
+    ! error on attempt 3 (tipo=4, 0-200000000): Extra data: line 1 column 302235 (char 302234)
+    ! error on attempt 4 (tipo=4, 0-200000000): Extra data: line 1 column 302235 (char 302234)
+    !! GAVE UP on tipo=4 band 0-200000000 after 4 attempts
+    running unique total: 783
+[24/25] Terreno - Comercial
+    ! error on attempt 1 (tipo=10, 0-200000000): Extra data: line 1 column 158810 (char 158809)
+    ! error on attempt 2 (tipo=10, 0-200000000): Extra data: line 1 column 158810 (char 158809)
+    ! error on attempt 3 (tipo=10, 0-200000000): Extra data: line 1 column 158810 (char 158809)
+    ! error on attempt 4 (tipo=10, 0-200000000): Extra data: line 1 column 158810 (char 158809)
+    !! GAVE UP on tipo=10 band 0-200000000 after 4 attempts
+    running unique total: 783
+[25/25] Terreno - Industrial
+    ! HTTP 500 on attempt 1 (tipo=23, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=23, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=23, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=23, 0-200000000)
+    !! GAVE UP on tipo=23 band 0-200000000 after 4 attempts
+    running unique total: 783
+
+Total unique listings collected: 783
+Wrote listings_remax_cdmx.csv (783 rows)

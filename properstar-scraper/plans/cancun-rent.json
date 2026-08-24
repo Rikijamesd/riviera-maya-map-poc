@@ -1,0 +1,39 @@
+{
+  "city": "cancun",
+  "country": "mexico",
+  "transaction": "rent",
+  "generated": "2026-08-23T07:07:40+00:00",
+  "city_total": 2347,
+  "retrievable": 2000,
+  "type_totals": {
+    "apartment": 1605,
+    "house": 742
+  },
+  "target_per_band": 950,
+  "projected_calls": 3,
+  "slices": [
+    {
+      "label": "apa <1733",
+      "params": {
+        "property_type": "apartment",
+        "max_price": 1733
+      },
+      "expected": 802
+    },
+    {
+      "label": "apa >1733",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 1733
+      },
+      "expected": 802
+    },
+    {
+      "label": "hou all",
+      "params": {
+        "property_type": "house"
+      },
+      "expected": 742
+    }
+  ]
+}

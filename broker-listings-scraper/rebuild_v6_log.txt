@@ -1,0 +1,201 @@
+C:\Users\rikij\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\PIL\Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Loaded 15492 rows from v5 deduped dataset
+Dropping 6583 old buggy RE/MAX+Century21+Pulppo rows, keeping 8909 other rows
+Loaded 3255 fixed rows from listings_remax_cdmx_v2.csv (3253 with a description, 99.9%)
+Loaded 1817 fixed rows from listings_century21_cdmx_v2.csv (1816 with a description, 99.9%)
+Loaded 3346 fixed rows from listings_pulppo_cdmx_v2.csv (3344 with a description, 99.9%)
+
+Combined raw total: 17327
+Hashing first photo for 17327 listings (24 concurrent downloads, best-effort, skips on failure)...
+  hashed 100/17327
+  hashed 200/17327
+  hashed 300/17327
+  hashed 400/17327
+  hashed 500/17327
+  hashed 600/17327
+  hashed 700/17327
+  hashed 800/17327
+  hashed 900/17327
+  hashed 1000/17327
+  hashed 1100/17327
+  hashed 1200/17327
+  hashed 1300/17327
+  hashed 1400/17327
+  hashed 1500/17327
+  hashed 1600/17327
+  hashed 1700/17327
+  hashed 1800/17327
+  hashed 1900/17327
+  hashed 2000/17327
+  hashed 2100/17327
+  hashed 2200/17327
+  hashed 2300/17327
+  hashed 2400/17327
+  hashed 2500/17327
+  hashed 2600/17327
+  hashed 2700/17327
+  hashed 2800/17327
+  hashed 2900/17327
+  hashed 3000/17327
+  hashed 3100/17327
+  hashed 3200/17327
+  hashed 3300/17327
+  hashed 3400/17327
+  hashed 3500/17327
+  hashed 3600/17327
+  hashed 3700/17327
+  hashed 3800/17327
+  hashed 3900/17327
+  hashed 4000/17327
+  hashed 4100/17327
+  hashed 4200/17327
+  hashed 4300/17327
+  hashed 4400/17327
+  hashed 4500/17327
+  hashed 4600/17327
+  hashed 4700/17327
+  hashed 4800/17327
+  hashed 4900/17327
+  hashed 5000/17327
+  hashed 5100/17327
+  hashed 5200/17327
+  hashed 5300/17327
+  hashed 5400/17327
+  hashed 5500/17327
+  hashed 5600/17327
+  hashed 5700/17327
+  hashed 5800/17327
+  hashed 5900/17327
+  hashed 6000/17327
+  hashed 6100/17327
+  hashed 6200/17327
+  hashed 6300/17327
+  hashed 6400/17327
+  hashed 6500/17327
+  hashed 6600/17327
+  hashed 6700/17327
+  hashed 6800/17327
+  hashed 6900/17327
+  hashed 7000/17327
+  hashed 7100/17327
+  hashed 7200/17327
+  hashed 7300/17327
+  hashed 7400/17327
+  hashed 7500/17327
+  hashed 7600/17327
+  hashed 7700/17327
+  hashed 7800/17327
+  hashed 7900/17327
+  hashed 8000/17327
+  hashed 8100/17327
+  hashed 8200/17327
+  hashed 8300/17327
+  hashed 8400/17327
+  hashed 8500/17327
+  hashed 8600/17327
+  hashed 8700/17327
+  hashed 8800/17327
+  hashed 8900/17327
+  hashed 9000/17327
+  hashed 9100/17327
+  hashed 9200/17327
+  hashed 9300/17327
+  hashed 9400/17327
+  hashed 9500/17327
+  hashed 9600/17327
+  hashed 9700/17327
+  hashed 9800/17327
+  hashed 9900/17327
+  hashed 10000/17327
+  hashed 10100/17327
+  hashed 10200/17327
+  hashed 10300/17327
+  hashed 10400/17327
+  hashed 10500/17327
+  hashed 10600/17327
+  hashed 10700/17327
+  hashed 10800/17327
+  hashed 10900/17327
+  hashed 11000/17327
+  hashed 11100/17327
+  hashed 11200/17327
+  hashed 11300/17327
+  hashed 11400/17327
+  hashed 11500/17327
+  hashed 11600/17327
+  hashed 11700/17327
+  hashed 11800/17327
+  hashed 11900/17327
+  hashed 12000/17327
+  hashed 12100/17327
+  hashed 12200/17327
+  hashed 12300/17327
+  hashed 12400/17327
+  hashed 12500/17327
+  hashed 12600/17327
+  hashed 12700/17327
+  hashed 12800/17327
+  hashed 12900/17327
+  hashed 13000/17327
+  hashed 13100/17327
+  hashed 13200/17327
+  hashed 13300/17327
+  hashed 13400/17327
+  hashed 13500/17327
+  hashed 13600/17327
+  hashed 13700/17327
+  hashed 13800/17327
+  hashed 13900/17327
+  hashed 14000/17327
+  hashed 14100/17327
+  hashed 14200/17327
+  hashed 14300/17327
+  hashed 14400/17327
+  hashed 14500/17327
+  hashed 14600/17327
+  hashed 14700/17327
+  hashed 14800/17327
+  hashed 14900/17327
+  hashed 15000/17327
+  hashed 15100/17327
+  hashed 15200/17327
+  hashed 15300/17327
+  hashed 15400/17327
+  hashed 15500/17327
+  hashed 15600/17327
+  hashed 15700/17327
+  hashed 15800/17327
+  hashed 15900/17327
+  hashed 16000/17327
+  hashed 16100/17327
+  hashed 16200/17327
+  hashed 16300/17327
+  hashed 16400/17327
+  hashed 16500/17327
+  hashed 16600/17327
+  hashed 16700/17327
+  hashed 16800/17327
+  hashed 16900/17327
+  hashed 17000/17327
+  hashed 17100/17327
+  hashed 17200/17327
+  hashed 17300/17327
+Deduped to 15522 unique listings (1805 duplicates merged)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_all_regions_deduped_v6.xlsx
+Dropped 926 unrelated-region rows; kept 14596
+
+Region counts (rows can match >1 region):
+  Cancun: 958
+  Playa del Carmen: 1028
+  Puerto Morelos: 193
+  Tulum: 2215
+  Puerto Vallarta: 106
+  Baja California Sur: 214
+  Mexico City: 8196
+  Other Riviera Maya: 3550
+  Puerto Escondido: 37
+  No Location Signal: 2712
+
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\all_regions_listings_filtered_v6.csv (14596 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_mexico_city_v6.csv (8196 rows)

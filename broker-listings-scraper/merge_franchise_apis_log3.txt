@@ -1,0 +1,182 @@
+C:\Users\rikij\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\PIL\Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Loaded 12881 rows from existing all-regions deduped dataset (v4: base + RE/MAX + Century21 + Pulppo)
+Loaded 2967 rows from AMPI independent-broker scrape
+Combined raw total: 15848
+Hashing first photo for 15848 listings (24 concurrent downloads, best-effort, skips on failure)...
+  hashed 100/15848
+  hashed 200/15848
+  hashed 300/15848
+  hashed 400/15848
+  hashed 500/15848
+  hashed 600/15848
+  hashed 700/15848
+  hashed 800/15848
+  hashed 900/15848
+  hashed 1000/15848
+  hashed 1100/15848
+  hashed 1200/15848
+  hashed 1300/15848
+  hashed 1400/15848
+  hashed 1500/15848
+  hashed 1600/15848
+  hashed 1700/15848
+  hashed 1800/15848
+  hashed 1900/15848
+  hashed 2000/15848
+  hashed 2100/15848
+  hashed 2200/15848
+  hashed 2300/15848
+  hashed 2400/15848
+  hashed 2500/15848
+  hashed 2600/15848
+  hashed 2700/15848
+  hashed 2800/15848
+  hashed 2900/15848
+  hashed 3000/15848
+  hashed 3100/15848
+  hashed 3200/15848
+  hashed 3300/15848
+  hashed 3400/15848
+  hashed 3500/15848
+  hashed 3600/15848
+  hashed 3700/15848
+  hashed 3800/15848
+  hashed 3900/15848
+  hashed 4000/15848
+  hashed 4100/15848
+  hashed 4200/15848
+  hashed 4300/15848
+  hashed 4400/15848
+  hashed 4500/15848
+  hashed 4600/15848
+  hashed 4700/15848
+  hashed 4800/15848
+  hashed 4900/15848
+  hashed 5000/15848
+  hashed 5100/15848
+  hashed 5200/15848
+  hashed 5300/15848
+  hashed 5400/15848
+  hashed 5500/15848
+  hashed 5600/15848
+  hashed 5700/15848
+  hashed 5800/15848
+  hashed 5900/15848
+  hashed 6000/15848
+  hashed 6100/15848
+  hashed 6200/15848
+  hashed 6300/15848
+  hashed 6400/15848
+  hashed 6500/15848
+  hashed 6600/15848
+  hashed 6700/15848
+  hashed 6800/15848
+  hashed 6900/15848
+  hashed 7000/15848
+  hashed 7100/15848
+  hashed 7200/15848
+  hashed 7300/15848
+  hashed 7400/15848
+  hashed 7500/15848
+  hashed 7600/15848
+  hashed 7700/15848
+  hashed 7800/15848
+  hashed 7900/15848
+  hashed 8000/15848
+  hashed 8100/15848
+  hashed 8200/15848
+  hashed 8300/15848
+  hashed 8400/15848
+  hashed 8500/15848
+  hashed 8600/15848
+  hashed 8700/15848
+  hashed 8800/15848
+  hashed 8900/15848
+  hashed 9000/15848
+  hashed 9100/15848
+  hashed 9200/15848
+  hashed 9300/15848
+  hashed 9400/15848
+  hashed 9500/15848
+  hashed 9600/15848
+  hashed 9700/15848
+  hashed 9800/15848
+  hashed 9900/15848
+  hashed 10000/15848
+  hashed 10100/15848
+  hashed 10200/15848
+  hashed 10300/15848
+  hashed 10400/15848
+  hashed 10500/15848
+  hashed 10600/15848
+  hashed 10700/15848
+  hashed 10800/15848
+  hashed 10900/15848
+  hashed 11000/15848
+  hashed 11100/15848
+  hashed 11200/15848
+  hashed 11300/15848
+  hashed 11400/15848
+  hashed 11500/15848
+  hashed 11600/15848
+  hashed 11700/15848
+  hashed 11800/15848
+  hashed 11900/15848
+  hashed 12000/15848
+  hashed 12100/15848
+  hashed 12200/15848
+  hashed 12300/15848
+  hashed 12400/15848
+  hashed 12500/15848
+  hashed 12600/15848
+  hashed 12700/15848
+  hashed 12800/15848
+  hashed 12900/15848
+  hashed 13000/15848
+  hashed 13100/15848
+  hashed 13200/15848
+  hashed 13300/15848
+  hashed 13400/15848
+  hashed 13500/15848
+  hashed 13600/15848
+  hashed 13700/15848
+  hashed 13800/15848
+  hashed 13900/15848
+  hashed 14000/15848
+  hashed 14100/15848
+  hashed 14200/15848
+  hashed 14300/15848
+  hashed 14400/15848
+  hashed 14500/15848
+  hashed 14600/15848
+  hashed 14700/15848
+  hashed 14800/15848
+  hashed 14900/15848
+  hashed 15000/15848
+  hashed 15100/15848
+  hashed 15200/15848
+  hashed 15300/15848
+  hashed 15400/15848
+  hashed 15500/15848
+  hashed 15600/15848
+  hashed 15700/15848
+  hashed 15800/15848
+Deduped to 15492 unique listings (356 duplicates merged)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_all_regions_deduped_v5.xlsx
+Dropped 926 unrelated-region rows; kept 14566
+
+Region counts (rows can match >1 region):
+  Cancun: 958
+  Playa del Carmen: 1028
+  Puerto Morelos: 193
+  Tulum: 2215
+  Puerto Vallarta: 105
+  Baja California Sur: 190
+  Mexico City: 8164
+  Other Riviera Maya: 3550
+  Puerto Escondido: 37
+  No Location Signal: 2713
+
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\all_regions_listings_filtered_v5.csv (14566 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_mexico_city.csv (8164 rows)

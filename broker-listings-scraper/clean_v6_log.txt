@@ -1,0 +1,49 @@
+Starting rows: 14596
+
+Funnel so far:
+  Start: 14596
+  Drop Unclassified sale/rent: 14133
+  Residential property type only: 6993
+  Has description: 6815
+  Has at least one image: 6806
+  Has city: 5813
+  Has bedrooms: 5683
+  Has bathrooms: 5610
+  Valid currency (MXN/USD only): 5596
+  Valid positive price: 5585
+  Drop residual duplicate URLs (11 found): 5574
+
+Before price-outlier trim: resale=4864, rental=710
+
+Price-outlier trim (drop bottom/top 1% per currency):
+  resale_properties / MXN: kept range [1,400,000 - 66,990,000], 4164 -> 4084
+  resale_properties / USD: kept range [1,000 - 80,318,344], 700 -> 692
+  rental / MXN: kept range [7,000 - 330,000], 510 -> 500
+  rental / USD: kept range [900 - 23,000,000], 200 -> 197
+
+FINAL: resale_properties = 4776, rental = 697, total = 5473
+
+Wrote resale_properties_clean.csv and rental_properties_clean.csv
+
+resale_properties by region:
+  Mexico City: 4122
+  Other Riviera Maya: 661
+  Tulum: 408
+  Playa del Carmen: 190
+  Cancun: 136
+  Baja California Sur: 75
+  No Location Signal: 63
+  Puerto Morelos: 25
+  Puerto Escondido: 10
+  Puerto Vallarta: 3
+
+rental by region:
+  Mexico City: 444
+  Other Riviera Maya: 260
+  Tulum: 158
+  Cancun: 67
+  Playa del Carmen: 58
+  Puerto Escondido: 12
+  Puerto Morelos: 7
+  No Location Signal: 3
+  Baja California Sur: 2

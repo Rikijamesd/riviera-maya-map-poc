@@ -1,0 +1,147 @@
+Resolved 'Ciudad de Mexico' -> ciudad_id=10243 (Ciudad de México)
+25 property types to sweep
+[1/25] Bodega - Comercial
+    running unique total: 74
+[2/25] Bodega - Industrial
+    running unique total: 116
+[3/25] Casa
+    [Casa] band 0-200000000 hit cap (250), splitting at 100000000
+    [Casa] band 0-100000000 hit cap (250), splitting at 50000000
+    [Casa] band 0-50000000 hit cap (250), splitting at 25000000
+    [Casa] band 0-25000000 hit cap (250), splitting at 12500000
+    [Casa] band 0-12500000 hit cap (250), splitting at 6250000
+    running unique total: 586
+[4/25] Casa - Comercial
+    running unique total: 631
+[5/25] Casa en Condominio
+    running unique total: 756
+[6/25] Centro - Comercial
+    running unique total: 757
+[7/25] Condomino - Comercial
+    running unique total: 757
+[8/25] Consultorio - Comercial
+    running unique total: 782
+[9/25] Departamento
+    [Departamento] band 0-200000000 hit cap (250), splitting at 100000000
+    [Departamento] band 0-100000000 hit cap (250), splitting at 50000000
+    [Departamento] band 0-50000000 hit cap (250), splitting at 25000000
+    [Departamento] band 0-25000000 hit cap (250), splitting at 12500000
+    [Departamento] band 0-12500000 hit cap (250), splitting at 6250000
+    [Departamento] band 0-6250000 hit cap (250), splitting at 3125000
+    [Departamento] band 0-3125000 hit cap (250), splitting at 1562500
+    [Departamento] band 0-1562500 hit cap (250), splitting at 781250
+    [Departamento] band 0-781250 hit cap (250), splitting at 390625
+    [Departamento] band 0-390625 hit cap (250), splitting at 195312
+    [Departamento] band 0-195312 hit cap (250), splitting at 97656
+    ! HTTP 500 on attempt 1 (tipo=3, 195312.5-390625.0)
+    ! HTTP 500 on attempt 2 (tipo=3, 195312.5-390625.0)
+    ! HTTP 500 on attempt 3 (tipo=3, 195312.5-390625.0)
+    ! HTTP 500 on attempt 4 (tipo=3, 195312.5-390625.0)
+    !! GAVE UP on tipo=3 band 195312.5-390625.0 after 4 attempts
+    ! HTTP 500 on attempt 1 (tipo=3, 390625.0-781250.0)
+    ! HTTP 500 on attempt 2 (tipo=3, 390625.0-781250.0)
+    ! HTTP 500 on attempt 3 (tipo=3, 390625.0-781250.0)
+    ! HTTP 500 on attempt 4 (tipo=3, 390625.0-781250.0)
+    !! GAVE UP on tipo=3 band 390625.0-781250.0 after 4 attempts
+    [Departamento] band 3125000-6250000 hit cap (250), splitting at 4687500
+    [Departamento] band 6250000-12500000 hit cap (250), splitting at 9375000
+    ! HTTP 500 on attempt 1 (tipo=3, 100000000.0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=3, 100000000.0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=3, 100000000.0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=3, 100000000.0-200000000)
+    !! GAVE UP on tipo=3 band 100000000.0-200000000 after 4 attempts
+    running unique total: 2035
+[10/25] Desarrollo
+    running unique total: 2079
+[11/25] Edificio
+    running unique total: 2124
+[12/25] Edificio - Comercial
+    running unique total: 2211
+[13/25] Fábrica - Industrial
+    running unique total: 2212
+[14/25] Finca/Rancho
+    ! HTTP 500 on attempt 1 (tipo=5, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=5, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=5, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=5, 0-200000000)
+    !! GAVE UP on tipo=5 band 0-200000000 after 4 attempts
+    running unique total: 2212
+[15/25] Finca/Rancho - Comercial
+    ! HTTP 500 on attempt 1 (tipo=14, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=14, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=14, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=14, 0-200000000)
+    !! GAVE UP on tipo=14 band 0-200000000 after 4 attempts
+    running unique total: 2212
+[16/25] Hospital - Comercial
+    running unique total: 2218
+[17/25] Hotel - Comercial
+    running unique total: 2223
+[18/25] Local - Comercial
+    running unique total: 2450
+[19/25] Nave - Industrial
+    running unique total: 2453
+[20/25] Oficina - Comercial
+    [Oficina - Comercial] band 0-200000000 hit cap (250), splitting at 100000000
+    [Oficina - Comercial] band 0-100000000 hit cap (250), splitting at 50000000
+    [Oficina - Comercial] band 0-50000000 hit cap (250), splitting at 25000000
+    [Oficina - Comercial] band 0-25000000 hit cap (250), splitting at 12500000
+    [Oficina - Comercial] band 0-12500000 hit cap (250), splitting at 6250000
+    [Oficina - Comercial] band 0-6250000 hit cap (250), splitting at 3125000
+    [Oficina - Comercial] band 0-3125000 hit cap (250), splitting at 1562500
+    [Oficina - Comercial] band 0-1562500 hit cap (250), splitting at 781250
+    [Oficina - Comercial] band 0-781250 hit cap (250), splitting at 390625
+    [Oficina - Comercial] band 0-390625 hit cap (250), splitting at 195312
+    [Oficina - Comercial] band 0-195312 hit cap (250), splitting at 97656
+    [Oficina - Comercial] band 0-97656 hit cap (250), splitting at 48828
+    [Oficina - Comercial] band 0-48828 hit cap (250), splitting at 24414
+    ! HTTP 500 on attempt 1 (tipo=8, 100000000.0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=8, 100000000.0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=8, 100000000.0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=8, 100000000.0-200000000)
+    !! GAVE UP on tipo=8 band 100000000.0-200000000 after 4 attempts
+    running unique total: 3083
+[21/25] Parque - Industrial
+    ! HTTP 500 on attempt 1 (tipo=22, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=22, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=22, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=22, 0-200000000)
+    !! GAVE UP on tipo=22 band 0-200000000 after 4 attempts
+    running unique total: 3083
+[22/25] Plaza - Comercial
+    ! HTTP 500 on attempt 1 (tipo=11, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=11, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=11, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=11, 0-200000000)
+    !! GAVE UP on tipo=11 band 0-200000000 after 4 attempts
+    running unique total: 3083
+[23/25] Terreno
+    running unique total: 3197
+[24/25] Terreno - Comercial
+    running unique total: 3255
+[25/25] Terreno - Industrial
+    ! HTTP 500 on attempt 1 (tipo=23, 0-200000000)
+    ! HTTP 500 on attempt 2 (tipo=23, 0-200000000)
+    ! HTTP 500 on attempt 3 (tipo=23, 0-200000000)
+    ! HTTP 500 on attempt 4 (tipo=23, 0-200000000)
+    !! GAVE UP on tipo=23 band 0-200000000 after 4 attempts
+    running unique total: 3255
+
+Total unique listings collected: 3255
+
+Fetching descriptions for 3255 listings (8 parallel workers)...
+    descriptions: 250/3255
+    descriptions: 500/3255
+    descriptions: 750/3255
+    descriptions: 1000/3255
+    descriptions: 1250/3255
+    descriptions: 1500/3255
+    descriptions: 1750/3255
+    descriptions: 2000/3255
+    descriptions: 2250/3255
+    descriptions: 2500/3255
+    descriptions: 2750/3255
+    descriptions: 3000/3255
+    descriptions: 3250/3255
+    descriptions: 3255/3255
+Wrote listings_remax_cdmx_v2.csv (3255 rows)

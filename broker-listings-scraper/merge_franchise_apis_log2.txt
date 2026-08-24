@@ -1,0 +1,159 @@
+C:\Users\rikij\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\PIL\Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Loaded 10211 rows from existing all-regions deduped dataset (v3: base + RE/MAX + Century21)
+Loaded 3344 rows from Pulppo API
+Combined raw total: 13555
+Hashing first photo for 13555 listings (24 concurrent downloads, best-effort, skips on failure)...
+  hashed 100/13555
+  hashed 200/13555
+  hashed 300/13555
+  hashed 400/13555
+  hashed 500/13555
+  hashed 600/13555
+  hashed 700/13555
+  hashed 800/13555
+  hashed 900/13555
+  hashed 1000/13555
+  hashed 1100/13555
+  hashed 1200/13555
+  hashed 1300/13555
+  hashed 1400/13555
+  hashed 1500/13555
+  hashed 1600/13555
+  hashed 1700/13555
+  hashed 1800/13555
+  hashed 1900/13555
+  hashed 2000/13555
+  hashed 2100/13555
+  hashed 2200/13555
+  hashed 2300/13555
+  hashed 2400/13555
+  hashed 2500/13555
+  hashed 2600/13555
+  hashed 2700/13555
+  hashed 2800/13555
+  hashed 2900/13555
+  hashed 3000/13555
+  hashed 3100/13555
+  hashed 3200/13555
+  hashed 3300/13555
+  hashed 3400/13555
+  hashed 3500/13555
+  hashed 3600/13555
+  hashed 3700/13555
+  hashed 3800/13555
+  hashed 3900/13555
+  hashed 4000/13555
+  hashed 4100/13555
+  hashed 4200/13555
+  hashed 4300/13555
+  hashed 4400/13555
+  hashed 4500/13555
+  hashed 4600/13555
+  hashed 4700/13555
+  hashed 4800/13555
+  hashed 4900/13555
+  hashed 5000/13555
+  hashed 5100/13555
+  hashed 5200/13555
+  hashed 5300/13555
+  hashed 5400/13555
+  hashed 5500/13555
+  hashed 5600/13555
+  hashed 5700/13555
+  hashed 5800/13555
+  hashed 5900/13555
+  hashed 6000/13555
+  hashed 6100/13555
+  hashed 6200/13555
+  hashed 6300/13555
+  hashed 6400/13555
+  hashed 6500/13555
+  hashed 6600/13555
+  hashed 6700/13555
+  hashed 6800/13555
+  hashed 6900/13555
+  hashed 7000/13555
+  hashed 7100/13555
+  hashed 7200/13555
+  hashed 7300/13555
+  hashed 7400/13555
+  hashed 7500/13555
+  hashed 7600/13555
+  hashed 7700/13555
+  hashed 7800/13555
+  hashed 7900/13555
+  hashed 8000/13555
+  hashed 8100/13555
+  hashed 8200/13555
+  hashed 8300/13555
+  hashed 8400/13555
+  hashed 8500/13555
+  hashed 8600/13555
+  hashed 8700/13555
+  hashed 8800/13555
+  hashed 8900/13555
+  hashed 9000/13555
+  hashed 9100/13555
+  hashed 9200/13555
+  hashed 9300/13555
+  hashed 9400/13555
+  hashed 9500/13555
+  hashed 9600/13555
+  hashed 9700/13555
+  hashed 9800/13555
+  hashed 9900/13555
+  hashed 10000/13555
+  hashed 10100/13555
+  hashed 10200/13555
+  hashed 10300/13555
+  hashed 10400/13555
+  hashed 10500/13555
+  hashed 10600/13555
+  hashed 10700/13555
+  hashed 10800/13555
+  hashed 10900/13555
+  hashed 11000/13555
+  hashed 11100/13555
+  hashed 11200/13555
+  hashed 11300/13555
+  hashed 11400/13555
+  hashed 11500/13555
+  hashed 11600/13555
+  hashed 11700/13555
+  hashed 11800/13555
+  hashed 11900/13555
+  hashed 12000/13555
+  hashed 12100/13555
+  hashed 12200/13555
+  hashed 12300/13555
+  hashed 12400/13555
+  hashed 12500/13555
+  hashed 12600/13555
+  hashed 12700/13555
+  hashed 12800/13555
+  hashed 12900/13555
+  hashed 13000/13555
+  hashed 13100/13555
+  hashed 13200/13555
+  hashed 13300/13555
+  hashed 13400/13555
+  hashed 13500/13555
+Deduped to 12881 unique listings (674 duplicates merged)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_all_regions_deduped_v4.xlsx
+Dropped 831 unrelated-region rows; kept 12050
+
+Region counts (rows can match >1 region):
+  Cancun: 938
+  Playa del Carmen: 1002
+  Puerto Morelos: 180
+  Tulum: 2077
+  Puerto Vallarta: 101
+  Baja California Sur: 103
+  Mexico City: 7042
+  Other Riviera Maya: 3355
+  Puerto Escondido: 33
+  No Location Signal: 1527
+
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\all_regions_listings_filtered_v4.csv (12050 rows)
+Wrote C:\Users\rikij\Desktop\Claude Code\Development\Projects\riviera-maya-map-poc\broker-listings-scraper\listings_mexico_city.csv (7042 rows)

@@ -1,0 +1,28 @@
+{
+  "city": "mexico-city",
+  "country": "mexico",
+  "transaction": "rent",
+  "generated": "2026-08-23T14:16:52+00:00",
+  "city_total": 4137,
+  "retrievable": 2000,
+  "type_totals": {
+    "apartment": 3238,
+    "house": 899
+  },
+  "types_planned": [
+    "apartment"
+  ],
+  "target_per_band": 950,
+  "projected_calls": 1,
+  "slices": [
+    {
+      "label": "apa 827-1213",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 827,
+        "max_price": 1213
+      },
+      "expected": 810
+    }
+  ]
+}

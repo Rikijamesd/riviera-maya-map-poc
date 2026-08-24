@@ -1,0 +1,89 @@
+{
+  "city": "tulum",
+  "country": "mexico",
+  "transaction": "buy",
+  "generated": "2026-08-23T14:03:22+00:00",
+  "city_total": 8509,
+  "retrievable": 2000,
+  "type_totals": {
+    "apartment": 6792,
+    "house": 1717
+  },
+  "types_planned": [
+    "apartment"
+  ],
+  "target_per_band": 950,
+  "projected_calls": 8,
+  "slices": [
+    {
+      "label": "apa <91k",
+      "params": {
+        "property_type": "apartment",
+        "max_price": 91000
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa 91k-110k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 91000,
+        "max_price": 110499
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa 110k-136k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 110499,
+        "max_price": 136572
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa 136k-160k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 136572,
+        "max_price": 160285
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa 160k-194k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 160285,
+        "max_price": 194903
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa 194k-238k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 194903,
+        "max_price": 238202
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa 238k-339k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 238202,
+        "max_price": 339515
+      },
+      "expected": 849
+    },
+    {
+      "label": "apa >339k",
+      "params": {
+        "property_type": "apartment",
+        "min_price": 339515
+      },
+      "expected": 849
+    }
+  ]
+}

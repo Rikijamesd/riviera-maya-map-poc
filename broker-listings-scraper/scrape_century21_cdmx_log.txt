@@ -1,0 +1,26 @@
+[venta]
+  venta: totalHits=1434
+    page 2: +100 (total 200/1434)
+    page 3: +100 (total 300/1434)
+    page 4: +100 (total 400/1434)
+    page 5: +100 (total 500/1434)
+    page 6: +100 (total 600/1434)
+    page 7: +100 (total 700/1434)
+    page 8: +100 (total 800/1434)
+    page 9: +100 (total 900/1434)
+    page 10: +100 (total 1000/1434)
+    page 11: +100 (total 1100/1434)
+    page 12: +100 (total 1200/1434)
+    page 13: +100 (total 1300/1434)
+    page 14: +95 (total 1395/1434)
+    page 15: +6 (total 1401/1434)
+    page 16 empty, stopping
+[renta]
+  renta: totalHits=420
+    page 2: +100 (total 200/420)
+    page 3: +100 (total 300/420)
+    page 4: +100 (total 400/420)
+    page 5: +20 (total 420/420)
+
+Total rows collected: 1821
+Wrote listings_century21_cdmx.csv
