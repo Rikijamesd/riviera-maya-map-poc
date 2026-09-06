@@ -3,9 +3,13 @@
 Derivation, matching the conventions already used in tlrm's resale_listings import
 scripts (see tlrm/import-resale-bcs.mjs):
   - size_m2 = size_sqft / 10.7639
-  - price_usd = parse "CUR amount" out of the raw price string, convert via the same
-    RATES_PER_USD table tlrm's importers use. This dataset is 100% GBP (scraped from
-    properstar.co.uk), confirmed by scanning every row before writing this script.
+  - price_usd = parse "CUR amount" out of the raw price string, convert via live rates
+    fetched from the same free ECB-backed API tlrm's /api/rates endpoint uses (falls
+    back to a fixed table only if that fetch fails). This dataset is 100% GBP (scraped
+    from properstar.co.uk), confirmed by scanning every row before writing this script.
+    A one-time hardcoded rate table lived here previously and was never updated - GBP
+    alone drifted ~6% off real-world rates (a ~$635k gap on one $8.5M listing) before
+    it was caught, which is why this now fetches live instead.
   - price_per_m2 = price_usd / size_m2, only when both exist
   - province: a straight city -> state lookup. Unlike tlrm's BCS/Nayarit imports (one
     broad regional scrape needing town-name regex matching per row), this dataset was
@@ -23,6 +27,7 @@ import json
 import os
 import re
 
+import requests
 import truststore
 
 truststore.inject_into_ssl()
@@ -35,7 +40,28 @@ load_dotenv(os.path.join(os.path.dirname(__file__), "..", "cancun-ingestion", ".
 BATCH_SIZE = 200
 SQFT_PER_M2 = 10.7639
 
-RATES_PER_USD = {"USD": 1, "MXN": 18.5, "EUR": 0.92, "GBP": 0.79, "CAD": 1.37, "COP": 4100}
+FALLBACK_RATES_PER_USD = {"USD": 1, "MXN": 18.5, "EUR": 0.92, "GBP": 0.79, "CAD": 1.37, "COP": 4100}
+
+
+def fetch_live_rates() -> dict[str, float]:
+    try:
+        resp = requests.get(
+            "https://api.frankfurter.app/latest",
+            params={"from": "USD", "to": "MXN,GBP,EUR,CAD"},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        rates = resp.json().get("rates")
+        if not rates:
+            raise ValueError("no rates in response")
+        print(f"Using live exchange rates: {rates}")
+        return {"USD": 1, "COP": FALLBACK_RATES_PER_USD["COP"], **rates}
+    except Exception as exc:  # noqa: BLE001 - any failure here should just fall back
+        print(f"Live rate fetch failed ({exc}), using fixed fallback rates")
+        return FALLBACK_RATES_PER_USD
+
+
+RATES_PER_USD = fetch_live_rates()
 
 CITY_PROVINCE = {
     "tulum": "Quintana Roo",
