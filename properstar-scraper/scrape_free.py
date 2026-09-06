@@ -42,8 +42,15 @@ FIELDS = [
 
 
 def format_price(price: dict) -> str:
+    """Prefer Properstar's own type: "Original" entry (the agent's real listed
+    price/currency) over type: "Converted" ones like GBP, which are live
+    currency-display conversions that drift independent of the real price -
+    see scrape_properstar.py's format_price() for the full story."""
     values = [v for v in price.get("values", [])
               if v.get("currencyId") and v.get("value") is not None]
+    for v in values:
+        if v.get("type") == "Original":
+            return f"{v['currencyId']} {v['value']:,.0f}"
     for v in values:
         if v["currencyId"] == "GBP":
             return f"GBP {v['value']:,.0f}"

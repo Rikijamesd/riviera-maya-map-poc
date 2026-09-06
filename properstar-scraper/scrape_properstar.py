@@ -94,7 +94,20 @@ def fetch_search_page(page_num: int, cookies: dict[str, str]) -> str:
 
 
 def format_price(price: dict) -> str:
+    """Properstar's own price.values array tags exactly one entry
+    type: "Original" (the agent's real listed price/currency - MXN, USD,
+    whatever they used) and the rest type: "Converted" (live currency-display
+    conversions, e.g. GBP for this .co.uk domain, that drift day to day
+    independent of the real price). This used to just grab GBP whenever
+    present, discarding the real price for a moving-target display value -
+    confirmed live: one listing's "Original" was MXN 145,000,000 while its
+    "Converted" GBP figure alone drifted ~$92k in under a month. Always
+    prefer Original; GBP is the fallback only if a listing has no Original
+    entry at all."""
     values = [v for v in price.get("values", []) if v.get("currencyId") and v.get("value") is not None]
+    for v in values:
+        if v.get("type") == "Original":
+            return f"{v['currencyId']} {v['value']:,.0f}"
     for v in values:
         if v["currencyId"] == "GBP":
             return f"GBP {v['value']:,.0f}"
