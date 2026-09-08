@@ -207,7 +207,11 @@ def bisect_slice(s: dict) -> tuple[dict, dict] | None:
             return None  # band too narrow (adjacent prices) to split further
 
     def make(new_lo: int | None, new_hi: int | None, suffix: str) -> dict:
-        p = {"property_type": params["property_type"]}
+        # Carry every non-price filter through the split. This used to read
+        # params["property_type"] directly, which crashed on a plan whose slices
+        # band on price alone -- and silently assumed a type filter was present.
+        p = {k: v for k, v in params.items()
+             if k not in ("min_price", "max_price")}
         if new_lo is not None:
             p["min_price"] = new_lo
         if new_hi is not None:

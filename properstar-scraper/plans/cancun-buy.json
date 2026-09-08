@@ -2,78 +2,53 @@
   "city": "cancun",
   "country": "mexico",
   "transaction": "buy",
-  "generated": "2026-09-08T10:39:59+00:00",
+  "generated": "2026-09-08T11:50:23+00:00",
   "city_total": 9213,
   "retrievable": 2000,
-  "type_totals": {
-    "apartment": 5625,
-    "house": 3588
-  },
-  "types_planned": [
-    "apartment",
-    "house"
-  ],
-  "target_per_band": 1650,
-  "projected_calls": 7,
+  "target_per_band": 1900,
+  "calibration": "exact counts from Properstar's backend search API (0 credits)",
+  "projected_calls": 5,
   "slices": [
     {
-      "label": "apa <177k",
+      "label": "apa <237k",
       "params": {
         "property_type": "apartment",
-        "max_price": 177881
+        "max_price": 237304
       },
-      "expected": 1406
+      "expected": 1900
     },
     {
-      "label": "apa 177k-371k",
+      "label": "apa 237k-559k",
       "params": {
         "property_type": "apartment",
-        "min_price": 177881,
-        "max_price": 371040
+        "min_price": 237304,
+        "max_price": 559550
       },
-      "expected": 1406
+      "expected": 1911
     },
     {
-      "label": "apa 371k-851k",
+      "label": "apa >559k",
       "params": {
         "property_type": "apartment",
-        "min_price": 371040,
-        "max_price": 851208
+        "min_price": 559550
       },
-      "expected": 1406
+      "expected": 1814
     },
     {
-      "label": "apa >851k",
-      "params": {
-        "property_type": "apartment",
-        "min_price": 851208
-      },
-      "expected": 1406
-    },
-    {
-      "label": "hou <192k",
+      "label": "hou <229k",
       "params": {
         "property_type": "house",
-        "max_price": 192068
+        "max_price": 229491
       },
-      "expected": 1196
+      "expected": 1917
     },
     {
-      "label": "hou 192k-567k",
+      "label": "hou >229k",
       "params": {
         "property_type": "house",
-        "min_price": 192068,
-        "max_price": 567472
+        "min_price": 229491
       },
-      "expected": 1196
-    },
-    {
-      "label": "hou >567k",
-      "params": {
-        "property_type": "house",
-        "min_price": 567472
-      },
-      "expected": 1196
+      "expected": 1671
     }
   ]
 }

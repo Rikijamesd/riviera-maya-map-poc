@@ -70,13 +70,24 @@ def format_location(loc: dict) -> str:
 
 
 def size_sqft(area: dict) -> float | None:
+    """Living area in sqft, falling back to total area.
+
+    Properstar publishes either `living` or `total` depending on the listing --
+    the backend search API mostly sends `total` only. Reading `living` alone
+    returned null on properties that plainly had a size (a 707 m2 penthouse
+    among them), which then blocked price-per-m2 and the quality flags."""
+    def pick(d):
+        return d.get("living") if d.get("living") is not None else d.get("total")
+
     for v in area.get("values", []):
-        if v.get("unit", {}).get("id") == "SquareFoot" and v.get("living") is not None:
-            return v["living"]
-    living = area.get("living")
-    if living is not None and area.get("unit", {}).get("id") == "SquareMeter":
-        return round(living * SQFT_PER_SQM, 2)
-    return living
+        if v.get("unit", {}).get("id") == "SquareFoot":
+            val = pick(v)
+            if val is not None:
+                return val
+    val = pick(area)
+    if val is not None and area.get("unit", {}).get("id") == "SquareMeter":
+        return round(val * SQFT_PER_SQM, 2)
+    return val
 
 
 def advertiser(listing: dict, accounts: dict) -> str:
@@ -194,8 +205,14 @@ def main() -> None:
 
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(rows, f, ensure_ascii=False, indent=2)
+    # Merged runs can carry rows collected by fetch_city.py, whose parse.bot
+    # payload has fields this scraper never produces (e.g. is_project). Widen
+    # the header to cover them rather than dropping the columns -- DictWriter
+    # raises on an unknown key, which used to kill the write *after* the JSON
+    # had already been saved, leaving the two outputs out of sync.
+    extra = sorted({k for r in rows for k in r} - set(FIELDS))
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
+        w = csv.DictWriter(f, fieldnames=FIELDS + extra)
         w.writeheader()
         for r in rows:
             out = dict(r)
