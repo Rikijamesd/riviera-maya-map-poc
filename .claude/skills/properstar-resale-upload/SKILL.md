@@ -37,17 +37,32 @@ import('pg').then(async ({default: pg}) => {
 });"
 ```
 
-That one command runs five stages, **each its own process** (never bundled into one script
-or one transaction — see "Why separate processes" below), stopping immediately if any stage
-fails:
+That one command runs six stages, **each its own process** (never bundled into one script
+or one transaction — see "Why separate processes" below), stopping immediately if a fatal
+stage fails:
 
 | # | Script | What it does | Typical time |
 |---|---|---|---|
 | 1a | `import-resale-from-properstar-json.mjs` (dry run) | Prints insert count + skip-reason breakdown | seconds |
-| 1b | same, `--apply` | Inserts new rows + fills `nb_colonia`/`geo_level`/`quality_flags` | seconds |
-| 2 | `reprocess-resale-dedup-and-channel.mjs` | Full-table dedup + `listing_channel` classification | **~7 min** |
-| 3 | `check-resale-currency-integrity.mjs` | Table-wide currency/price sanity | seconds |
+| 1b | same, `--apply` | Inserts **new** rows + fills `nb_colonia`/`geo_level`/`quality_flags` | seconds |
+| 1c | `backfill-resale-original-prices.mjs --apply` | Fixes **existing** GBP-tagged rows using this same fresh JSON | seconds–minutes |
+| 2 | `reprocess-resale-dedup-and-channel.mjs` | Full-table dedup + `listing_channel` classification + VACUUM ANALYZE | **~7 min** |
+| 3 | `check-resale-currency-integrity.mjs` | Table-wide currency/price sanity (informational, non-fatal) | seconds |
 | 4 | `verify-resale-site.mjs <city>` | Hits the actual DB functions + API routes Resale Properties and Market Analysis use | seconds |
+
+**Stage 1c is the one that's easy to forget, and forgetting it is the whole reason it's
+now automatic.** 1a/1b only ever touch listings that aren't in the table yet — re-scraping
+a whole city and running just 1a/1b fixes *nothing* for the ~9,000 listings already there,
+even though the fresh JSON has their correct price sitting right in it. First real run of
+this pipeline (Cancún) shipped without 1c and left 9,158 existing listings on the old GBP
+price; 1c alone then fixed 8,797 of them in one pass. Don't skip it, and don't add a flag
+to skip it — there's no version of "upload but don't fix what's already there" worth having.
+
+**Not run automatically:** `prune-dead-listings.mjs` (removes listings absent from the
+fresh scrape, or with no price at all — see its own section below). That's a `DELETE`, and
+deciding whether "not in this scrape" really means "gone" is a judgment call the first
+time you run it against a new city — so it stays a separate, explicit command, printed at
+the end of every orchestrator run for convenience.
 
 You can also run any stage on its own — see each script's own header comment. Stage 2 in
 particular is worth running standalone if you've just done several uploads in a row and
@@ -183,6 +198,34 @@ it does not count as a pass.
 failure, immediately after upload — it's expected until stage 2 runs, and stage 2 always
 runs before stage 4 in the pipeline, so seeing it there means something is actually wrong,
 not just pending.
+
+## Removing dead listings — separate, manual, run after the pipeline
+
+```bash
+node prune-dead-listings.mjs "Cancún" \
+  ../riviera-maya-map-poc/properstar-scraper/properstar_cancun.json
+```
+
+Dry run by default (`--apply` to actually delete). Removes three groups, all
+scoped to one city:
+
+1. **`price_currency = 'GBP'`** — rows `scrape_free.py` could never resolve an Original
+   price for (distinct from the historical bulk-GBP debt stage 1c fixes — these are ones
+   the fresh pull *also* couldn't fix).
+2. **`price_currency IS NULL`** — never had a price recorded at all.
+3. **Not present in the fresh pull**, despite being an in-scope type — likely delisted.
+
+**Before trusting group 1 on a city you haven't pruned before**, spot-check a handful
+directly against Properstar (fetch `https://www.properstar.co.uk/listing/<id>` — see
+`probe_display.py`'s pattern in `properstar-scraper/`, or `state.entities.listing[id]`
+in the page's `__INITIAL_STATE__`). On Cancún, 10/10 sampled GBP rows came back HTTP 404
+— genuinely delisted, not just price-hidden — which is what justified deleting all 361.
+That confirmed rate is evidence for Cancún, not a law for every city; if a new city's
+sample comes back mostly HTTP 200 (still live, price genuinely just hidden/POA), don't
+delete that city's group 1 — leave those rows alone rather than deleting real listings.
+
+Backs up every deleted row to a local JSON file first, runs `VACUUM ANALYZE` after —
+same reasoning as stage 2's, just smaller.
 
 ## Columns this does NOT set from source data
 
