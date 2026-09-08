@@ -150,9 +150,14 @@ def main() -> None:
             params["min_price"] = x["lo"]
         if x["hi"] is not None:
             params["max_price"] = x["hi"]
+        # A type whose whole population fits under --target in one pass has lo=hi=None
+        # (no split needed at all) -- the three branches above assumed at least one of
+        # lo/hi was always set, which crashed the whole run on Tulum's house type (1,725,
+        # under target) and both of Puerto Morelos's types.
         rng = (f"{x['lo'] // 1000}k-{x['hi'] // 1000}k" if x["lo"] and x["hi"]
                else f"<{x['hi'] // 1000}k" if x["hi"]
-               else f">{x['lo'] // 1000}k")
+               else f">{x['lo'] // 1000}k" if x["lo"]
+               else "all")
         lbl = f"{x['kind'][:3]} {rng}" if x.get("kind") else rng
         plan["slices"].append({"label": lbl, "params": params,
                                "expected": x["expected"]})
