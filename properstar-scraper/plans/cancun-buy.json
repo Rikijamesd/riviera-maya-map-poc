@@ -2,105 +2,78 @@
   "city": "cancun",
   "country": "mexico",
   "transaction": "buy",
-  "generated": "2026-08-23T14:10:41+00:00",
-  "city_total": 9170,
+  "generated": "2026-09-08T10:39:59+00:00",
+  "city_total": 9213,
   "retrievable": 2000,
   "type_totals": {
-    "apartment": 5620,
-    "house": 3550
+    "apartment": 5625,
+    "house": 3588
   },
   "types_planned": [
     "apartment",
     "house"
   ],
-  "target_per_band": 950,
-  "projected_calls": 10,
+  "target_per_band": 1650,
+  "projected_calls": 7,
   "slices": [
     {
-      "label": "apa <147k",
+      "label": "apa <177k",
       "params": {
         "property_type": "apartment",
-        "max_price": 147333
+        "max_price": 177881
       },
-      "expected": 937
+      "expected": 1406
     },
     {
-      "label": "apa 147k-224k",
+      "label": "apa 177k-371k",
       "params": {
         "property_type": "apartment",
-        "min_price": 147333,
-        "max_price": 224481
+        "min_price": 177881,
+        "max_price": 371040
       },
-      "expected": 937
+      "expected": 1406
     },
     {
-      "label": "apa 224k-355k",
+      "label": "apa 371k-851k",
       "params": {
         "property_type": "apartment",
-        "min_price": 224481,
-        "max_price": 355332
+        "min_price": 371040,
+        "max_price": 851208
       },
-      "expected": 937
+      "expected": 1406
     },
     {
-      "label": "apa 355k-609k",
+      "label": "apa >851k",
       "params": {
         "property_type": "apartment",
-        "min_price": 355332,
-        "max_price": 609177
+        "min_price": 851208
       },
-      "expected": 937
+      "expected": 1406
     },
     {
-      "label": "apa 609k-1017k",
-      "params": {
-        "property_type": "apartment",
-        "min_price": 609177,
-        "max_price": 1017301
-      },
-      "expected": 937
-    },
-    {
-      "label": "apa >1017k",
-      "params": {
-        "property_type": "apartment",
-        "min_price": 1017301
-      },
-      "expected": 937
-    },
-    {
-      "label": "hou <171k",
+      "label": "hou <192k",
       "params": {
         "property_type": "house",
-        "max_price": 171166
+        "max_price": 192068
       },
-      "expected": 888
+      "expected": 1196
     },
     {
-      "label": "hou 171k-346k",
+      "label": "hou 192k-567k",
       "params": {
         "property_type": "house",
-        "min_price": 171166,
-        "max_price": 346665
+        "min_price": 192068,
+        "max_price": 567472
       },
-      "expected": 888
+      "expected": 1196
     },
     {
-      "label": "hou 346k-831k",
+      "label": "hou >567k",
       "params": {
         "property_type": "house",
-        "min_price": 346665,
-        "max_price": 831996
+        "min_price": 567472
       },
-      "expected": 888
-    },
-    {
-      "label": "hou >831k",
-      "params": {
-        "property_type": "house",
-        "min_price": 831996
-      },
-      "expected": 888
+      "expected": 1196
     }
   ]
 }

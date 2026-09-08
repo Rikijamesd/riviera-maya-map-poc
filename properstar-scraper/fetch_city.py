@@ -45,7 +45,7 @@ MAX_CALL_CREDITS = 20  # parse.bot's per-call ceiling; reserved before each requ
 # scrapers* with separate pricing -- rentals cost 10x. Used only to size the
 # projection and the safety ceiling; X-Credits-Charged stays the source of truth.
 CREDITS_PER_CALL = {"buy": 1, "rent": 10}
-PAGE_SIZE = 1000
+PAGE_SIZE = 2000  # one call returns both upstream pages (see PARSEBOT_FILTERED_URL)
 UPSTREAM_CAP = 2000  # Properstar's per-search ceiling; past this, rows are lost
 
 # CSV column order. The JSON output keeps every field the API returns, so a

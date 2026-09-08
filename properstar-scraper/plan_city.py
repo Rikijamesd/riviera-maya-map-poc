@@ -17,9 +17,12 @@ some listings carry no bedroom value at all, and `max_bedrooms=0` matches nothin
 so those are unreachable. Bands are left open-ended at the top and bottom so
 listings with no price still fall inside one.
 
-Bands target ~950 rather than the 1,000-row page limit. Sample-derived cuts came
-out ~20% off on Tulum, and 950 + 20% is still under 1,000; even a band that
-overshoots only costs one extra page, because data is lost only past 2,000.
+Bands target well under the per-call row limit because sample-derived cuts came
+out ~20% off on Tulum. That margin used to be cheap: with a 1,000-row page and a
+2,000 cap, an overshooting band merely cost one extra page. The endpoint now
+returns both upstream pages in a single call, so the page limit and the cap are
+both 2,000 and an overshoot silently LOSES the excess. Keep --target at or below
+~1,650 so target + 20% still clears the cap.
 
 Usage:
     python plan_city.py --city cancun
@@ -45,7 +48,7 @@ SITE = "https://www.properstar.co.uk"
 TYPES = ("apartment", "house")
 UPSTREAM_CAP = 2000
 PAGE_ROWS = 20  # listings per public search page
-API_PAGE_ROWS = 1000  # parse.bot rows per call
+API_PAGE_ROWS = 2000  # parse.bot rows per call (endpoint combines both upstream pages)
 
 
 def extract_initial_state(html: str) -> dict | None:
@@ -238,7 +241,7 @@ def main() -> None:
     ap.add_argument("--transaction", default="buy", choices=("buy", "rent"),
                     help="sale or rental listings (rent support on the parse.bot "
                          "side is unconfirmed -- see README)")
-    ap.add_argument("--target", type=int, default=950,
+    ap.add_argument("--target", type=int, default=1650,
                     help="listings per band (default 950; page limit is 1000)")
     ap.add_argument("--sample-pages", type=int, default=30,
                     help="public pages to sample per type (20 listings each)")
