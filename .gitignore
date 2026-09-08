@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+
+# Generated scrape-data artifacts (regenerate with ingest_properstar.py --dry-run /
+# scrape_free.py / fetch_city.py) -- combined_rows.json alone was 115MB, over GitHub's
+# 100MB limit, and blocked every push once committed (2026-09-08).
+properstar-scraper/combined_rows.json
+# Added by code-review-graph
+.code-review-graph/
