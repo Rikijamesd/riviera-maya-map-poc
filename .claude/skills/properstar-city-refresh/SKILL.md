@@ -108,12 +108,25 @@ despite being an in-scope type (apartment/house family) — likely delisted.
 **Before applying on a city pruned for the first time**, spot-check a handful
 of the GBP-only rows directly against Properstar (fetch
 `https://www.properstar.co.uk/listing/<id>`, or read `__INITIAL_STATE__` —
-see `probe_display.py`'s pattern in `properstar-scraper/`). Cancún's 361 came
-back 10/10 as HTTP 404 — genuinely delisted, not just price-hidden — which is
-what justified deleting all of them. That confirmed rate is evidence for
-Cancún, not a law for every city; if a new city's sample comes back mostly
-HTTP 200 (still live, price genuinely just hidden/POA), don't delete that
-city's group 1.
+see `probe_display.py`'s pattern in `properstar-scraper/`). Cancún, Tulum, and
+Puerto Morelos each came back 5/5 or 10/10 HTTP 404 — genuinely delisted, not
+just price-hidden — which is what justified deleting all of that group.
+
+**Playa del Carmen didn't** — a 5-sample came back 4 delisted, 1 still live
+with a real recoverable price. That's not "mostly live" (the don't-delete
+case below), but it's not the clean 100% the other three cities gave either —
+worth resolving properly rather than guessing from a small sample either way.
+Audited **every** GBP row individually (499 listings, ~5 min, free): 370
+confirmed HTTP 404 (deleted), 129 still live — and every one of those 129 had
+a real Original price sitting on its own detail page that the search-results
+pass had simply missed. Recovered 104 of those (25 hit the sanity ceiling —
+see below); deleted only the confirmed-404 370, not the whole group-of-499.
+**This is a real outcome, not a hypothetical** — check whether the group-1
+rate is clean before trusting a blanket delete on a new city, and do the
+full per-row audit instead of a delete when it isn't.
+
+If a new city's sample comes back mostly HTTP 200 (still live, price
+genuinely just hidden/POA), don't delete that city's group 1 at all.
 
 Kept out of the automatic stage-2 command on purpose — it's a `DELETE`, and
 that spot-check judgment call shouldn't happen silently. `upload-and-verify-
