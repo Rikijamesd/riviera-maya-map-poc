@@ -100,6 +100,28 @@ dev server), ask for one, or use the API route/generator function directly
 fastest — see cashFlowExcel.ts's own `buildCashFlowWorkbook` entry point
 and its API route for the request shape).
 
+When you're iterating (fix code → regenerate → re-diff → repeat), don't
+run those as separate curl/soffice/diff calls each round — use
+`scripts/verify_export.py`, which chains all of it into one call and exits
+0 only when both the formula-error check and the diff are clean:
+
+```bash
+python .claude/skills/excel-model-breakdown/scripts/verify_export.py \
+  --api-url http://localhost:3000/api/cash-flow/export \
+  --payload debug_payload.json \
+  --reference "<reference>.xlsx" --reference-sheet "Equity Returns" \
+  --rows 15:127 --cols B,C,D,E,F,G,H,I,J
+```
+
+`--payload` is a JSON file with the export API's request body (deal setup,
+line items, waterfall config, etc.) — build one once per scenario you're
+testing and reuse it across iterations. Add `--skip-formula-check` when
+you're only chasing layout/label differences and don't need the (slower)
+LibreOffice recalc pass. This only speeds up the mechanical round-trip —
+it does not replace reading what a mismatch actually means (see the note
+above about a mismatch not always meaning "copy the reference file's
+cell").
+
 **A mismatch is not automatically a bug to fix by copying the reference
 file's cell.** Read what actually changed before reacting - twice in one
 session, a "the generator doesn't match" mismatch turned out to be the
