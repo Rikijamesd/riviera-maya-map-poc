@@ -71,15 +71,16 @@ import('pg').then(async ({default: pg}) => {
 });"
 ```
 
-Runs six sub-stages, **each its own process** (never bundled into one script
+Runs seven sub-stages, **each its own process** (never bundled into one script
 or transaction — see "Why separate processes" below), stopping immediately if
 a fatal one fails:
 
 | # | Script | What it does | Time |
 |---|---|---|---|
 | 1a | `import-resale-from-properstar-json.mjs` (dry run) | Prints insert count + skip breakdown | seconds |
-| 1b | same, `--apply` | Inserts **new** rows, fills `nb_colonia`/`geo_level`/`quality_flags` | seconds |
+| 1b | same, `--apply` | Inserts **new** rows, fills `nb_colonia`/`geo_level`/`quality_flags`, **and refreshes `description`/`amenities` on rows that already exist** | seconds |
 | 1c | `backfill-resale-original-prices.mjs --apply` | Fixes **existing** GBP-tagged rows using this same fresh JSON | seconds–min |
+| 1d | `normalize-colonia-spelling.mjs` | Folds accent/case `nb_colonia` variants the fresh pull reintroduces | seconds |
 | 2 | `reprocess-resale-dedup-and-channel.mjs` | Full-table dedup + `listing_channel` classification + VACUUM ANALYZE | **~7 min** |
 | 3 | `check-resale-currency-integrity.mjs` | Table-wide currency/price sanity (informational, non-fatal) | seconds |
 | 4 | `verify-resale-site.mjs <city>` | Hits the real DB functions + API routes the site uses | seconds |
@@ -92,6 +93,22 @@ it. First real run (Cancún) shipped without 1c and left 9,158 existing rows
 on the old GBP price; 1c alone then fixed 8,797 of them in one pass. No flag
 to skip it — there's no useful "upload but don't fix what's already wrong"
 mode.
+
+**The same trap bit twice more, in 1b and 1d.** 1b used to skip every listing
+already in the table outright, so a refresh wrote `description`/`amenities`
+for new listings only and discarded them for everything else — 71,285
+descriptions across nine cities, all already paid for and still sitting in the
+JSONs on disk. It now merges fresh text onto existing rows (price stays with
+1c, which has the sanity guards; `city`/`nb_colonia`/`geo_level` stay untouched
+so the geography cleanup survives). 1d exists because a fresh pull reintroduces
+spelling variants — the source writes `Puerto Cancun` next to `Puerto Cancún`,
+and every consumer that groups by `nb_colonia` uses exact string equality, so a
+single unaccented row becomes its own map bubble. Reported live as a listing
+sitting outside the Puerto Cancún bubble.
+
+The pattern to remember: **anything that only helps new rows will silently rot
+the existing table on every refresh.** Three separate stages now exist purely
+because of it.
 
 ## Stage 3 — Remove dead listings (manual, on purpose)
 
