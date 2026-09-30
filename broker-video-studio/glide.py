@@ -213,7 +213,9 @@ def clean_disparity(raw: np.ndarray) -> np.ndarray:
     d = np.clip((raw - lo) / max(hi - lo, 1e-6), 0, 1).astype(np.float32)
     k = max(3, int(min(d.shape) * 0.006) | 1)
     d = cv2.dilate(d, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k)))
-    d = cv2.GaussianBlur(d, (0, 0), sigmaX=k * 0.8)
+    # Light blur only: a wide one spreads the stretch at object edges across the background
+    # (reads as jelly); a narrow one keeps it to a thin band the eye doesn't catch.
+    d = cv2.GaussianBlur(d, (0, 0), sigmaX=k * 0.35)
     return d
 
 
@@ -226,7 +228,11 @@ class MoveCurve:
     """Camera state as functions of eased time e in [0, 1].
 
     Forward model (output px q centred, source point p centred, in output px units):
-        q = p * zoom * (1 + dolly * d_rel(p)) + (pan + parallax * d_rel(p)) * size
+        q = (p * zoom + parallax * d_rel(p) * size) / (1 - dolly * d_rel(p)) + pan * size
+    This is the pinhole-camera translation formula with d_rel standing in for inverse depth.
+    Because d_rel is (up to the model's unknown scale/shift) affine in true inverse depth, and
+    inverse depth is affine across any flat surface, the map is projective on walls, floors and
+    ceilings - straight lines stay straight. (A multiplicative (1 + dolly*d) form bends them.)
     zoom:     global scale (all depths)
     dolly:    extra scale for near pixels (push-in / pull-back parallax)
     pan:      global shift, fraction of width/height (all depths)
@@ -259,11 +265,14 @@ def make_move(name: str, k: float) -> MoveCurve:
     def along(e: float) -> float:
         return (e if travel >= 0 else 1 - e) * abs(travel)
 
-    par_a = 0.06 if orbit else 0.045
-    pan_a = 0.0 if orbit else 0.012
+    # Most of the travel is global (zoom/pan: every pixel moves together, can't distort); depth
+    # parallax is a subtle layer on top. A single photo has nothing behind the sofa, so strong
+    # parallax has to stretch pixels at object edges - the "rubbery" look.
+    par_a = 0.03 if orbit else 0.018
+    pan_a = 0.01 if orbit else 0.03
     return MoveCurve(
-        zoom=lambda e: 1 + 0.03 * k * along(e),
-        dolly=lambda e: 0.16 * k * along(e),
+        zoom=lambda e: 1 + 0.08 * k * along(e),
+        dolly=lambda e: 0.05 * k * along(e),
         pan=lambda e: (dx * pan_a * k * (2 * e - 1), dy * pan_a * k * (2 * e - 1)),
         parallax=lambda e: (dx * par_a * k * (2 * e - 1), dy * par_a * k * (2 * e - 1)),
         focus_pct=50 if orbit else 10,
@@ -289,7 +298,7 @@ def render_clip(
 
     # Edge-gap guard: the constant extra zoom that keeps every sample inside the source for
     # the whole move (constant, so the motion stays smooth). The source point behind an edge
-    # pixel is monotonic in d, so both edges at the nearest/farthest disparity are the worst case.
+    # pixel is linear in d, so both edges at the nearest/farthest disparity are the worst case.
     need = 1.0
     for i in range(n):
         e = ease(i / max(n - 1, 1))
@@ -298,7 +307,7 @@ def render_clip(
         for pan_a, par_a in ((px, tx), (py, ty)):
             for edge in (-0.5, 0.5):
                 for d in (d_min, d_max):
-                    p = (edge - pan_a - par_a * d) / (z * max(1e-3, 1 + dl * d))
+                    p = ((edge - pan_a) * (1 - dl * d) - par_a * d) / z
                     need = max(need, abs(p) / 0.5)
     zoom_fix = need * 1.005
 
@@ -318,16 +327,15 @@ def render_clip(
         dl = move.dolly(e)
         (px, py), (tx, ty) = move.pan(e), move.parallax(e)
 
-        # Backward warp by fixed-point iteration: p = (q - shift(p)) / scale(p).
+        # Backward warp by fixed-point iteration: p = (b * (1 - dolly*d) - parallax*d) / zoom.
         bx = ux - px * W
         by = uy - py * H
         p_x, p_y = bx / z, by / z
-        for _ in range(3):
+        for _ in range(4):
             d = cv2.remap(d_rel_src, cx + p_x * scale, cy + p_y * scale,
                           cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
-            s = z * (1 + dl * d)
-            p_x = (bx - tx * W * d) / s
-            p_y = (by - ty * H * d) / s
+            p_x = (bx * (1 - dl * d) - tx * W * d) / z
+            p_y = (by * (1 - dl * d) - ty * H * d) / z
 
         map_x = cv2.resize(cx + p_x * scale, (W, H), interpolation=cv2.INTER_LINEAR)
         map_y = cv2.resize(cy + p_y * scale, (W, H), interpolation=cv2.INTER_LINEAR)
