@@ -268,8 +268,8 @@ def make_move(name: str, k: float) -> MoveCurve:
     # Most of the travel is global (zoom/pan: every pixel moves together, can't distort); depth
     # parallax is a subtle layer on top. A single photo has nothing behind the sofa, so strong
     # parallax has to stretch pixels at object edges - the "rubbery" look.
-    par_a = 0.04 if orbit else 0.025
-    pan_a = 0.02 if orbit else 0.05
+    par_a = 0.045 if orbit else 0.025
+    pan_a = 0.04 if orbit else 0.05
     return MoveCurve(
         zoom=lambda e: 1 + 0.18 * k * along(e),
         dolly=lambda e: 0.07 * k * along(e),
