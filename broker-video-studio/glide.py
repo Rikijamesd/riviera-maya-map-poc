@@ -268,11 +268,11 @@ def make_move(name: str, k: float) -> MoveCurve:
     # Most of the travel is global (zoom/pan: every pixel moves together, can't distort); depth
     # parallax is a subtle layer on top. A single photo has nothing behind the sofa, so strong
     # parallax has to stretch pixels at object edges - the "rubbery" look.
-    par_a = 0.03 if orbit else 0.018
-    pan_a = 0.01 if orbit else 0.03
+    par_a = 0.04 if orbit else 0.025
+    pan_a = 0.02 if orbit else 0.05
     return MoveCurve(
-        zoom=lambda e: 1 + 0.08 * k * along(e),
-        dolly=lambda e: 0.05 * k * along(e),
+        zoom=lambda e: 1 + 0.18 * k * along(e),
+        dolly=lambda e: 0.07 * k * along(e),
         pan=lambda e: (dx * pan_a * k * (2 * e - 1), dy * pan_a * k * (2 * e - 1)),
         parallax=lambda e: (dx * par_a * k * (2 * e - 1), dy * par_a * k * (2 * e - 1)),
         focus_pct=50 if orbit else 10,
@@ -575,8 +575,8 @@ def build_video(job: VideoJob, log: Callable[[str], None] = print) -> Path:
     t0 = time.time()
     moves = pick_moves(job)
     depth = DepthEstimator() if job.depth_mode == "model" else None
-    # Supersample so zoomed frames stay sharp (max push-in ~1.12x).
-    supersample = 1.25
+    # Supersample so zoomed frames stay sharp (push-ins reach ~1.3x).
+    supersample = 1.5
 
     ctx = tempfile.TemporaryDirectory(prefix="glide_") if job.keep_work is None else None
     work = Path(ctx.name) if ctx else job.keep_work
