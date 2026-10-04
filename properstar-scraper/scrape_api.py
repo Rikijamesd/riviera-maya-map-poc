@@ -79,8 +79,10 @@ class Search:
                    "Origin": SITE, "Referer": SITE + "/",
                    "User-Agent": "Mozilla/5.0"}
         for attempt in range(3):
+            # Paging goes in the URL as ?skip=N; params.page in the body is ignored
+            # (every page came back as page 1 when tested 2026-10-04).
             req = urllib.request.Request(
-                API, data=body,
+                f"{API}?skip={(page_num - 1) * API_PAGE}", data=body,
                 headers={**headers, "Authorization": f"Bearer {self.token}"})
             try:
                 self.requests += 1
