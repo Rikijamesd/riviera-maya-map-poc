@@ -6,6 +6,7 @@
     python rightmove.py geo                            # borough/ward/LSOA via postcodes.io
     python rightmove.py details                        # full description, postcode, costs
     python rightmove.py all     --location London      # search both channels, geo, details
+    python rightmove.py refresh --location London      # weekly: re-sweep, mark withdrawn, new-only geo/details
     python rightmove.py status                         # progress so far
 
 Crash-safe by design -- nothing is held in memory between pages:
@@ -308,11 +309,22 @@ SEARCH_COLS = (
     "is_premium, is_featured, agent_name, agent_branch, agent_branch_id, agent_phone, search_raw"
 )
 _UPDATABLE = [c.strip() for c in SEARCH_COLS.split(",") if c.strip() != "id"]
+# Only rewrite a row when something a buyer would notice changed. A weekly re-sweep sees ~120k
+# London listings and most are unchanged; rewriting every one (with its big search_raw json) is
+# the kind of bulk write that throttled the database on 2026-09-25. Sightings go to the narrow
+# listing_seen table instead (tlrm-data-pipeline/43).
+_CHANGE_COLS = ["price_amount", "price_qualifier", "status", "listing_update_reason",
+                "listing_update_date", "added_or_reduced", "number_of_images", "title"]
 UPSERT_SQL = (
     f"insert into uk_listings ({SEARCH_COLS}) values %s on conflict (id) do update set "
     + ", ".join(f"{c} = excluded.{c}" for c in _UPDATABLE)
-    + ", last_seen_at = now()"
+    + ", last_seen_at = now() where ("
+    + ", ".join(f"uk_listings.{c}" for c in _CHANGE_COLS) + ") is distinct from ("
+    + ", ".join(f"excluded.{c}" for c in _CHANGE_COLS) + ")"
 )
+
+# Set by `refresh` while a sweep runs: every listing a search page returns is recorded as seen.
+SWEEP: dict | None = None   # {"id": sweep_id, "scope": "REGION^87490|sale", "seen": set()}
 
 
 def save_page(cur, props: list[dict], channel: str, loc_name: str, loc_id: str) -> int:
@@ -321,6 +333,15 @@ def save_page(cur, props: list[dict], channel: str, loc_name: str, loc_id: str) 
         rows[int(p["id"])] = map_search_row(p, channel, loc_name, loc_id)
     if rows:
         execute_values(cur, UPSERT_SQL, list(rows.values()))
+        if SWEEP is not None:
+            new_ids = [str(i) for i in rows if str(i) not in SWEEP["seen"]]
+            SWEEP["seen"].update(new_ids)
+            if new_ids:
+                cur.execute(
+                    "insert into listing_seen (source, scope, listing_id, last_sweep_id) "
+                    "select 'rightmove', %s, unnest(%s::text[]), %s on conflict (source, listing_id) do update "
+                    "set scope = excluded.scope, last_seen_at = now(), last_sweep_id = excluded.last_sweep_id, "
+                    "missed_sweeps = 0", (SWEEP["scope"], new_ids, SWEEP["id"]))
     return len(rows)
 
 
@@ -640,6 +661,110 @@ def run_geo(conn) -> None:
     log(f"geo finished: {done:,} listings")
 
 
+# ---------------------------------------------------------------------- refresh
+
+MISS_THRESHOLD = 2      # same rule as tlrm/listing-freshness.mjs
+MIN_COVERAGE = 0.85
+
+
+def db_healthy(conn, max_ms: int = 3000) -> tuple[bool, int]:
+    """CPU probe: ~0.7s healthy, 38-72s when the instance was throttled on 2026-09-25."""
+    cur = conn.cursor()
+    t0 = time.time()
+    cur.execute("select sum(i) from generate_series(1, 2000000) i")
+    cur.fetchone()
+    conn.commit()
+    ms = int((time.time() - t0) * 1000)
+    return ms <= max_ms, ms
+
+
+def wait_for_healthy_db(conn, max_wait_min: int = 60) -> bool:
+    deadline = time.time() + max_wait_min * 60
+    while True:
+        ok, ms = db_healthy(conn)
+        if ok:
+            return True
+        if time.time() > deadline:
+            log(f"database still slow ({ms} ms probe) after {max_wait_min} min - stopping")
+            return False
+        log(f"database slow ({ms} ms probe) - waiting 5 min")
+        time.sleep(300)
+
+
+def run_refresh(conn, location: str, delay: float, limit: int | None = None) -> None:
+    """Weekly sweep: re-read every search band for sale and rent, record what's still listed,
+    and mark listings two complete sweeps didn't see as 'withdrawn' (publish-uk-listings.mjs then
+    takes them off the site). New listings get geo + details; nothing else is re-fetched."""
+    global SWEEP
+    if not wait_for_healthy_db(conn):
+        sys.exit(4)
+    loc_id, loc_name = resolve_location(location)
+    cur = conn.cursor()
+    for channel in ("sale", "rent"):
+        scope = f"{loc_id}|{channel}"
+        job = f"{loc_id}|{channel}|all"
+        cur.execute("insert into listing_sweeps (source, scope) values ('rightmove', %s) returning id", (scope,))
+        sweep_id = cur.fetchone()[0]
+        # Keep last sweep's band boundaries (no re-bisecting from scratch) but re-read every band;
+        # each re-probes its count, so a band that grew past the cap still splits.
+        # (Skipped when bands are still pending: that's an interrupted refresh being resumed. Its
+        # seen-set is lost, so coverage comes out low and nothing is marked missed - safe.)
+        cur.execute("update uk_scrape_bands set status='pending', expected=null, pages_done=0, rows_saved=0, "
+                    "updated_at=now() where job=%s and not exists "
+                    "(select 1 from uk_scrape_bands b where b.job=%s and b.status='pending')", (job, job))
+        conn.commit()
+        SWEEP = {"id": sweep_id, "scope": scope, "seen": set()}
+        log(f"refresh {loc_name} {channel}: sweep {sweep_id}")
+        try:
+            run_search(conn, location, channel, True, delay)
+        finally:
+            seen = SWEEP["seen"]
+            SWEEP = None
+
+        # Everything on file for this place: rows filed under this search, plus rows whose postcode
+        # region is this place but which a smaller search (e.g. E1W) last re-filed - those are
+        # published too, so they must be checked for withdrawal by the area-wide sweep.
+        cur.execute("select id::text from uk_listings where (location_identifier=%s or region=%s) "
+                    "and channel=%s and status not in ('withdrawn')", (loc_id, loc_name, channel))
+        current = [r[0] for r in cur.fetchall()]
+        overlap = sum(1 for i in current if i in seen)
+        coverage = overlap / len(current) if current else 1.0
+        missed, withdrawn = [], []
+        if coverage >= MIN_COVERAGE:
+            missed = [i for i in current if i not in seen]
+            for k in range(0, len(missed), 2000):
+                cur.execute(
+                    "insert into listing_seen (source, scope, listing_id, last_sweep_id, missed_sweeps) "
+                    "select 'rightmove', %s, unnest(%s::text[]), %s, 1 on conflict (source, listing_id) do update "
+                    "set missed_sweeps = case when listing_seen.last_sweep_id = excluded.last_sweep_id "
+                    "then listing_seen.missed_sweeps else listing_seen.missed_sweeps + 1 end, "
+                    "last_sweep_id = excluded.last_sweep_id returning listing_id, missed_sweeps",
+                    (scope, missed[k:k + 2000], sweep_id))
+                withdrawn += [r[0] for r in cur.fetchall() if r[1] >= MISS_THRESHOLD]
+            for k in range(0, len(withdrawn), 500):
+                cur.execute("update uk_listings set status='withdrawn' where id = any(%s::bigint[])",
+                            (withdrawn[k:k + 500],))
+                conn.commit()
+                time.sleep(0.4)
+            status, note = "complete", None
+        else:
+            status, note = "partial", f"coverage {coverage:.1%} < {MIN_COVERAGE:.0%} - nothing marked missed"
+        # A listing page that 404s during details is gone now, whatever the sweep saw.
+        cur.execute("update uk_listings set status='withdrawn' where details_status='removed' "
+                    "and status <> 'withdrawn' and (location_identifier=%s or region=%s) and channel=%s",
+                    (loc_id, loc_name, channel))
+        gone_404 = cur.rowcount
+        cur.execute("update listing_sweeps set finished_at=now(), status=%s, seen=%s, missed_count=%s, "
+                    "archived_count=%s, notes=%s where id=%s",
+                    (status, len(seen), len(missed), len(withdrawn) + gone_404, note, sweep_id))
+        conn.commit()
+        log(f"refresh {channel}: seen {len(seen):,} of {len(current):,} on file ({coverage:.1%}), "
+            f"missed {len(missed):,}, withdrawn {len(withdrawn):,} (+{gone_404} from 404s) - {status}")
+
+    run_geo(conn)
+    run_details(conn, delay, limit)
+
+
 # ----------------------------------------------------------------------- status
 
 def show_status(conn) -> None:
@@ -663,7 +788,7 @@ def show_status(conn) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["setup", "search", "repair", "details", "geo", "all", "status"])
+    ap.add_argument("command", choices=["setup", "search", "repair", "details", "geo", "all", "refresh", "status"])
     ap.add_argument("--location", default="London", help="place name or Rightmove id like REGION^87490")
     ap.add_argument("--channel", choices=["sale", "rent"], default="sale")
     ap.add_argument("--live-only", action="store_true", help="exclude sold STC / let agreed")
@@ -713,6 +838,8 @@ def run_command(a, conn) -> None:
         run_details(conn, a.delay, a.limit)
     elif a.command == "geo":
         run_geo(conn)
+    elif a.command == "refresh":
+        run_refresh(conn, a.location, a.delay, a.limit)
     elif a.command == "status":
         show_status(conn)
     elif a.command == "all":
