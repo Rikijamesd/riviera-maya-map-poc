@@ -10,3 +10,6 @@ __pycache__/
 properstar-scraper/combined_rows.json
 # Added by code-review-graph
 .code-review-graph/
+
+# weekly Properstar sweep outputs (refresh-mexico-properstar.mjs)
+properstar-scraper/sweeps/

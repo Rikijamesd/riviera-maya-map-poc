@@ -69,7 +69,7 @@ class Search:
         filters["price"] = {"min": lo, "max": hi}
         params = {**copy.deepcopy(self.descriptor["params"]),
                   "pageSize": API_PAGE, "page": page_num,
-                  "saveInDb": False, "sort": "-creationDate"}
+                  "saveInDb": False, "sort": getattr(self, "sort", "-creationDate")}
         payload = {"search": {"filters": {"listings": filters},
                               "params": params,
                               "portalId": self.portal_id}}
@@ -128,6 +128,22 @@ def label(lo, hi) -> str:
     return "all"
 
 
+def original_price(item: dict) -> tuple:
+    """The advertiser's real listed price - Properstar's type: "Original" entry only, never a
+    type: "Converted" display value (the GBP figure drifts with the exchange rate). The tlrm
+    importers read only these two fields and skip a listing that has none."""
+    for v in (item.get("price") or {}).get("values", []):
+        if v.get("type") == "Original" and v.get("currencyId") and v.get("value") is not None:
+            return v["currencyId"], v["value"]
+    return None, None
+
+
+def map_api_listing(item: dict) -> dict:
+    row = map_listing(item, {})
+    row["original_price_currency"], row["original_price_amount"] = original_price(item)
+    return row
+
+
 def collect(s: Search, lo, hi, out: dict, budget: int, depth: int = 0) -> None:
     """Page through one price band, bisecting it first if it exceeds the cap."""
     if s.requests >= budget:
@@ -136,6 +152,8 @@ def collect(s: Search, lo, hi, out: dict, budget: int, depth: int = 0) -> None:
 
     head = s.query(lo, hi, 1)
     total = head.get("total") or 0
+    if lo is None and hi is None and getattr(s, "market_total", None) is None:
+        s.market_total = total  # Properstar's own count for the whole search
     if total == 0:
         return
 
@@ -152,6 +170,7 @@ def collect(s: Search, lo, hi, out: dict, budget: int, depth: int = 0) -> None:
             return
         print(f"  {label(lo, hi):16} {total:>6} > cap but not splittable "
               f"-- keeping first {UPSTREAM_CAP}")
+        s.capped = True  # part of this band is unreachable: the sweep is not complete
 
     pages = (min(total, UPSTREAM_CAP) + API_PAGE - 1) // API_PAGE
     got = 0
@@ -164,7 +183,7 @@ def collect(s: Search, lo, hi, out: dict, budget: int, depth: int = 0) -> None:
         if not listings:
             break
         for item in listings:
-            out[item["id"]] = map_listing(item, {})
+            out[item["id"]] = map_api_listing(item)
         got += len(listings)
         if page_num % 20 == 0:
             print(f"  {label(lo, hi):16} page {page_num}/{pages}  "
@@ -201,11 +220,18 @@ def main() -> None:
                     help="hard ceiling on API requests for this run")
     ap.add_argument("--fresh", action="store_true",
                     help="discard existing output instead of merging into it")
+    ap.add_argument("--out-dir", default=".",
+                    help="folder for the json/csv (weekly sweeps write to their own folder)")
+    ap.add_argument("--both-sorts", action="store_true",
+                    help="page each band newest- and oldest-first (complete sweeps)")
+    ap.add_argument("--summary", help="also write a small JSON summary here, which the weekly "
+                    "refresh uses to tell a complete sweep from a capped/interrupted one")
     args = ap.parse_args()
 
     suffix = "" if args.transaction == "buy" else "_rent"
-    json_path = f"properstar_{args.city}{suffix}.json"
-    csv_path = f"properstar_{args.city}{suffix}.csv"
+    os.makedirs(args.out_dir, exist_ok=True)
+    json_path = os.path.join(args.out_dir, f"properstar_{args.city}{suffix}.json")
+    csv_path = os.path.join(args.out_dir, f"properstar_{args.city}{suffix}.csv")
 
     out: dict = {}
     if not args.fresh and os.path.exists(json_path):
@@ -218,15 +244,32 @@ def main() -> None:
     s = Search(args.country, args.city, args.transaction, args.type)
     print(f"authenticated (portalId {s.portal_id}); collecting {args.city} "
           f"{args.transaction} [{args.type}]\n")
+    s.capped = False
+    interrupted = False
     try:
         collect(s, None, None, out, args.max_requests)
+        if args.both_sorts:
+            # Paging the newest-first list shuffles listings that share a creation date between
+            # pages, so ~8% never come back (Puerto Morelos 2026-10-10: 914 unique of 996). A
+            # second pass oldest-first reaches the ones the first pass skipped - needed when the
+            # output is used to decide which listings have gone.
+            s.sort = "creationDate"
+            print("\nsecond pass, oldest first")
+            collect(s, None, None, out, args.max_requests)
     except KeyboardInterrupt:
+        interrupted = True
         print("\ninterrupted -- writing what was collected so far")
 
     rows = list(out.values())
     write_outputs(rows, json_path, csv_path)
     print(f"\n{len(rows)} unique listings (+{len(rows) - carried} new) "
           f"in {s.requests} requests, 0 credits -> {csv_path} / {json_path}")
+    if args.summary:
+        with open(args.summary, "w", encoding="utf-8") as fh:
+            json.dump({"city": args.city, "transaction": args.transaction, "rows": len(rows),
+                       "market_total": getattr(s, "market_total", None),
+                       "requests": s.requests, "budget_hit": s.requests >= args.max_requests,
+                       "capped": s.capped, "interrupted": interrupted, "json": json_path}, fh)
 
 
 if __name__ == "__main__":
