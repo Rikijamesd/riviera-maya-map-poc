@@ -5,6 +5,17 @@ description: End-to-end refresh of one city's Properstar resale listings — col
 
 # Properstar city refresh
 
+> **Routine upkeep is automatic now (since 2026-10-10).** Windows Task Scheduler runs
+> `tlrm/refresh-listings.mjs mexico` every Wednesday 01:00 (and `uk` every Sunday): a free
+> sweep of every Mexican area (sale + rent) through `scrape_api.py --both-sorts`, which inserts
+> new listings, updates only listings whose real (Original) price changed, and moves listings
+> missing from two complete sweeps to `listing_archive`. Check it with
+> `node refresh-listings.mjs status` (logs in `tlrm/logs/`). Run one area by hand with
+> `node refresh-mexico-properstar.mjs --only cancun [--transaction buy] [--apply]` (no
+> `--apply` = dry run that still sweeps). The three stages below are for adding a NEW city or a
+> deliberate full re-pull with descriptions (the free sweep doesn't collect descriptions or
+> amenities). New cities need adding to `AREAS` in `refresh-mexico-properstar.mjs` to stay fresh.
+
 Three stages. The first two are commands; the third is a deliberate manual
 step because it deletes data.
 
